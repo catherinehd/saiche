@@ -1,0 +1,19 @@
+<section class="img-valid-sec">
+  <div class="modal-container">
+    <div class="modal-content">
+      <h4 class="modal-title">图片验证码</h4>
+      <div class="input-field">
+        <input class="code-input" type="text" placeholder="请输入验证码" [formControl]="imgCode" maxlength="4" (keydown)="wrongMsg = ''">
+        <img class="code-img" appFastClick (onFastClick)="changeImg()" [src]="imgSrc">
+      </div>
+      <div class="tip-box">
+        <p class="wrong-tip">{{wrongMsg}}</p>
+        <p class="tip">点击图片刷新验证码</p>
+      </div>
+    </div>
+    <div class="btn-box">
+      <button appFastClick (onFastClick)="close()">取消</button>
+      <button appFastClick (onFastClick)="submitImgCode()">确定</button>
+    </div>
+  </div>
+</section>

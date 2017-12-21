@@ -1,0 +1,59 @@
+<app-nav [title]="'登录'" [showConfig]="{isArrowShow: true, isRegisterShow: true}"></app-nav>
+
+<section class="form-sec">
+  <div class="big-title">
+    账户登录
+  </div>
+  <div class="form" [formGroup]="loginForm">
+    <div class="form-field">
+      <label class="form-label">
+        <svg class="icon-close">
+          <use xlink:href="assets/icon/symbol-defs.svg#icon-shoujihao"></use>
+        </svg>
+      </label>
+      <input type="tel" placeholder="请输入手机号" formControlName="tel" [appTelFormat]="telControl" maxlength="13" (change)="testIfRegisted()">
+      <div class="btn-group" *ngIf="loginForm.value.tel">
+        <button class="close-btn" appFastClick (onFastClick)="clear('tel')">
+          <svg class="icon-close">
+            <use xlink:href="assets/icon/symbol-defs.svg#icon-shanchu"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="form-field">
+      <label class="form-label">
+        <svg class="icon-close">
+          <use xlink:href="assets/icon/symbol-defs.svg#icon-mima"></use>
+        </svg>
+      </label>
+      <input [type]="!isOpenEyesShow ? 'text': 'password'" placeholder="请输入密码" formControlName="pwd">
+      <div class="btn-group">
+        <!--<button class="close-btn" appFastClick (onFastClick)="clear('pwd')" *ngIf="loginForm.value.pwd">-->
+          <!--<svg class="icon-close">-->
+            <!--<use xlink:href="assets/icon/symbol-defs.svg#icon-shanchu"></use>-->
+          <!--</svg>-->
+        <!--</button>-->
+        <button class="eye-btn" *ngIf="!isOpenEyesShow && loginForm.value.pwd" appFastClick (onFastClick)="isOpenEyesShow = true">
+          <svg class="icon-open-eyes">
+            <use xlink:href="assets/icon/symbol-defs.svg#iconyincang"></use>
+          </svg>
+        </button>
+        <button class="eye-btn" *ngIf="isOpenEyesShow && loginForm.value.pwd" appFastClick (onFastClick)="isOpenEyesShow = false">
+          <svg class="icon-close-eyes">
+            <use xlink:href="assets/icon/symbol-defs.svg#icon-yincang"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <button class="form-tip" type="button" appFastClick (onFastClick)="pushToForgetPwd()">忘记密码？</button>
+  <div class="btn-box">
+    <button class="form-btn" [disabled]="!loginForm.value.tel || !loginForm.value.pwd" type="button" appFastClick (onFastClick)="onSubmit()">登录</button>
+  </div>
+</section>
+
+
+<app-fly-msg [msg]="msg"></app-fly-msg>
+<app-loading *ngIf="isLoading"></app-loading>
+<app-agreement *ngIf="isAgreementShow" (onClose)="isAgreementShow = false"></app-agreement>
+

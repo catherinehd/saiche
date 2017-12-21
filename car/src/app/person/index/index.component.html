@@ -1,0 +1,52 @@
+<app-nav [title]="'个人中心'" [showConfig]="{}"></app-nav>
+
+<header class="person-header login-header" appFastClick (onFastClick)="pushToUserInfo()">
+  <img class="avatar" src="assets/image/touxiangzhihui.png">
+  <h4 class="name" *ngIf="nickName">{{nickName}}</h4>
+  <svg class="icon-right-arrow" *ngIf="nickName">
+    <use xlink:href="assets/icon/symbol-defs.svg#icon-right-arrow"></use>
+  </svg>
+  <button class="btn" *ngIf="!nickName" appFastClick (onFastClick)="goPage('/login')">未登录 / 注册</button>
+</header>
+
+<main class="person-main">
+  <ul class="nav-list">
+    <li class="nav-item" appFastClick (onFastClick)="goPage('/help')">
+      <div class="item-box">
+        <svg class="icon-help">
+          <use xlink:href="assets/icon/symbol-defs.svg#icon-guize"></use>
+        </svg>
+        <p class="title">玩法规则</p>
+        <svg class="icon-right-arrow">
+          <use xlink:href="assets/icon/symbol-defs.svg#icon-xiayibu"></use>
+        </svg>
+      </div>
+    </li>
+  </ul>
+  <ul class="nav-list">
+    <li class="nav-item" appFastClick (onFastClick)="goPage('/service')">
+      <div class="item-box">
+        <svg class="icon-server">
+          <use xlink:href="assets/icon/symbol-defs.svg#icon-yaoqing"></use>
+        </svg>
+        <p class="title">邀请好友</p>
+        <svg class="icon-right-arrow">
+          <use xlink:href="assets/icon/symbol-defs.svg#icon-xiayibu"></use>
+        </svg>
+      </div>
+    </li>
+    <li class="nav-item" appFastClick (onFastClick)="goPage('setting')">
+      <div class="item-box">
+        <svg class="icon-setting">
+          <use xlink:href="assets/icon/symbol-defs.svg#icon-shezhi"></use>
+        </svg>
+        <p class="title">设置</p>
+        <svg class="icon-right-arrow">
+          <use xlink:href="assets/icon/symbol-defs.svg#icon-xiayibu"></use>
+        </svg>
+      </div>
+    </li>
+  </ul>
+</main>
+
+<app-tab></app-tab>

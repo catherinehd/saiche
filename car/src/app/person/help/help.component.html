@@ -1,0 +1,21 @@
+<app-nav [title]="'使用帮助'" [showConfig]="{isArrowShow: true}"></app-nav>
+
+<section class="help-sec page-warp" [appDevicePadding]="44">
+  <ul>
+    <li class="question-item" *ngFor="let item of quesList; let i = index">
+      <div class="question" appFastClick (onFastClick)="item.showDetail = !item.showDetail">
+        <h4>{{i+1}}、{{item.ques}}</h4>
+        <svg class="icon-down-arrow" *ngIf="!item.showDetail">
+          <use xlink:href="assets/icon/symbol-defs.svg#icon-down-arrow"></use>
+        </svg>
+        <svg class="icon-up-arrow" *ngIf="item.showDetail">
+          <use xlink:href="assets/icon/symbol-defs.svg#icon-up-arrow"></use>
+        </svg>
+      </div>
+      <div class="answer" *ngIf="item.showDetail" [@slideDownUpAnimation]>
+        <p>{{item.answer}}</p>
+      </div>
+
+    </li>
+  </ul>
+</section>

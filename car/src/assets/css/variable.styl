@@ -1,0 +1,73 @@
+$body-color = #fafcfe
+$theme-blue-color = #2c65a8
+$theme-little-blue-color = #379ade
+$theme-red-color = #ff4717
+$theme-white-color = #fff
+$theme-gray-color = #2d2d2d
+$font-main-color = #343434
+$font-sub-color = #b4b3b3
+$font-sub-svg-color = #b4b3b3
+$font-weak-color = #8d8d8d
+$default-border-color = #d7d7d7
+$font-right-color = #9e9e9e
+
+$font-biggest-size = 1.7rem
+$font-bigger-size = 1.6rem
+$font-big-size = 1.5rem
+$font-normal-size = 1.4rem
+$font-small-size = 1.2rem
+$font-smaller-size = 1.1rem
+
+$default-line-height = 1.54
+
+$default-gap = 1rem
+$default-v-padding = 1.5rem
+$default-h-padding = 1.5rem
+
+$default-border = 1px solid rgba(215,215,215,0.4)
+
+bg-darken()
+  background-color darken(@background-color, 10%)
+
+color-darken()
+  color darken(@color, 10%)
+
+bg-img(bg-size=cover, position=center)
+  background-position position
+  background-repeat no-repeat
+  background-size bg-size
+
+circle(width)
+  width width
+  height @width
+  border-radius 50%
+
+center()
+  justify-content center
+  align-content center
+
+btn-group()
+  .btn-group
+    display flex
+    padding 1.5rem 1.6rem
+    background-color $theme-white-color
+    button
+      flex auto
+      height 4rem
+      border 1px solid $theme-blue-color
+      font-size $font-big-size
+      color $theme-blue-color
+      &:first-child
+        border-radius .5rem 0 0 .5rem
+        border-right none
+      &:last-child
+        border-radius 0 .5rem .5rem 0
+      &:active
+        background-color darken($theme-white-color, 10%)
+    .active
+      background-color $theme-blue-color
+      color $theme-white-color
+      &:active
+        background-color darken($theme-blue-color, 10%)
+
+

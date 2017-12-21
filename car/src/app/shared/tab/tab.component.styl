@@ -1,0 +1,36 @@
+@import "../../../assets/css/variable"
+
+.tab
+  position fixed
+  display flex
+  bottom 0
+  left  0
+  width 100%
+  height 4.9rem
+  z-index 2
+  background-color $theme-white-color
+  box-shadow 0 1px 3.2px 0.3px rgba(74, 74, 74, 0.2)
+  .nav
+    display inline-flex
+    width 25%
+    flex-grow 1
+    justify-content center
+    align-items center
+    flex-direction column
+    color $font-sub-svg-color
+    font-size $font-smaller-size
+    line-height 1
+  svg
+    width 2rem
+    height 2rem
+    margin-bottom .5rem
+    stroke  $font-sub-svg-color
+
+  .active
+    color $theme-blue-color
+    svg
+      stroke $theme-blue-color
+
+  .nav
+    &:active
+      background-color darken($theme-white-color, 10%)

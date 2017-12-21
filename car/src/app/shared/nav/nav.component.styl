@@ -1,0 +1,48 @@
+@import "../../../assets/css/variable"
+
+.nav
+  position fixed
+  top 0
+  left 0
+  width 100%
+  display flex
+  color $theme-white-color
+  line-height 44px
+  padding 0 $default-h-padding
+  background $theme-blue-color
+  z-index 2
+  .title
+    width 100%
+    text-align center
+    font-size 18px
+  .left-btn
+  .right-btn
+    position absolute
+    bottom 0
+    min-width 30px
+    font-size 14px
+    height 44px
+    color $theme-white-color
+  .left-btn
+    left $default-h-padding
+    text-align left
+  .right-btn
+    right $default-h-padding
+    text-align right
+    color $theme-white-color
+    .icon-save
+      width 16px
+      height 16px
+      fill none
+      stroke #ffffff
+
+.nav-bg
+  box-sizing content-box
+  height 44px
+
+.icon-left-arrow
+  height 20px
+  width 20px
+  stroke $theme-white-color
+  fill none
+  vertical-align middle

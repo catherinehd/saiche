@@ -1,0 +1,22 @@
+<app-nav [title]="'联系客服'" [showConfig]="{isArrowShow: true}"></app-nav>
+
+<section class="service-sec">
+  <a class="service" href="tel:{{serviceInfo.tel}}">
+    <div class="detail">
+      <h4>客服电话</h4>
+      <p>手机号：{{serviceInfo.telFormat}}</p>
+    </div>
+    <svg class="icon-phone">
+      <use xlink:href="assets/icon/symbol-defs.svg#icon-phone"></use>
+    </svg>
+  </a>
+  <div class="service">
+    <div class="detail">
+      <h4>客服微信</h4>
+      <p>微信号：{{serviceInfo.wechat}}</p>
+    </div>
+    <svg class="icon-wechat">
+      <use xlink:href="assets/icon/symbol-defs.svg#icon-wechat"></use>
+    </svg>
+  </div>
+</section>

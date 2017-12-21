@@ -1,0 +1,41 @@
+@import "../../../assets/css/variable"
+
+.service-sec
+  margin-top $default-gap
+  background-color $theme-white-color
+
+.service
+  display flex
+  align-items center
+  height 6.3rem
+  padding 0 1.5rem
+  &:last-child
+    border-top $default-border
+  &:first-child
+    &:active
+      background-color darken($theme-white-color, 10%)
+
+.detail
+  line-height 1
+  flex auto
+  h4
+    font-size $font-big-size
+    color $font-main-color
+    margin-bottom .6rem
+  p
+    font-size $font-small-size
+    color $font-sub-color
+
+.icon-wechat
+  width 2.8rem
+  height @width
+  fill #0eb01d
+
+.icon-phone
+  width 2.3rem
+  height @width
+  fill $theme-blue-color
+  padding 1rem 0 1rem 1rem
+  &:active
+    fill darken($theme-blue-color, 10%)
+

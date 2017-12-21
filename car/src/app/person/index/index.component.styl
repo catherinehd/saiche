@@ -1,0 +1,76 @@
+@import "../../../assets/css/variable"
+
+.header-padding
+  background-color $theme-blue-color
+
+.person-header
+  display flex
+  height 9.8rem
+  padding 1.5rem
+  align-items center
+  background-color $theme-white-color
+  color $font-main-color
+  .avatar
+    width 6rem
+    height @width
+    border-radius 50%
+    border 1px solid rgba(178, 178, 178, .2);
+  .name
+    flex-grow 1
+    padding-left 2.1rem
+    font-size $font-biggest-size
+  .icon-right-arrow
+    width 1.6rem
+    height 1.6rem
+    fill $theme-white-color
+  .btn
+    height 3rem
+    margin-left 2.1rem
+    color $font-main-color
+    font-size $font-normal-size
+    &:active
+      bg-darken()
+
+.login-header
+  background-color $theme-white-color
+  &:active
+    bg-darken()
+
+.person-main
+  display flex
+  flex-direction column
+  .nav-list
+    margin-top 1.5rem
+    background-color $theme-white-color
+  .nav-item
+    padding-left 1.5rem
+    padding-right 1.5rem
+    background-color $theme-white-color
+    &:active
+      bg-darken()
+    &:not(:last-child)
+      .item-box
+        border-bottom $default-border
+
+
+.item-box
+  display flex
+  align-items center
+  height 4.8rem
+  .title
+    flex-grow 1
+    color $font-main-color
+    font-size $font-bigger-size
+    line-height 1
+  svg:not(.icon-right-arrow)
+    width 2.5rem
+    height 2.1rem
+    margin-right 1.6rem
+    fill $theme-blue-color
+  .icon-help
+    fill $theme-red-color
+  .icon-right-arrow
+    width 1.2rem
+    height @width
+    stroke $font-right-color
+    fill none

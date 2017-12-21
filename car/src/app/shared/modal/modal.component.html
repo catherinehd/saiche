@@ -1,0 +1,12 @@
+<section class="modal-sec" *ngIf="modal.isConfirmModalShow" [@fadeInOutAnimation]>
+  <div class="modal-container">
+    <div class="modal-content">
+      <p>{{modal.confirmMsg}}</p>
+    </div>
+    <div class="btn-group">
+      <button appFastClick (onFastClick)="confirm(0)">取消</button>
+      <button appFastClick (onFastClick)="confirm(1)">确定</button>
+    </div>
+  </div>
+</section>
+

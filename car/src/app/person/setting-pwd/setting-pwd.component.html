@@ -1,0 +1,59 @@
+<app-nav [title]="'设置密码'" [showConfig]="{isArrowShow: true}"></app-nav>
+
+<section class="form-sec">
+  <p class="sec-info" *ngIf="type === 1">为了您的账户安全，请设置您的登录密码</p>
+  <p class="sec-info" *ngIf="type === 2">请设置您的新密码</p>
+  <div class="form" [formGroup]="pwdSettingForm">
+    <div class="form-field">
+      <input [type]="!isEyesOpen.pwd ? 'text' : 'password'" placeholder="请输入密码（6-15位数字及字母组成）" formControlName="pwd" maxlength="15">
+      <div class="btn-group">
+        <button *ngIf="pwdSettingForm.value.pwd" class="close-btn" appFastClick (onFastClick)="clear('pwd')">
+          <svg class="icon-close">
+            <use xlink:href="assets/icon/symbol-defs.svg#icon-close"></use>
+          </svg>
+        </button>
+        <button class="eye-btn" *ngIf="!isEyesOpen.pwd" appFastClick (onFastClick)="isEyesOpen.pwd = true">
+          <svg class="icon-open-eyes">
+            <use xlink:href="assets/icon/symbol-defs.svg#icon-open-eyes"></use>
+          </svg>
+        </button>
+        <button class="eye-btn" *ngIf="isEyesOpen.pwd" appFastClick (onFastClick)="isEyesOpen.pwd = false">
+          <svg class="icon-close-eyes">
+            <use xlink:href="assets/icon/symbol-defs.svg#icon-close-eyes"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="form-field">
+      <input [type]="!isEyesOpen.pwdAgain ? 'text' : 'password'" placeholder="请再次输入密码" formControlName="pwdAgain" maxlength="15">
+      <div class="btn-group">
+        <button class="close-btn" *ngIf="pwdSettingForm.value.pwdAgain" appFastClick (onFastClick)="clear('pwdAgain')">
+          <svg class="icon-close">
+            <use xlink:href="assets/icon/symbol-defs.svg#icon-close"></use>
+          </svg>
+        </button>
+        <button class="eye-btn" *ngIf="!isEyesOpen.pwdAgain" appFastClick (onFastClick)="isEyesOpen.pwdAgain = true">
+          <svg class="icon-open-eyes">
+            <use xlink:href="assets/icon/symbol-defs.svg#icon-open-eyes"></use>
+          </svg>
+        </button>
+        <button class="eye-btn" *ngIf="isEyesOpen.pwdAgain" appFastClick (onFastClick)="isEyesOpen.pwdAgain = false">
+          <svg class="icon-close-eyes">
+            <use xlink:href="assets/icon/symbol-defs.svg#icon-close-eyes"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="btn-box">
+    <button *ngIf="type === 1" [disabled]="!pwdSettingForm.value.pwd || !pwdSettingForm.value.pwdAgain" class="form-btn" type="button" appFastClick (onFastClick)="onSubmit()">注册</button>
+    <button *ngIf="type === 2" [disabled]="!pwdSettingForm.value.pwd || !pwdSettingForm.value.pwdAgain" class="form-btn" type="button" appFastClick (onFastClick)="onSubmit()">确定</button>
+  </div>
+</section>
+
+<p class="footer-tip" *ngIf="type === 1" appFastClick (onFastClick)="isAgreementShow = true">注册即表示您同意<span class="agreement"> 用户服务协议</span></p>
+<p class="footer-tip" *ngIf="type === 2">如果出现问题，请联系 <a class="tel" href="tel:{{tel}}">客服电话</a></p>
+
+<app-fly-msg [msg]="msg"></app-fly-msg>
+<app-agreement *ngIf="isAgreementShow" (onClose)="isAgreementShow = false"></app-agreement>
+<app-loading *ngIf="isLoading"></app-loading>

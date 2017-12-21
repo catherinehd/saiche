@@ -1,0 +1,73 @@
+@import "../../../../assets/css/variable"
+
+.img-valid-sec
+  position fixed
+  display flex
+  align-content center
+  justify-content center
+  top: 0
+  width 100%
+  height 100%
+  z-index 1
+  background-color rgba(0,0,0,.4)
+  .modal-container
+    width 30rem
+    align-self center
+    margin 0 auto
+    background-color $theme-white-color
+    border-radius .5rem
+    overflow hidden
+
+.modal-content
+  display flex
+  flex-direction column
+  padding 2rem 2.5rem .8rem
+  .modal-title
+    margin-bottom 1.9rem
+    line-height 1
+    font-size $font-bigger-size
+    color $font-main-color
+    text-align center
+
+.tip-box
+  display flex
+  flex-grow 1
+  justify-content space-between
+  color $font-sub-color
+  font-size 1.1rem
+  line-height 2.9
+  .wrong-tip
+    color $theme-red-color
+
+.btn-box
+  display flex
+  border-top $default-border
+  button
+    flex-grow 1
+    height 4.4rem
+    color $theme-blue-color
+    font-size $font-bigger-size
+    &:first-child
+      border-right $default-border
+      color $font-sub-color
+    &:active
+      background-color darken($theme-white-color, 10%)
+
+.input-field
+  display flex
+  border $default-border
+  justify-content space-between
+  .code-img
+    display inline-flex
+    flex-grow 0
+    width auto
+    height 4.5rem
+    bg-img()
+  .code-input
+    height 4.5rem
+    width 10rem
+    flex-grow 1
+    padding 0 1rem
+    font-size $font-bigger-size
+    color $font-main-color
+

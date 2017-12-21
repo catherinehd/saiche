@@ -1,0 +1,4 @@
+<app-nav [title]="'设置'" [showConfig]="{isArrowShow: true}"></app-nav>
+
+<button class="setting-btn" appFastClick (onFastClick)="modal.isConfirmModalShow = true">退出登录</button>
+<app-modal [modal]="modal" (onConfirm)="confirm($event)"></app-modal>
