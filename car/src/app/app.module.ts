@@ -13,7 +13,7 @@ import { PersonModule } from './person/person.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule, CoreModule, HomeModule, BrowserAnimationsModule, AppRoutingModule, NewsModule, SetModule, PersonModule

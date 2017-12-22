@@ -8,7 +8,18 @@ import { NavigateService } from '../../service/navigate.service';
 })
 export class IndexComponent implements OnInit {
 
-  constructor(private navigateService: NavigateService) { }
+  number: boolean;
+  bigsmall: boolean;
+  dragonandtiger: boolean;
+  oneandtwo: boolean;
+  singledouble: boolean;
+  constructor(private navigateService: NavigateService) {
+    this.number = false;
+    this.bigsmall = true;
+    this.dragonandtiger = false;
+    this.oneandtwo = false;
+    this.singledouble = false;
+  }
 
   ngOnInit() {
   }

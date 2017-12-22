@@ -1,7 +1,19 @@
 <app-nav [title]="'号码'" [showConfig]="{}"></app-nav>
 
 <section class="sec-home">
-  home
+  <div class="nav-bar">
+    <a>号码</a>
+    <a>大小走势</a>
+    <a>单双走势</a>
+    <a>冠亚和值</a>
+    <a>1-5龙虎</a>
+  </div>
+
+  <app-number *ngIf="number"></app-number>
+  <app-bigsmall *ngIf="bigsmall"></app-bigsmall>
+  <app-dragonandtiger *ngIf="dragonandtiger"></app-dragonandtiger>
+  <app-oneandtwo *ngIf="oneandtwo"></app-oneandtwo>
+  <app-singledouble *ngIf="singledouble"></app-singledouble>
 </section>
 
 

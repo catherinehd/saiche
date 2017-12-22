@@ -4,10 +4,15 @@ import { FormsModule } from '@angular/forms';
 import { HomeRoutingModule } from './home-routing.module';
 
 import { IndexComponent } from './index/index.component';
+import { NumberComponent } from './number/number.component';
+import { BigsmallComponent } from './bigsmall/bigsmall.component';
+import { SingledoubleComponent } from './singledouble/singledouble.component';
+import { OneandtwoComponent } from './oneandtwo/oneandtwo.component';
+import { DragonandtigerComponent } from './dragonandtiger/dragonandtiger.component';
 
 @NgModule({
   imports: [ SharedModule, HomeRoutingModule, FormsModule ],
-  declarations: [ IndexComponent ],
+  declarations: [ IndexComponent, NumberComponent, BigsmallComponent, SingledoubleComponent, OneandtwoComponent, DragonandtigerComponent ],
   providers: [ ]
 })
 export class HomeModule { }

@@ -1,17 +1,93 @@
 @import "../../../assets/css/variable"
 
+.sec-home
+  position relative
+
 .tel
   display flex
   justify-content space-between
   padding 1.5rem
   font-size $font-bigger-size
   color $font-main-color
+  background $theme-white-color
   .num
     font-size 1.1rem
     color #6e6e6e
+    line-height 2.2rem
   .icon-xiayibu
     width .9rem
     height 1.5rem
     stroke $font-right-color
     fill none
+    vertical-align middle
 
+.alert-box
+  .title
+    font-size 1.3rem
+    color $font-right-color
+    margin-top 1.2rem
+    margin-bottom .7rem
+    padding-left 1.5rem
+  .nav-bar
+    display flex
+    justify-content space-between
+    padding 0 1.5rem
+    border-bottom $default-border
+    background $theme-white-color
+    padding 1.2rem .8rem
+    a
+      font-size $font-normal-size
+      color #6e6e6e
+  .detail
+    font-size $font-normal-size
+    color $font-main-color
+    padding 1.2rem 1.5rem
+    background $theme-white-color
+    .detail-item
+      display flex
+      justify-content space-between
+      padding 1.2rem 0
+      svg
+        width 1.4rem
+        height @width
+        fill none
+        stroke $theme-blue-color
+        vertical-align middle
+        margin-left 1rem
+      .check-btn
+        width 3.5rem
+        height 2rem
+        background #379ade
+        border-radius 1rem
+        border solid .5px #379ade
+        position relative
+        .circle
+          width 1.8rem
+          height @width
+          background $theme-white-color
+          border-radius 50%
+          position absolute
+          right 1px
+      .icon-xiayibu
+        height 2rem
+        stroke $font-right-color
+    .today
+      padding 0 0 1.2rem
+    .setnumber
+      padding 1.2rem 0 0
+
+.tip
+  font-size 1.3rem
+  color $font-right-color
+  line-height 1.54
+  margin-top 1rem
+  padding 0 1.5rem
+
+.seemore
+  color $theme-little-blue-color
+  font-size $font-normal-size
+  width 100%
+  display block
+  text-align center
+  position fixed
+  bottom 6.5rem

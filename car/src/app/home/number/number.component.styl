@@ -1,0 +1,50 @@
+@import "../../../assets/css/variable"
+
+.number-container
+  table
+    width 100%
+    border-collapse collapse
+    border-spacing 0
+    thead
+      height 2.7rem
+      background #f7f7f7
+      th
+        color #8d8d8d
+        font-size $font-small-size
+        line-height 1
+        text-align center
+        padding .8rem 0
+        &:not(:last-child)
+          border-right .5px solid rgba(206,206,206,0.4)
+    tbody
+      tr
+        td
+          text-align center
+          color $theme-gray-color
+          font-size $font-normal-size
+          line-height 1
+          padding 1.2rem 0
+          .time
+            color #f21d0d
+          ul
+            display flex
+            justify-content space-around
+            li
+              background $theme-little-blue-color
+              color $theme-white-color
+              width 2rem
+              height @width
+              border-radius 50%
+              font-size $font-big-size
+              display inline-block
+              text-align center
+              vertical-align middle
+              line-height 2rem
+          &:not(:last-child)
+            border-right .5px solid rgba(206,206,206,0.4)
+        &:nth-child(odd)
+          background $theme-white-color
+        &:nth-child(even)
+          background #f7f7f7
+
+

@@ -1,0 +1,70 @@
+@import "../../../assets/css/variable"
+
+.number-container
+  padding-bottom 5.9rem
+  table
+    width 100%
+    border-collapse collapse
+    border-spacing 0
+    thead
+      height 2.7rem
+      background #f7f7f7
+      th
+        color #8d8d8d
+        font-size $font-small-size
+        line-height 1
+        text-align center
+        padding .8rem 0
+        &:not(:last-child)
+          border-right .5px solid rgba(206,206,206,0.4)
+    tbody
+      tr
+        td
+          text-align center
+          color #6e6e6e
+          font-size $font-normal-size
+          line-height 1rem
+          padding 1rem 0
+          border-bottom .5px solid rgba(206,206,206,0.4)
+          &:not(:last-child)
+            border-right .5px solid rgba(206,206,206,0.4)
+          &:nth-child(1)
+            color $font-main-color
+        &:nth-child(odd)
+          background $theme-white-color
+        &:nth-child(even)
+          background #f7f7f7
+      .showtimes
+      .average
+      .largest
+      .last
+        td
+          color $font-main-color
+      .showtimes
+        td
+          &:nth-child(1)
+            color #1c8e7e
+      .average
+        td
+          &:nth-child(1)
+            color #a75b0c
+      .largest
+        td
+          &:nth-child(1)
+            color #0b9942
+      .last
+        td
+          &:nth-child(1)
+            color #0b64a1
+      .top
+        td
+          &:nth-child(1)
+            width 9.3rem
+      .type
+        td
+          background $theme-white-color
+          color #6e6e6e !important
+
+
+
+
