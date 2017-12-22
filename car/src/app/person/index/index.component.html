@@ -1,12 +1,19 @@
 <app-nav [title]="'个人中心'" [showConfig]="{}"></app-nav>
 
 <header class="person-header login-header" appFastClick (onFastClick)="pushToUserInfo()">
-  <img class="avatar" src="assets/image/touxiangzhihui.png">
-  <h4 class="name" *ngIf="nickName">{{nickName}}</h4>
-  <svg class="icon-right-arrow" *ngIf="nickName">
-    <use xlink:href="assets/icon/symbol-defs.svg#icon-right-arrow"></use>
+  <img class="avatar" *ngIf="!nickName" src="assets/image/touxiangzhihui.png">
+  <img class="avatar" *ngIf="nickName" src="assets/image/touxiang.png">
+  <div class="info" *ngIf="nickName">
+    <h4 class="name">{{nickName}}</h4>
+    <div class="tel">账号： {{nickName}}</div>
+  </div>
+  <svg class="icon-xiayibu" *ngIf="nickName">
+    <use xlink:href="assets/icon/symbol-defs.svg#icon-xiayibu"></use>
   </svg>
-  <button class="btn" *ngIf="!nickName" appFastClick (onFastClick)="goPage('/login')">未登录 / 注册</button>
+  <div class="btn-group" *ngIf="!nickName">
+    <button class="btn" appFastClick (onFastClick)="goPage('/login')">未登录</button> /
+    <button class="btn" appFastClick (onFastClick)="goPage('/register/tel-valid')">注册</button>
+  </div>
 </header>
 
 <main class="person-main">
@@ -24,7 +31,7 @@
     </li>
   </ul>
   <ul class="nav-list">
-    <li class="nav-item" appFastClick (onFastClick)="goPage('/service')">
+    <li class="nav-item" appFastClick (onFastClick)="goPage('/invite')">
       <div class="item-box">
         <svg class="icon-server">
           <use xlink:href="assets/icon/symbol-defs.svg#icon-yaoqing"></use>

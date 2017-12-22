@@ -1,17 +1,43 @@
 @import "../../../assets/css/variable"
 
+.big-title
+  font-size 2.1rem
+  text-align center
+  color #6e6e6e
+  line-height 1
+  margin-top 4rem
+  letter-spacing 1px
+
+.form-sec
+  .form
+    .form-field
+      input
+        color $font-right-color
+        font-size $font-normal-size
+
+
+.form-label
+  flex none
+    svg
+      stroke $theme-blue-color
+      width 1.6rem
+      height 2.1rem
+
 .btn-group
   .get-btn
-    font-size $font-small-size
-    height 3rem
-    width 8rem
+    font-size $font-normal-size
+    height 4rem
+    width 10rem
     color $theme-blue-color
     background-color $theme-white-color
     border 1px solid $theme-blue-color
-    border-radius @height
+    border-radius .3rem
     &[disabled]
       border 1px solid $font-weak-color
       color $font-weak-color
 
 .btn-box
-  padding-top 6rem
+  padding-top 2.7rem
+
+.footer-tip
+  margin-top 1.7rem

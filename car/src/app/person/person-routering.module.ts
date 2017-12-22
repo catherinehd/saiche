@@ -13,6 +13,7 @@ import { HelpComponent } from './help/help.component';
 import { ServiceComponent } from './service/service.component';
 import { PersonalInfoComponent } from './personal-info/personal-info.component';
 import { SettingPersonalInfoComponent } from './setting-personal-info/setting-personal-info.component';
+import { InviteComponent } from './invite/invite.component';
 
 
 const personRoutes: Routes = [
@@ -28,7 +29,8 @@ const personRoutes: Routes = [
   { path: 'help', component: HelpComponent },
   { path: 'service', component: ServiceComponent },
   { path: 'personal-info', component: PersonalInfoComponent, canActivate: [AuthGuard] },
-  { path: 'setting-personal-info', component: SettingPersonalInfoComponent, canActivate: [AuthGuard] }
+  { path: 'setting-personal-info', component: SettingPersonalInfoComponent, canActivate: [AuthGuard] },
+  { path: 'invite', component: InviteComponent}
 ];
 
 @NgModule({

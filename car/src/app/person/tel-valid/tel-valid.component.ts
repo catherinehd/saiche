@@ -16,12 +16,13 @@ export class TelValidComponent implements OnInit {
   isImgValidShow: boolean;
   imgCode: string;
   telValidForm: FormGroup;
-  telValid: TelValid = new TelValid('', '');
+  telValid: TelValid = new TelValid('', '', '', '');
   telControl: AbstractControl;
   isCounting: boolean;
   count: number;
   isAgreementShow: boolean;
   tel: string;
+  isEyesOpen = true;
   validatorMsg = {
     tel: {
       required: '请填写手机号码',
@@ -29,6 +30,14 @@ export class TelValidComponent implements OnInit {
     },
     code: {
       required: '请填写手机验证码',
+      pattern: '请填写正确的验证码'
+    },
+    pwd: {
+      required: '请填写密码',
+      pattern: '请填写正确的验证码'
+    },
+    invitenum: {
+      required: '请填写邀请码',
       pattern: '请填写正确的验证码'
     }
   };
@@ -53,6 +62,12 @@ export class TelValidComponent implements OnInit {
       'code': [this.telValid.code, [
         Validators.required,
         Validators.pattern(/^\d{4}$/)
+      ]],
+      'pwd': [this.telValid.pwd, [
+        Validators.required,
+      ]],
+      'invitenum': [this.telValid.invitenum, [
+        Validators.required,
       ]]
     });
     this.telControl = this.telValidForm.get('tel');
@@ -141,5 +156,7 @@ export class TelValidComponent implements OnInit {
 
 class TelValid {
   constructor(public tel: string,
-              public code: string) {}
+              public code: string,
+              public pwd: string,
+              public invitenum: string) {}
 }

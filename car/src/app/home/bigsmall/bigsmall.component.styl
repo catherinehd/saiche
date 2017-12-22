@@ -30,29 +30,41 @@
             border-right .5px solid rgba(206,206,206,0.4)
           &:nth-child(1)
             color $font-main-color
+          &:nth-child(3)
+            padding 0
+          .active
+            background $theme-blue-color
+            border-radius 50%
+            background #c11e12
+            display block
+            margin 0 auto
+            color $theme-white-color
+            width 2rem
+            height 2rem
+            line-height 2rem
         &:nth-child(odd)
           background $theme-white-color
         &:nth-child(even)
           background #f7f7f7
-      .showtimes
-      .average
-      .largest
-      .last
+      .occur
+      .ave-missing
+      .max-missing
+      .max-out
         td
           color $font-main-color
-      .showtimes
+      .occur
         td
           &:nth-child(1)
             color #1c8e7e
-      .average
+      .ave-missing
         td
           &:nth-child(1)
             color #a75b0c
-      .largest
+      .max-missing
         td
           &:nth-child(1)
             color #0b9942
-      .last
+      .max-out
         td
           &:nth-child(1)
             color #0b64a1
@@ -64,7 +76,8 @@
         td
           background $theme-white-color
           color #6e6e6e !important
-
+.line
+  position absolute
 
 
 

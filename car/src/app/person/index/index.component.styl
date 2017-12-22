@@ -10,24 +10,37 @@
   align-items center
   background-color $theme-white-color
   color $font-main-color
+  justify-content space-between
   .avatar
     width 6rem
     height @width
     border-radius 50%
     border 1px solid rgba(178, 178, 178, .2);
+  .info
+    padding-left 2.1rem
+    flex-grow 1
   .name
     flex-grow 1
-    padding-left 2.1rem
     font-size $font-biggest-size
-  .icon-right-arrow
+  .tel
+    font-size 1.3rem
+    color $font-right-color
+    margin-top 1rem
+  .icon-xiayibu
     width 1.6rem
     height 1.6rem
-    fill $theme-white-color
+    fill none
+    stroke $font-right-color
+  .btn-group
+    flex-grow 1
+    text-align left
   .btn
     height 3rem
     margin-left 2.1rem
     color $font-main-color
     font-size $font-normal-size
+    &:nth-child(2)
+      margin-left 0
     &:active
       bg-darken()
 

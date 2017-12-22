@@ -17,12 +17,14 @@ import { PersonalInfoComponent } from './personal-info/personal-info.component';
 import { SettingPersonalInfoComponent } from './setting-personal-info/setting-personal-info.component';
 import { UserService } from '../service/user.service';
 import { PersonRoutingModule } from './person-routering.module';
+import { InviteComponent } from './invite/invite.component';
 
 @NgModule({
   imports: [ PersonRoutingModule, SharedModule ],
   declarations: [
     LoginComponent, RegisterComponent, SettingPwdComponent, TelValidComponent, ImgValidComponent,
-    IndexComponent, AgreementComponent, SettingComponent, AboutUsComponent, HelpComponent, ServiceComponent, PersonalInfoComponent, SettingPersonalInfoComponent
+    IndexComponent, AgreementComponent, SettingComponent, AboutUsComponent, HelpComponent, ServiceComponent,
+    PersonalInfoComponent, SettingPersonalInfoComponent, InviteComponent
   ],
   providers: [ UserService ]
 })

@@ -16,6 +16,7 @@ export class IndexComponent {
   constructor(private navigateSerivce: NavigateService, private userStoreService: UserStoreService) {
     const user = this.userStoreService.getUser();
     this.nickName = user ? user.nickName : '';
+    this.nickName = '张三';
   }
 
   goPage(page) {
