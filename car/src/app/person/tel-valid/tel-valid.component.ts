@@ -22,7 +22,7 @@ export class TelValidComponent implements OnInit {
   count: number;
   isAgreementShow: boolean;
   tel: string;
-  isEyesOpen = true;
+  isEyesOpen = false;
   validatorMsg = {
     tel: {
       required: '请填写手机号码',
@@ -49,7 +49,7 @@ export class TelValidComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.title = this.router.url.includes('register') ? '注册' : '手机验证';
+    this.title = this.router.url.includes('register') ? '注册' : '找回密码';
     this.buildForm();
   }
 
@@ -64,10 +64,9 @@ export class TelValidComponent implements OnInit {
         Validators.pattern(/^\d{4}$/)
       ]],
       'pwd': [this.telValid.pwd, [
-        Validators.required,
+        Validators.pattern(/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,15}$/)
       ]],
       'invitenum': [this.telValid.invitenum, [
-        Validators.required,
       ]]
     });
     this.telControl = this.telValidForm.get('tel');
@@ -134,12 +133,20 @@ export class TelValidComponent implements OnInit {
   }
 
   onSubmit() {
+    if (!this.telValidForm.value.tel || !this.telValidForm.value.code || !this.imgCode || !this.telValidForm.value.pwd) return;
+    this.testValid();
+    if (!this.telValidForm.valid) return;
+    this.userService.testMsgCode(this.telValid.tel, this.telValidForm.value.code).subscribe(res => {
+      res.json() ? this.goNextStep() : this.showTip('验证码错误');
+    });
+  }
+  onSubmit2() {
     if (!this.telValidForm.value.tel || !this.telValidForm.value.code || !this.imgCode) return;
     this.testValid();
     if (!this.telValidForm.valid) return;
     this.userService.testMsgCode(this.telValid.tel, this.telValidForm.value.code).subscribe(res => {
       res.json() ? this.goNextStep() : this.showTip('验证码错误');
-    })
+    });
   }
 
   goNextStep() {

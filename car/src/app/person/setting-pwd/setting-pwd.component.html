@@ -1,5 +1,8 @@
-<app-nav [title]="'设置密码'" [showConfig]="{isArrowShow: true}"></app-nav>
+<app-nav [title]="'重置密码'" [showConfig]="{isArrowShow: true}"></app-nav>
 
+<div class="big-title" *ngIf="type === 2">
+  重置密码
+</div>
 <section class="form-sec">
   <p class="sec-info" *ngIf="type === 1">为了您的账户安全，请设置您的登录密码</p>
   <p class="sec-info" *ngIf="type === 2">请设置您的新密码</p>

@@ -2,33 +2,64 @@
 
 .help-sec
   background-color $body-color
-  ul
-    margin-top $default-gap
-    background-color $theme-white-color
+  padding 0 $default-h-padding
+  color #212121;
+  font-size $font-normal-size
+.big-title
+  font-size $font-bigger-size
+  text-align center
+  color #212121
+  line-height 1
+  margin-top 1.8rem
+  letter-spacing 1px
+ul
+  .question
+    font-size $font-bigger-size
+    margin 1.6rem 0
+    padding-left 1rem
+  li
+    line-height 2.4rem
+    margin-bottom .6rem
 
-.question
-  display flex
-  align-items center
-  height 4.6rem
-  padding 0 1.5rem
-  color $font-main-color
-  font-size $font-big-size
-  border-bottom $default-border
-  background-color $theme-white-color
-  &:active
-    background-color darken($theme-white-color, 10%)
-  h4
-    flex auto
-  .icon-up-arrow
-  .icon-down-arrow
-    width 1.2rem
-    height 1.2rem
-    fill $font-weak-color
+.outer-box
+  padding-bottom 2.2rem
 
-.answer
-  color $font-sub-color
-  font-size 1.3rem
-  line-height 1.54
-  border-bottom $default-border
-  p
-    padding 1rem 1.5rem
+table
+  border-collapse collapse
+  width 100%
+  cellspacing 0
+  th
+  td
+    border $default-border
+    text-align left
+    padding 0 .6rem
+  th
+    font-size 1.2rem
+    text-align center
+  td
+    font-size 1rem
+  td:nth-child(1)
+    text-align center
+.spe-table1
+  table
+    td
+      padding-left .1rem
+.spe-table
+  table
+    td
+      text-align left
+      padding-left .9rem
+.detail-shejiang
+  li
+    margin-top 2rem
+    table
+      margin-top .9rem
+
+.footer
+  text-align center
+  height 6rem
+  font-size $font-normal-size
+  padding 1.2rem 1.5rem 2.7rem
+  border-top $default-border
+
+
