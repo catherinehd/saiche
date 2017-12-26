@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexComponent implements OnInit {
 
-  constructor() { }
+  hasnews: boolean;
+
+  constructor() {
+    this.hasnews = true;
+  }
 
   ngOnInit() {
   }

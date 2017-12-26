@@ -1,20 +1,20 @@
-<app-nav [title]="'号码'" [showConfig]="{}"></app-nav>
+<app-nav [title]="bigtitle" [showConfig]="{}"></app-nav>
 
 <section class="sec-home">
   <div class="nav-bar">
-    <a>号码</a>
-    <a>大小走势</a>
-    <a>单双走势</a>
-    <a>冠亚和值</a>
-    <a>1-5龙虎</a>
+    <a routerLink="/home/number" routerLinkActive="active">号码</a>
+    <a routerLink="/home/bigsmall" routerLinkActive="active">大小走势</a>
+    <a routerLink="/home/singledouble" routerLinkActive="active">单双走势</a>
+    <a routerLink="/home/onetwo" routerLinkActive="active">冠亚和值</a>
+    <a routerLink="/home/dragontiger" routerLinkActive="active">1-5龙虎</a>
   </div>
 
   <app-number *ngIf="number"></app-number>
   <app-bigsmall *ngIf="bigsmall"></app-bigsmall>
-  <app-dragonandtiger *ngIf="dragonandtiger"></app-dragonandtiger>
   <app-oneandtwo *ngIf="oneandtwo"></app-oneandtwo>
-  <app-singledouble *ngIf="singledouble"></app-singledouble>
 </section>
 
 
 <app-tab></app-tab>
+
+<app-modal *ngIf="confirmshow" [modal]='modal' [showconfirm]="true" (onConfirm)='onConfirm($event)'></app-modal>

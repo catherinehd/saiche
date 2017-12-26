@@ -9,6 +9,8 @@ import { FadeInOutAnimation } from '../animations/fade-in-out.animation';
 })
 export class ModalComponent implements OnInit {
   @Input() modal: Modal;
+  @Input() showknow: boolean;
+  @Input() showconfirm: boolean;
   @Output() onConfirm = new EventEmitter();
   constructor() { }
 
@@ -16,11 +18,13 @@ export class ModalComponent implements OnInit {
   }
 
   confirm(status) {
-    this.onConfirm.emit(status)
+    this.onConfirm.emit(status);
   }
 
 }
 
 class Modal {
-  constructor(public isConfirmModalShow?: boolean, public confirmMsg?: string) { }
+  constructor(public isConfirmModalShow?: boolean,
+              public conrirmTit?: string,
+              public confirmMsg?: string) { }
 }

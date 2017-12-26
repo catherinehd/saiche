@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NumberComponent implements OnInit {
 
-  constructor() { }
+  time: string;
+  constructor() {
+    this.time = '04:30';
+  }
 
   ngOnInit() {
   }

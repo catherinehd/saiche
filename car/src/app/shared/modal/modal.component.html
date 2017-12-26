@@ -1,5 +1,19 @@
 <section class="modal-sec" *ngIf="modal.isConfirmModalShow" [@fadeInOutAnimation]>
-  <div class="modal-container">
+  <div class="modal-container" *ngIf="showknow">
+    <div class="modal-title">
+      <p>{{modal.conrirmTit}}</p>
+    </div>
+    <div class="modal-content">
+      <p>{{modal.confirmMsg}}</p>
+    </div>
+    <div class="btn-group">
+      <button appFastClick (onFastClick)="confirm(1)">知道了</button>
+    </div>
+  </div>
+  <div class="modal-container" *ngIf="showconfirm">
+    <div class="modal-title">
+      <p>{{modal.conrirmTit}}</p>
+    </div>
     <div class="modal-content">
       <p>{{modal.confirmMsg}}</p>
     </div>
@@ -9,4 +23,6 @@
     </div>
   </div>
 </section>
+
+
 

@@ -1,0 +1,44 @@
+@import "../../../assets/css/variable"
+
+.detail
+  font-size $font-normal-size
+  color $font-main-color
+  padding 1.2rem 1.5rem
+  background $theme-white-color
+  .detail-item
+    display flex
+    justify-content space-between
+    padding 1.2rem 0
+    svg
+      width 1.4rem
+      height @width
+      fill none
+      stroke $theme-blue-color
+      vertical-align middle
+      margin-left 1rem
+    .check-btn
+      width 3.5rem
+      height 2rem
+      background #cecece
+      border-radius 1rem
+      border solid .5px #cecece
+      position relative
+      .circle
+        width 1.8rem
+        height @width
+        background $theme-white-color
+        border-radius 50%
+        position absolute
+        left 0
+        transition all
+        right 1px
+    .turnOn
+      background #379ade
+      border 1px solid #379ade
+    .icon-xiayibu
+      height 2rem
+      stroke $font-right-color
+  .today
+    padding 0 0 1.2rem
+  .setnumber
+    padding 1.2rem 0 0

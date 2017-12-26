@@ -1,0 +1,55 @@
+<div class="detail">
+  <div class="today detail-item">
+        <span>当天遗漏时提醒
+        <svg class="icon-tishi" (click)="showtip('today')">
+          <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
+        </svg>
+        </span>
+    <div class="check-btn">
+      <div class="circle"></div>
+    </div>
+  </div>
+  <div class="week detail-item">
+        <span>本周遗漏时提醒
+        <svg class="icon-tishi" (click)="showtip('week')">
+          <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
+        </svg>
+        </span>
+    <div class="check-btn">
+      <div class="circle"></div>
+    </div>
+  </div>
+  <div class="month detail-item">
+        <span>本月遗漏时提醒
+        <svg class="icon-tishi" (click)="showtip('month')">
+          <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
+        </svg>
+        </span>
+    <div class="check-btn">
+      <div class="circle"></div>
+    </div>
+  </div>
+  <div class="history detail-item">
+        <span>历史遗漏时提醒
+        <svg class="icon-tishi" (click)="showtip('history')">
+          <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
+        </svg>
+        </span>
+    <div class="check-btn">
+      <div class="circle"></div>
+    </div>
+  </div>
+  <div class="setnumber detail-item">
+        <span>遗漏值达到设置值提醒
+        <svg class="icon-tishi"  (click)="showtip('setnum')">
+          <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
+        </svg>
+        </span>
+    <svg class="icon-xiayibu" (click)="goPage('./set-num')">
+      <use xlink:href="assets/icon/symbol-defs.svg#icon-xiayibu"></use>
+    </svg>
+  </div>
+</div>
+
+
+<app-modal *ngIf="confirmshow" [modal]='modal' [showknow]="true" (onConfirm)='onConfirm($event)'></app-modal>
