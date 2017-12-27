@@ -1,7 +1,27 @@
 <div class="time-table">
-  <span>0</span>
-  <span>1</span>
-  <span>:</span>
-  <span>2</span>
-  <span>3</span>
+  <span>
+    <svg class="icon-xiayibu">
+      <use [attr.xlink:href]="'assets/icon/symbol-defs.svg#icon-0'"></use>
+    </svg>
+  </span>
+  <span>
+    <svg class="icon-xiayibu">
+      <use [attr.xlink:href]="'assets/icon/symbol-defs.svg#icon-' + minutes"></use>
+    </svg>
+  </span>
+  <span>
+    <svg class="icon-xiayibu" style="fill:#b4b3b3; width: 1px; ">
+      <use xlink:href="assets/icon/symbol-defs.svg#icon-fengehao"></use>
+    </svg>
+  </span>
+  <span>
+    <svg class="icon-xiayibu">
+      <use [attr.xlink:href]="'assets/icon/symbol-defs.svg#icon-' + seconds2"></use>
+    </svg>
+  </span>
+  <span>
+    <svg class="icon-xiayibu">
+      <use [attr.xlink:href]="'assets/icon/symbol-defs.svg#icon-' + seconds1"></use>
+    </svg>
+  </span>
 </div>

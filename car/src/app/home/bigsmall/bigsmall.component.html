@@ -1,49 +1,40 @@
-<svg class="line" width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <line x1="300" y1="150" x2="150" y2="200" style="stroke:#c11e12;stroke-width:1"></line>
+<svg class="line" width="100%" [attr.height]="tableheight" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <polyline [attr.points]="points" style="stroke-width:1" [style.stroke]="color"></polyline>
 </svg>
 <section class="number-container">
   <table>
     <thead>
       <tr>
         <th>
-          <a  routerLinkActive="active" routerLink="/home/bigsmall/1">冠军</a>
+          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/1">冠军</a>
         </th>
         <th>
-          <a  routerLinkActive="active" routerLink="/home/bigsmall/2">亚军</a>
+          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/2">亚军</a>
         </th>
         <th>
-          <a  routerLinkActive="active" routerLink="/home/bigsmall/3">第三名</a>
+          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/3">第三名</a>
         </th>
         <th>
-          <a  routerLinkActive="active" routerLink="/home/bigsmall/4">第四名</a>
+          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/4">第四名</a>
         </th>
         <th>
-          <a  routerLinkActive="active" routerLink="/home/bigsmall/5">第五名</a>
+          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/5">第五名</a>
         </th>
         <th>
-          <a  routerLinkActive="active" routerLink="/home/bigsmall/6">第六名</a>
+          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/6">第六名</a>
         </th>
         <th>
-          <a  routerLinkActive="active" routerLink="/home/bigsmall/7">第七名</a>
+          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/7">第七名</a>
         </th>
         <th>
-          <a  routerLinkActive="active" routerLink="/home/bigsmall/8">第八名</a>
+          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/8">第八名</a>
         </th>
         <th>
-          <a  routerLinkActive="active" routerLink="/home/bigsmall/9">第九名</a>
+          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/9">第九名</a>
         </th>
         <th>
-          <a  routerLinkActive="active" routerLink="/home/bigsmall/10">第十名</a>
+          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/10">第十名</a>
         </th>
-        <!--<th routerLinkActive="active" routerLink="/home/bigsmall/2">亚军</th>-->
-        <!--<th routerLinkActive="active" routerLink="/home/bigsmall/3">第三名</th>-->
-        <!--<th routerLinkActive="active" routerLink="/home/bigsmall/4">第四名</th>-->
-        <!--<th routerLinkActive="active" routerLink="/home/bigsmall/5">第五名</th>-->
-        <!--<th routerLinkActive="active" routerLink="/home/bigsmall/6">第六名</th>-->
-        <!--<th routerLinkActive="active" routerLink="/home/bigsmall/7">第七名</th>-->
-        <!--<th routerLinkActive="active" routerLink="/home/bigsmall/8">第八名</th>-->
-        <!--<th routerLinkActive="active" routerLink="/home/bigsmall/9">第九名</th>-->
-        <!--<th routerLinkActive="active" routerLink="/home/bigsmall/10">第十名</th>-->
       </tr>
     </thead>
   </table>
@@ -64,16 +55,81 @@
       <tr>
         <td>6554408</td>
         <td>2</td>
-        <td><span class="active index1" [style.backgroundColor]="color">7</span></td>
+        <td><span class="active" [style.backgroundColor]="color">7</span></td>
       </tr>
       <tr>
         <td>6554407</td>
+        <td><span class="active" [style.backgroundColor]="color">6</span></td>
         <td>1</td>
-        <td><span class="active index2" [style.backgroundColor]="color">6</span></td>
       </tr>
       <tr>
         <td>6554406</td>
-        <td><span class="active index3" [style.backgroundColor]="color">2</span></td>
+        <td><span class="active" [style.backgroundColor]="color">2</span></td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>6554405</td>
+        <td><span class="active" [style.backgroundColor]="color">1</span></td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>6554404</td>
+        <td>2</td>
+        <td><span class="active" [style.backgroundColor]="color">10</span></td>
+      </tr>
+      <tr>
+        <td>6554403</td>
+        <td>1</td>
+        <td><span class="active" [style.backgroundColor]="color">10</span></td>
+      </tr>
+      <tr>
+        <td>6554402</td>
+        <td><span class="active" [style.backgroundColor]="color">3</span></td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <td>6554401</td>
+        <td><span class="active" [style.backgroundColor]="color">5</span></td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>6554400</td>
+        <td>3</td>
+        <td><span class="active" [style.backgroundColor]="color">7</span></td>
+      </tr>
+      <tr>
+        <td>6554399</td>
+        <td>2</td>
+        <td><span class="active" [style.backgroundColor]="color">9</span></td>
+      </tr>
+      <tr>
+        <td>6554398</td>
+        <td>1</td>
+        <td><span class="active" [style.backgroundColor]="color">10</span></td>
+      </tr>
+      <tr>
+        <td>6554397</td>
+        <td><span class="active" [style.backgroundColor]="color">3</span></td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>6554406</td>
+        <td>1</td>
+        <td><span class="active" [style.backgroundColor]="color">7</span></td>
+      </tr>
+      <tr>
+        <td>6554408</td>
+        <td>2</td>
+        <td id="testbox"><span class="active" id="test1" [style.backgroundColor]="color">7</span></td>
+      </tr>
+      <tr>
+        <td>6554407</td>
+        <td id="testbox2"><span class="active" id="test2" [style.backgroundColor]="color">6</span></td>
+        <td>1</td>
+      </tr>
+      <tr>
+        <td>6554406</td>
+        <td><span class="active" [style.backgroundColor]="color">2</span></td>
         <td>2</td>
       </tr>
       <tr>

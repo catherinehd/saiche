@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TrendService } from '../../service/trend.service';
+import { NumberModel } from '../../model/number.model';
 
 @Component({
   selector: 'app-number',
@@ -7,12 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NumberComponent implements OnInit {
 
-  time: string;
-  constructor() {
-    this.time = '04:30';
+  time: number;
+  numberList: any;
+  constructor(private trendService: TrendService) {
   }
 
   ngOnInit() {
+    this.trendService.getNumberList(1).subscribe( (res) => {
+      this.setNumberList(res.json());
+    });
+  }
+
+  setNumberList(msg) {
+    this.numberList = msg.rows;
+    this.time = msg.time;
+    console.log(this.time);
+    for (let i = 0; i < this.numberList.length; i++) {
+      // let t = this.numberList[i].wsTime;
+      // this.numberList[i].wsTime = this.format(t);
+    }
+    console.log(this.numberList[0].bjpkExpect);
   }
 
 }

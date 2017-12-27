@@ -100,18 +100,16 @@ export class LoginComponent implements OnInit {
     this.isLoading = true;
     const tel = this.getTelValue();
     this.userService.login(tel, this.loginForm.value.pwd).subscribe(res => {
-      res.json() === null ? this.showTip('手机号码或密码错误') : this.loginSuccess(res.json());
+      res.json() === null ? this.showTip('账号与密码不匹配，请重新输入') : this.loginSuccess(res.json());
     });
   }
 
   loginSuccess(user) {
     this.showTip('登录成功');
-    // setTimeout(() => {
-    //   this.userStoreService.storeUser(user);
-    //   this.serviceFalseService.getFalsePage().subscribe( res => {
-    //     this.gofalsepage(res);
-    //   });
-    // }, 2000);
+    setTimeout(() => {
+      // this.userStoreService.storeUser(user);
+      this.navigateService.pushToNextRoute();
+    }, 2000);
   }
 
   gofalsepage(res) {

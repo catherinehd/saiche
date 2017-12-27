@@ -6,12 +6,12 @@ import { ApiList } from '../config/apiList';
 export class UserService {
   constructor(private httpService: HttpService) {}
   // 登录
-  login(mobile, loginPwd) {
+  login(username, pwd) {
     return this.httpService.getMethod({
-      url: 'User/Login',
+      url: 'web/user/doLogin',
       data: {
-        mobile: mobile,
-        login_pwd: loginPwd
+        userName: username,
+        password: pwd
       }
     });
   }
@@ -51,12 +51,9 @@ export class UserService {
   }
 
   // 验证手机号是否已经注册
-  testHasRegister(mobile) {
+  testHasRegister(username) {
     return this.httpService.getMethod({
-      url: 'User/IsReg',
-      data: {
-        mobile: mobile
-      }
+      url: 'web/user/checkusername/' + username,
     });
   }
 

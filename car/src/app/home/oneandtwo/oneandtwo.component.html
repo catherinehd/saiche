@@ -1,23 +1,7 @@
-<svg class="line" width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <line x1="300" y1="150" x2="150" y2="200" style="stroke:#c11e12;stroke-width:1"></line>
+<svg class="line" width="100%" [attr.height]="tableheight" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <polyline [attr.points]="points" style="stroke-width:1" [style.stroke]="color"></polyline>
 </svg>
 <section class="number-container">
-  <table>
-    <thead>
-    <tr>
-      <th>冠军</th>
-      <th>亚军</th>
-      <th>第三名</th>
-      <th>第四名</th>
-      <th>第五名</th>
-      <th>第六名</th>
-      <th>第七名</th>
-      <!--<th>第八名</th>-->
-      <!--<th>第九名</th>-->
-      <!--<th>第十名</th>-->
-    </tr>
-    </thead>
-  </table>
   <table>
     <tbody>
     <tr class="top">
@@ -43,7 +27,7 @@
     <tr>
       <td>6554408</td>
       <td></td>
-      <td><span class="active index1">7</span></td>
+      <td><span class="active index1" [style.backgroundColor] = "color">7</span></td>
       <td></td>
       <td></td>
       <td></td>
@@ -59,7 +43,7 @@
       <td></td>
       <td></td>
       <td></td>
-      <td><span class="active index2">6</span></td>
+      <td><span class="active index2" [style.backgroundColor] = "color">6</span></td>
       <td></td>
       <td></td>
       <td></td>
@@ -68,7 +52,7 @@
     </tr>
     <tr>
       <td>6554406</td>
-      <td><span class="active index3">2</span></td>
+      <td><span class="active index3" [style.backgroundColor] = "color">2</span></td>
       <td></td>
       <td></td>
       <td></td>
@@ -86,7 +70,7 @@
       <td></td>
       <td></td>
       <td></td>
-      <td><span class="active">1</span></td>
+      <td><span class="active" [style.backgroundColor] = "color">1</span></td>
       <td></td>
       <td></td>
       <td></td>
@@ -95,7 +79,7 @@
     <tr>
       <td>6554404</td>
       <td></td>
-      <td><span class="active">10</span></td>
+      <td><span class="active" [style.backgroundColor] = "color">10</span></td>
       <td></td>
       <td></td>
       <td></td>
@@ -115,14 +99,194 @@
       <td></td>
       <td></td>
       <td></td>
-      <td><span class="active">10</span></td>
+      <td><span class="active" [style.backgroundColor] = "color">10</span></td>
     </tr>
     <tr>
       <td>6554402</td>
       <td></td>
       <td></td>
       <td></td>
-      <td><span class="active">3</span></td>
+      <td><span class="active" [style.backgroundColor] = "color">3</span></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>6554408</td>
+      <td></td>
+      <td><span class="active index1" [style.backgroundColor] = "color">7</span></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>6554407</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><span class="active index2" [style.backgroundColor] = "color">6</span></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>6554406</td>
+      <td><span class="active index3" [style.backgroundColor] = "color">2</span></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>6554405</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><span class="active" [style.backgroundColor] = "color">1</span></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>6554404</td>
+      <td></td>
+      <td><span class="active" [style.backgroundColor] = "color">10</span></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>6554403</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><span class="active" [style.backgroundColor] = "color">10</span></td>
+    </tr>
+    <tr>
+      <td>6554402</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><span class="active" [style.backgroundColor] = "color">3</span></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>6554408</td>
+      <td></td>
+      <td><span class="active index1" [style.backgroundColor] = "color">7</span></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>6554407</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><span class="active index2" [style.backgroundColor] = "color">6</span></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>6554406</td>
+      <td><span class="active index3" [style.backgroundColor] = "color">2</span></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>6554405</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><span class="active" [style.backgroundColor] = "color">1</span></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>6554404</td>
+      <td></td>
+      <td><span class="active" [style.backgroundColor] = "color">10</span></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>6554403</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><span class="active" [style.backgroundColor] = "color">10</span></td>
+    </tr>
+    <tr>
+      <td>6554402</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td><span class="active" [style.backgroundColor] = "color">3</span></td>
       <td></td>
       <td></td>
       <td></td>
