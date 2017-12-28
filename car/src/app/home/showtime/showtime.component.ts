@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { TrendService } from '../../service/trend.service';
 
 @Component({
   selector: 'app-showtime',
@@ -7,26 +8,33 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 })
 export class ShowtimeComponent implements OnInit, OnDestroy {
 
-  @Input() time: number;
+  time: number;
   timer: any;
   timenum: number;
   minutes: number;  // 分钟
   seconds: number; // 秒数
   seconds1: number; // 秒数个位数
   seconds2: number; // 秒数十位数
-  constructor() { }
+  @Output() onRefresh = new EventEmitter();
+
+  constructor(private trendService: TrendService) { }
 
   ngOnInit() {
-    console.log(this.time);
-    this.time = 234;
-    // 获取开奖剩余时间秒数
-    this.timeformat(this.time);
-    // 进行倒计时
-    this.timecounter(this.time);
+    this.trendService.getNumberList(1).subscribe( (res) => {
+      this.time = res.json().time ;
+      // 获取开奖剩余时间秒数
+      this.timeformat(this.time);
+      // 进行倒计时
+      this.timecounter(this.time);
+    });
   }
 
   ngOnDestroy() {
     clearInterval(this.timer);
+  }
+
+  refresh() {
+    this.onRefresh.emit(status);
   }
 
   // 倒计时
@@ -34,6 +42,7 @@ export class ShowtimeComponent implements OnInit, OnDestroy {
     this.timer = setInterval(() => {
       --time;
       if (time < 0) {
+        this.refresh();
         time = 300;
       }
       this.timeformat(time);

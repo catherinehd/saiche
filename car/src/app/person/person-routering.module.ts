@@ -30,7 +30,7 @@ const personRoutes: Routes = [
   { path: 'service', component: ServiceComponent },
   { path: 'personal-info', component: PersonalInfoComponent, canActivate: [AuthGuard] },
   { path: 'setting-personal-info', component: SettingPersonalInfoComponent, canActivate: [AuthGuard] },
-  { path: 'invite', component: InviteComponent}
+  { path: 'invite', component: InviteComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

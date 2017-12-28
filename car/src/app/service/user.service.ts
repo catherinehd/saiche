@@ -16,6 +16,13 @@ export class UserService {
     });
   }
 
+  // 判断用户是否登录
+  islogin() {
+    return this.httpService.getMethod({
+      url: 'web/user/center',
+    });
+  }
+
   // 注册
   register(mobile, msgCode, loginPwd) {
     return this.httpService.putMethod({
@@ -30,11 +37,8 @@ export class UserService {
 
   // 修改昵称
   updateNickName(nickName) {
-    return this.httpService.putMethod({
-      url: 'User/UpdateNickName',
-      data: {
-        nick_name: nickName
-      }
+    return this.httpService.postMethod({
+      url: '/web/user/findUserByUserName/' +  nickName,
     });
   }
 
@@ -68,6 +72,16 @@ export class UserService {
     });
   }
 
+  // 发送短信验证码
+  getMsgCode(mobile) {
+    return this.httpService.getMethod({
+      url: 'web/user/valid',
+      data: {
+        username: mobile
+      }
+    });
+  }
+
   // 获取图片验证码
   getImgCode(mobile) {
     const rd = new Date().getTime();
@@ -75,14 +89,21 @@ export class UserService {
   }
 
   // 验证图片验证码, 发送短信验证码
-  getMsgCode(mobile, imgCode, type: string) {     // type---Register || ForgetPwd
+  // getMsgCode(mobile, imgCode, type: string) {     // type---Register || ForgetPwd
+  //   return this.httpService.getMethod({
+  //     url: 'ValidationCode/ValidCodeMobile',
+  //     data: {
+  //       mobile: mobile,
+  //       code: imgCode,
+  //       type: type
+  //     }
+  //   });
+  // }
+
+  // 登出
+  logout() {
     return this.httpService.getMethod({
-      url: 'ValidationCode/ValidCodeMobile',
-      data: {
-        mobile: mobile,
-        code: imgCode,
-        type: type
-      }
+      url: 'web/user/logout'
     });
   }
 

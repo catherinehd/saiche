@@ -62,11 +62,11 @@ export class ImgValidComponent implements AfterViewInit, OnChanges {
   }
 
 
-  submitImgCode() {
-    if (!this.testImgCode()) return;
-    this.userService.getMsgCode(this.mobile, this.imgCode.value, this.type).subscribe(res => {
-      const response = res.json();
-      response ? this.wrongMsg = response : this.close(1);
-    });
-  }
+  // submitImgCode() {
+  //   if (!this.testImgCode()) return;
+  //   this.userService.getMsgCode(this.mobile, this.imgCode.value, this.type).subscribe(res => {
+  //     const response = res.json();
+  //     response ? this.wrongMsg = response : this.close(1);
+  //   });
+  // }
 }

@@ -22,8 +22,9 @@ export class UserStoreService {
 
   storeUser(user: any) {
     this.user = new UserModel(user);
-    localStorage.setItem('token', user.access_token);
-    localStorage.setItem('user', JSON.stringify(this.user));
+    // localStorage.setItem('token', user.access_token);
+    // localStorage.setItem('user', JSON.stringify(this.user));
+    localStorage.setItem('user', user);
   }
 
   logout() {

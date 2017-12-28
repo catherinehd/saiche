@@ -1,6 +1,7 @@
 import { Component, HostBinding } from '@angular/core';
 import { NavigateService } from '../../service/navigate.service';
 import { UserStoreService } from '../../service/user-store.service';
+import { UserService } from '../../service/user.service';
 import { DelayLeaveAnimation } from '../../shared/animations/delay-leave.animation';
 
 @Component({
@@ -11,11 +12,18 @@ import { DelayLeaveAnimation } from '../../shared/animations/delay-leave.animati
 })
 export class IndexComponent {
   nickName: string;
+  telnum: string;
   @HostBinding('@delayLeaveAnimation') delayLeaveAnimation = true;
   @HostBinding('class.page') page = true;
-  constructor(private navigateSerivce: NavigateService, private userStoreService: UserStoreService) {
-    const user = this.userStoreService.getUser();
-    this.nickName = user ? user.nickName : '';
+  constructor(private navigateSerivce: NavigateService,
+              private userService: UserService,
+              private userStoreService: UserStoreService) {
+    const user = this.userService.islogin().subscribe( res => {
+      if (res.json().msg === 'OK') {
+        this.nickName = res.json().data.userNamenick;
+        this.telnum = res.json().data.userName;
+      }
+    });
   }
 
   goPage(page) {
@@ -24,7 +32,7 @@ export class IndexComponent {
   }
 
   pushToUserInfo() {
-    if (!this.nickName) return;
+    if (!this.nickName) { return; }
     this.goPage('/personal-info');
   }
 }

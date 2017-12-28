@@ -1,31 +1,30 @@
 @import "../../../assets/css/variable"
 
 .personal-sec
-  margin-top $default-gap
   font-size $font-big-size
   background-color $theme-white-color
 
 .detail-box
   padding-left 1.5rem
-  &:active
-    background-color darken($theme-white-color, 10%)
   .detail
-    border-bottom $default-border
     padding-left 0
 
 .detail
   display flex
   align-items center
-  height 4.6rem
+  height 4.5rem
   padding 0 1.5rem
+  font-size $font-normal-size
   h4
-    flex auto
+    flex-grow 0
     color $font-main-color
-  p
-    color $font-weak-color
+  input
+    flex-grow 1
+    color $font-main-color
+    margin-left 1.6rem
 
-.icon-right-arrow
-  width 1.2rem
+.icon-close
+  width 1.9rem
   height @width
   fill $font-weak-color
   margin-left .9rem

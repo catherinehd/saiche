@@ -1,7 +1,7 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { UserStoreService } from '../../service/user-store.service';
 import { NavigateService } from '../../service/navigate.service';
-// import { ServicefalseService } from '../../service/servicefalse.service';
+import { UserService } from '../../service/user.service';
 import { SlideToRightAnimation } from '../../shared/animations/slide-to-right.animation';
 
 @Component({
@@ -17,11 +17,15 @@ export class SettingComponent implements OnInit {
     isConfirmModalShow: false,
     confirmMsg: '您确定要退出登录吗？'
   };
+  telnumber: string;
   constructor(private userStoreService: UserStoreService ,
-              // private servicefalseService: ServicefalseService,
+              private userService: UserService,
               private navigateService: NavigateService) { }
 
   ngOnInit() {
+    this.userService.islogin().subscribe( res => {
+      this.telnumber = res.json().data.userName;
+    });
   }
 
   confirm(status) {
@@ -32,20 +36,11 @@ export class SettingComponent implements OnInit {
   }
 
   logout() {
-     this.userStoreService.logout();
-     // this.servicefalseService.getFalsePage().subscribe( res => {
-     //   this.gohome(res.json());
-     // })
+     this.userService.logout().subscribe(res => {
+       this.navigateService.clearRouteList();
+       localStorage.removeItem('user');
+       this.navigateService.pushToRoute('./home');
+     });
   }
 
-  gohome(ok) {
-    console.log(ok);
-    if (ok === true) {
-      this.navigateService.clearRouteList();
-      this.navigateService.pushToRoute('/homefalse');
-    } else {
-      this.navigateService.clearRouteList();
-      this.navigateService.pushToRoute('/home') ;
-    }
-  }
 }

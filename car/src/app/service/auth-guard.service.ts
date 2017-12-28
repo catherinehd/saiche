@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, CanActivateChild } from '@angular/router';
 import { NavigateService } from '../service/navigate.service';
+import { UserService } from './user.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate, CanActivateChild {
 
-  constructor(private navigateService: NavigateService ) {}
+  constructor(private navigateService: NavigateService,
+              private userService: UserService) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     let url: string = state.url;
@@ -22,7 +24,8 @@ export class AuthGuard implements CanActivate, CanActivateChild {
       this.navigateService.storeNextRoute(url);
       this.navigateService.pushToRoute('/login');
       return false;
+      }
+      return true;
     }
-    return true;
   }
-}
+

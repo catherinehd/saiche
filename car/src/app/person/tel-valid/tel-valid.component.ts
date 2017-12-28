@@ -26,7 +26,7 @@ export class TelValidComponent implements OnInit {
   validatorMsg = {
     tel: {
       required: '请填写手机号码',
-      pattern: '请填写有效的手机号码'
+      pattern: '手机号格式不正确'
     },
     code: {
       required: '请填写手机验证码',
@@ -34,11 +34,10 @@ export class TelValidComponent implements OnInit {
     },
     pwd: {
       required: '请填写密码',
-      pattern: '请填写正确的验证码'
+      pattern: '密码由6-15位数字字母组成'
     },
     invitenum: {
       required: '请填写邀请码',
-      pattern: '请填写正确的验证码'
     }
   };
   constructor(private router: Router,
@@ -93,9 +92,21 @@ export class TelValidComponent implements OnInit {
     this.userService.testHasRegister(this.telValid.tel).subscribe(res => {
       const response = res.json();
       if (this.title !== '注册') {
-        response ? this.isImgValidShow = true : this.showTip('该手机号码未注册');
+        response ? this.getMsgCode() : this.showTip('该手机号码未注册');
       } else {
-        response ? this.showTip('该手机号码已注册') : this.isImgValidShow = true;
+        response ? this.showTip('该手机号已被占用') : this.getMsgCode();
+      }
+    });
+  }
+
+  // 获取短信验证码
+  getMsgCode() {
+    this.userService.getMsgCode(this.telValid.tel).subscribe( res => {
+      if (res.json()) {
+        this.showTip('短信验证码发送成功');
+        this.counting();
+      } else {
+        this.showTip(res.json().msg);
       }
     });
   }
@@ -132,6 +143,7 @@ export class TelValidComponent implements OnInit {
     }
   }
 
+  // 注册
   onSubmit() {
     if (!this.telValidForm.value.tel || !this.telValidForm.value.code || !this.imgCode || !this.telValidForm.value.pwd) return;
     this.testValid();
@@ -140,6 +152,8 @@ export class TelValidComponent implements OnInit {
       res.json() ? this.goNextStep() : this.showTip('验证码错误');
     });
   }
+
+  // 重设密码
   onSubmit2() {
     if (!this.telValidForm.value.tel || !this.telValidForm.value.code || !this.imgCode) return;
     this.testValid();

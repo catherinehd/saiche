@@ -1,4 +1,4 @@
-<svg class="line" width="100%" [attr.height]="tableheight" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<svg class="line" width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <polyline [attr.points]="points" style="stroke-width:1" [style.stroke]="color"></polyline>
 </svg>
 <section class="number-container">
@@ -6,34 +6,34 @@
     <thead>
       <tr>
         <th>
-          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/1">冠军</a>
+          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/1" (click)="getData('0')">冠军</a>
         </th>
         <th>
-          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/2">亚军</a>
+          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/2" (click)="getData('1')">亚军</a>
         </th>
         <th>
-          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/3">第三名</a>
+          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/3" (click)="getData('2')">第三名</a>
         </th>
         <th>
-          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/4">第四名</a>
+          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/4" (click)="getData('3')">第四名</a>
         </th>
         <th>
-          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/5">第五名</a>
+          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/5" (click)="getData('4')">第五名</a>
         </th>
         <th>
-          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/6">第六名</a>
+          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/6" (click)="getData('5')">第六名</a>
         </th>
         <th>
-          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/7">第七名</a>
+          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/7" (click)="getData('6')">第七名</a>
         </th>
         <th>
-          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/8">第八名</a>
+          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/8" (click)="getData('7')">第八名</a>
         </th>
         <th>
-          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/9">第九名</a>
+          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/9" (click)="getData('8')">第九名</a>
         </th>
         <th>
-          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/10">第十名</a>
+          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/10" (click)="getData('9')">第十名</a>
         </th>
       </tr>
     </thead>
@@ -49,139 +49,139 @@
         </td>
       </tr>
       <tr class="type">
-        <td>小</td>
-        <td>大</td>
+        <td>{{smalltitle1}}</td>
+        <td>{{smalltitle2}}</td>
       </tr>
-      <tr>
-        <td>6554408</td>
-        <td>2</td>
-        <td><span class="active" [style.backgroundColor]="color">7</span></td>
+      <tr *ngFor="let item of trendList">
+        <td>{{item.bjpkExpect}}</td>
+        <td><span [attr.class]="item.num === 0 ? 'active' : none" [style.backgroundColor]="item.num === 0 ? color : 'transparent'">{{item.first}}</span></td>
+        <td><span [attr.class]="item.num === 1 ? 'active' : none" [style.backgroundColor]="item.num === 1 ? color : 'transparent'">{{item.second}}</span></td>
       </tr>
-      <tr>
-        <td>6554407</td>
-        <td><span class="active" [style.backgroundColor]="color">6</span></td>
-        <td>1</td>
-      </tr>
-      <tr>
-        <td>6554406</td>
-        <td><span class="active" [style.backgroundColor]="color">2</span></td>
-        <td>2</td>
-      </tr>
-      <tr>
-        <td>6554405</td>
-        <td><span class="active" [style.backgroundColor]="color">1</span></td>
-        <td>1</td>
-      </tr>
-      <tr>
-        <td>6554404</td>
-        <td>2</td>
-        <td><span class="active" [style.backgroundColor]="color">10</span></td>
-      </tr>
-      <tr>
-        <td>6554403</td>
-        <td>1</td>
-        <td><span class="active" [style.backgroundColor]="color">10</span></td>
-      </tr>
-      <tr>
-        <td>6554402</td>
-        <td><span class="active" [style.backgroundColor]="color">3</span></td>
-        <td>2</td>
-      </tr>
-      <tr>
-        <td>6554401</td>
-        <td><span class="active" [style.backgroundColor]="color">5</span></td>
-        <td>1</td>
-      </tr>
-      <tr>
-        <td>6554400</td>
-        <td>3</td>
-        <td><span class="active" [style.backgroundColor]="color">7</span></td>
-      </tr>
-      <tr>
-        <td>6554399</td>
-        <td>2</td>
-        <td><span class="active" [style.backgroundColor]="color">9</span></td>
-      </tr>
-      <tr>
-        <td>6554398</td>
-        <td>1</td>
-        <td><span class="active" [style.backgroundColor]="color">10</span></td>
-      </tr>
-      <tr>
-        <td>6554397</td>
-        <td><span class="active" [style.backgroundColor]="color">3</span></td>
-        <td>1</td>
-      </tr>
-      <tr>
-        <td>6554406</td>
-        <td>1</td>
-        <td><span class="active" [style.backgroundColor]="color">7</span></td>
-      </tr>
-      <tr>
-        <td>6554408</td>
-        <td>2</td>
-        <td id="testbox"><span class="active" id="test1" [style.backgroundColor]="color">7</span></td>
-      </tr>
-      <tr>
-        <td>6554407</td>
-        <td id="testbox2"><span class="active" id="test2" [style.backgroundColor]="color">6</span></td>
-        <td>1</td>
-      </tr>
-      <tr>
-        <td>6554406</td>
-        <td><span class="active" [style.backgroundColor]="color">2</span></td>
-        <td>2</td>
-      </tr>
-      <tr>
-        <td>6554405</td>
-        <td><span class="active" [style.backgroundColor]="color">1</span></td>
-        <td>1</td>
-      </tr>
-      <tr>
-        <td>6554404</td>
-        <td>2</td>
-        <td><span class="active" [style.backgroundColor]="color">10</span></td>
-      </tr>
-      <tr>
-        <td>6554403</td>
-        <td>1</td>
-        <td><span class="active" [style.backgroundColor]="color">10</span></td>
-      </tr>
-      <tr>
-        <td>6554402</td>
-        <td><span class="active" [style.backgroundColor]="color">3</span></td>
-        <td>2</td>
-      </tr>
-      <tr>
-        <td>6554401</td>
-        <td><span class="active" [style.backgroundColor]="color">5</span></td>
-        <td>1</td>
-      </tr>
-      <tr>
-        <td>6554400</td>
-        <td>3</td>
-        <td><span class="active" [style.backgroundColor]="color">7</span></td>
-      </tr>
-      <tr>
-        <td>6554399</td>
-        <td>2</td>
-        <td><span class="active" [style.backgroundColor]="color">9</span></td>
-      </tr>
-      <tr>
-        <td>6554398</td>
-        <td>1</td>
-        <td><span class="active" [style.backgroundColor]="color">10</span></td>
-      </tr>
-      <tr>
-        <td>6554397</td>
-        <td><span class="active" [style.backgroundColor]="color">3</span></td>
-        <td>1</td>
-      </tr>
-      <tr>
-        <td>6554406</td>
-        <td>1</td>
-        <td><span class="active" [style.backgroundColor]="color">7</span></td>
-      </tr>
+      <!--<tr>-->
+        <!--<td>6554407</td>-->
+        <!--<td><span class="active" [style.backgroundColor]="color">6</span></td>-->
+        <!--<td>1</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>6554406</td>-->
+        <!--<td><span class="active" [style.backgroundColor]="color">2</span></td>-->
+        <!--<td>2</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>6554405</td>-->
+        <!--<td><span class="active" [style.backgroundColor]="color">1</span></td>-->
+        <!--<td>1</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>6554404</td>-->
+        <!--<td>2</td>-->
+        <!--<td><span class="active" [style.backgroundColor]="color">10</span></td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>6554403</td>-->
+        <!--<td>1</td>-->
+        <!--<td><span class="active" [style.backgroundColor]="color">10</span></td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>6554402</td>-->
+        <!--<td><span class="active" [style.backgroundColor]="color">3</span></td>-->
+        <!--<td>2</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>6554401</td>-->
+        <!--<td><span class="active" [style.backgroundColor]="color">5</span></td>-->
+        <!--<td>1</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>6554400</td>-->
+        <!--<td>3</td>-->
+        <!--<td><span class="active" [style.backgroundColor]="color">7</span></td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>6554399</td>-->
+        <!--<td>2</td>-->
+        <!--<td><span class="active" [style.backgroundColor]="color">9</span></td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>6554398</td>-->
+        <!--<td>1</td>-->
+        <!--<td><span class="active" [style.backgroundColor]="color">10</span></td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>6554397</td>-->
+        <!--<td><span class="active" [style.backgroundColor]="color">3</span></td>-->
+        <!--<td>1</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>6554406</td>-->
+        <!--<td>1</td>-->
+        <!--<td><span class="active" [style.backgroundColor]="color">7</span></td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>6554408</td>-->
+        <!--<td>2</td>-->
+        <!--<td id="testbox"><span class="active" id="test1" [style.backgroundColor]="color">7</span></td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>6554407</td>-->
+        <!--<td id="testbox2"><span class="active" id="test2" [style.backgroundColor]="color">6</span></td>-->
+        <!--<td>1</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>6554406</td>-->
+        <!--<td><span class="active" [style.backgroundColor]="color">2</span></td>-->
+        <!--<td>2</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>6554405</td>-->
+        <!--<td><span class="active" [style.backgroundColor]="color">1</span></td>-->
+        <!--<td>1</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>6554404</td>-->
+        <!--<td>2</td>-->
+        <!--<td><span class="active" [style.backgroundColor]="color">10</span></td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>6554403</td>-->
+        <!--<td>1</td>-->
+        <!--<td><span class="active" [style.backgroundColor]="color">10</span></td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>6554402</td>-->
+        <!--<td><span class="active" [style.backgroundColor]="color">3</span></td>-->
+        <!--<td>2</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>6554401</td>-->
+        <!--<td><span class="active" [style.backgroundColor]="color">5</span></td>-->
+        <!--<td>1</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>6554400</td>-->
+        <!--<td>3</td>-->
+        <!--<td><span class="active" [style.backgroundColor]="color">7</span></td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>6554399</td>-->
+        <!--<td>2</td>-->
+        <!--<td><span class="active" [style.backgroundColor]="color">9</span></td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>6554398</td>-->
+        <!--<td>1</td>-->
+        <!--<td><span class="active" [style.backgroundColor]="color">10</span></td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>6554397</td>-->
+        <!--<td><span class="active" [style.backgroundColor]="color">3</span></td>-->
+        <!--<td>1</td>-->
+      <!--</tr>-->
+      <!--<tr>-->
+        <!--<td>6554406</td>-->
+        <!--<td>1</td>-->
+        <!--<td><span class="active" [style.backgroundColor]="color">7</span></td>-->
+      <!--</tr>-->
       <tr class="occur">
         <td>出现次数</td>
         <td>4</td>
