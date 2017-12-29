@@ -3,6 +3,7 @@
 table
   border-top .5px solid rgba(206,206,206,0.4)
 .number-container
+  padding-top 4.4rem
   table
     tbody
       tr:nth-child(even)
@@ -12,9 +13,12 @@ table
           border-bottom none
           width 3rem
           .active
-            margin-right -1rem
+            background $theme-little-blue-color
           &:nth-child(0)
             width 6rem
       .top
       .type
         border-bottom .5px solid rgba(206,206,206,0.4)
+
+.even
+  margin-right -1rem !important

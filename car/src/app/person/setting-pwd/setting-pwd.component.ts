@@ -106,26 +106,22 @@ export class SettingPwdComponent implements OnInit {
         this.showTip('注册成功', () => {
           this.userStoreService.storeUser(response);
           this.navigateService.clearRouteList();
-          // if(this.deviceService.falsepage = true) {
-          //   this.navigateService.pushToRoute('/homefalse');
-          // } else {
-          //   this.navigateService.pushToRoute('/')
-          // }
           this.navigateService.pushToRoute('/');
         });
       }
     });
   }
 
+  // 重置密码
   resPwd(tel, msgCode) {
-    this.userService.updatePwd(tel, msgCode, this.pwdSettingForm.value.pwd).subscribe(res => {
+    this.userService.updatePwd(tel, this.pwdSettingForm.value.pwd).subscribe(res => {
       const response = res.json();
-      if (response) {
-        this.showTip(response);
+      if (!response.ok) {
+        this.showTip(response.msg);
       } else {
         this.showTip('重置密码成功', () => {this.navigateService.pushToRoute('/login')});
       }
-    })
+    });
   }
 
   showTip(msg, callback ?: any) {

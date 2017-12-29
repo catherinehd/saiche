@@ -1,7 +1,7 @@
-<svg class="line" width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <polyline [attr.points]="points" style="stroke-width:1" [style.stroke]="color"></polyline>
-</svg>
 <section class="number-container">
+  <svg class="line" width="100%" [attr.height]="tableheight" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <polyline [attr.points]="points" style="stroke-width:1" [style.stroke]="color"></polyline>
+  </svg>
   <table>
     <thead>
       <tr>
@@ -38,7 +38,7 @@
       </tr>
     </thead>
   </table>
-  <table>
+  <table class="data-list">
     <tbody>
       <tr class="top">
         <td rowspan="2">
@@ -54,153 +54,32 @@
       </tr>
       <tr *ngFor="let item of trendList">
         <td>{{item.bjpkExpect}}</td>
-        <td><span [attr.class]="item.num === 0 ? 'active' : none" [style.backgroundColor]="item.num === 0 ? color : 'transparent'">{{item.first}}</span></td>
-        <td><span [attr.class]="item.num === 1 ? 'active' : none" [style.backgroundColor]="item.num === 1 ? color : 'transparent'">{{item.second}}</span></td>
+        <td *ngIf="title !== '1-5龙虎'"><span [attr.class]="item.num === 0 ? 'active' : none" [style.backgroundColor]="item.num === 0 ? color : 'transparent'">{{item.first}}</span></td>
+        <td *ngIf="title !== '1-5龙虎'"><span [attr.class]="item.num === 1 ? 'active' : none" [style.backgroundColor]="item.num === 1 ? color : 'transparent'">{{item.second}}</span></td>
+        <td *ngIf="title === '1-5龙虎' && item.firsts"><span [attr.class]="item.num === 0 ? 'active' : none" [style.backgroundColor]="item.num === 0 ? color : 'transparent'">{{item.firsts}}</span></td>
+        <td *ngIf="title === '1-5龙虎' && item.first"><span [attr.class]="item.num === 0 ? 'active' : none" [style.backgroundColor]="item.num === 0 ? color : 'transparent'">{{item.first}}</span></td>
+        <td *ngIf="title === '1-5龙虎' && item.seconds"><span [attr.class]="item.num === 1 ? 'active' : none" [style.backgroundColor]="item.num === 1 ? color : 'transparent'">{{item.seconds}}</span></td>
+        <td *ngIf="title === '1-5龙虎' && item.second"><span [attr.class]="item.num === 1 ? 'active' : none" [style.backgroundColor]="item.num === 1 ? color : 'transparent'">{{item.second}}</span></td>
       </tr>
-      <!--<tr>-->
-        <!--<td>6554407</td>-->
-        <!--<td><span class="active" [style.backgroundColor]="color">6</span></td>-->
-        <!--<td>1</td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<td>6554406</td>-->
-        <!--<td><span class="active" [style.backgroundColor]="color">2</span></td>-->
-        <!--<td>2</td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<td>6554405</td>-->
-        <!--<td><span class="active" [style.backgroundColor]="color">1</span></td>-->
-        <!--<td>1</td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<td>6554404</td>-->
-        <!--<td>2</td>-->
-        <!--<td><span class="active" [style.backgroundColor]="color">10</span></td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<td>6554403</td>-->
-        <!--<td>1</td>-->
-        <!--<td><span class="active" [style.backgroundColor]="color">10</span></td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<td>6554402</td>-->
-        <!--<td><span class="active" [style.backgroundColor]="color">3</span></td>-->
-        <!--<td>2</td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<td>6554401</td>-->
-        <!--<td><span class="active" [style.backgroundColor]="color">5</span></td>-->
-        <!--<td>1</td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<td>6554400</td>-->
-        <!--<td>3</td>-->
-        <!--<td><span class="active" [style.backgroundColor]="color">7</span></td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<td>6554399</td>-->
-        <!--<td>2</td>-->
-        <!--<td><span class="active" [style.backgroundColor]="color">9</span></td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<td>6554398</td>-->
-        <!--<td>1</td>-->
-        <!--<td><span class="active" [style.backgroundColor]="color">10</span></td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<td>6554397</td>-->
-        <!--<td><span class="active" [style.backgroundColor]="color">3</span></td>-->
-        <!--<td>1</td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<td>6554406</td>-->
-        <!--<td>1</td>-->
-        <!--<td><span class="active" [style.backgroundColor]="color">7</span></td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<td>6554408</td>-->
-        <!--<td>2</td>-->
-        <!--<td id="testbox"><span class="active" id="test1" [style.backgroundColor]="color">7</span></td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<td>6554407</td>-->
-        <!--<td id="testbox2"><span class="active" id="test2" [style.backgroundColor]="color">6</span></td>-->
-        <!--<td>1</td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<td>6554406</td>-->
-        <!--<td><span class="active" [style.backgroundColor]="color">2</span></td>-->
-        <!--<td>2</td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<td>6554405</td>-->
-        <!--<td><span class="active" [style.backgroundColor]="color">1</span></td>-->
-        <!--<td>1</td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<td>6554404</td>-->
-        <!--<td>2</td>-->
-        <!--<td><span class="active" [style.backgroundColor]="color">10</span></td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<td>6554403</td>-->
-        <!--<td>1</td>-->
-        <!--<td><span class="active" [style.backgroundColor]="color">10</span></td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<td>6554402</td>-->
-        <!--<td><span class="active" [style.backgroundColor]="color">3</span></td>-->
-        <!--<td>2</td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<td>6554401</td>-->
-        <!--<td><span class="active" [style.backgroundColor]="color">5</span></td>-->
-        <!--<td>1</td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<td>6554400</td>-->
-        <!--<td>3</td>-->
-        <!--<td><span class="active" [style.backgroundColor]="color">7</span></td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<td>6554399</td>-->
-        <!--<td>2</td>-->
-        <!--<td><span class="active" [style.backgroundColor]="color">9</span></td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<td>6554398</td>-->
-        <!--<td>1</td>-->
-        <!--<td><span class="active" [style.backgroundColor]="color">10</span></td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<td>6554397</td>-->
-        <!--<td><span class="active" [style.backgroundColor]="color">3</span></td>-->
-        <!--<td>1</td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<td>6554406</td>-->
-        <!--<td>1</td>-->
-        <!--<td><span class="active" [style.backgroundColor]="color">7</span></td>-->
-      <!--</tr>-->
       <tr class="occur">
         <td>出现次数</td>
-        <td>4</td>
-        <td>6</td>
+        <td>{{detaillmsg.occur1}}</td>
+        <td>{{detaillmsg.occur2}}</td>
       </tr>
       <tr class="ave-missing">
         <td>平均遗漏</td>
-        <td>1</td>
-        <td>0</td>
+        <td>{{detaillmsg.avemissing1}}</td>
+        <td>{{detaillmsg.avemissing2}}</td>
       </tr>
       <tr class="max-missing">
         <td>最大遗漏</td>
-        <td>2</td>
-        <td>2</td>
+        <td>{{detaillmsg.max1}}</td>
+        <td>{{detaillmsg.max2}}</td>
       </tr>
       <tr class="max-out">
         <td>最大连出</td>
-        <td>2</td>
-        <td>2</td>
+        <td>{{detaillmsg.out1}}</td>
+        <td>{{detaillmsg.out2}}</td>
       </tr>
     </tbody>
   </table>

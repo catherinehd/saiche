@@ -13,7 +13,15 @@ export class NumberComponent implements OnInit, OnDestroy, OnChanges {
   latest: string;
   latesttime: string;
   timer: any;  // 计时器
+  isCompleted: boolean;
+  isLoading: boolean;
+  page: number;  // 搜索的页数
+  pagesize: number; // 每页的数量
   constructor(private trendService: TrendService) {
+    this.page = 1;
+    this.pagesize = 20;
+    this.isCompleted = false;
+    this.isLoading = false;
   }
 
   ngOnInit() {
@@ -39,7 +47,11 @@ export class NumberComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   setNumberList(msg) {
-    this.numberList = msg.rows;
+    if (this.page === 1) {
+      this.numberList = msg.rows;
+    } else {
+      this.numberList.concat(msg.rows);
+    }
     for (let i = 0; i < this.numberList.length; i++) {
       const t = this.numberList[i].bjpkOpentime;
       this.numberList[i].bjpkOpentime = this.format(t);   // 开奖时间
@@ -62,6 +74,21 @@ export class NumberComponent implements OnInit, OnDestroy, OnChanges {
   setCodeArr(code) {
     const codearray =  code.split(',');
     return codearray;
+  }
+
+  // 上拉加载
+  canLoad() {
+    this.isLoading = true;
+    this.trendService.getNumberList( ++this.page ) .subscribe( res => {
+      console.log(res.json());
+      // if (res.json() && res.json().rows.length) {
+      //   this.isLoading = false;
+      //   this.setNumberList(res.json());
+      //   if (res.json().rows.length < this.pagesize) {
+      //     this.isCompleted = true;
+      //   }
+      // }
+    });
   }
 
 }

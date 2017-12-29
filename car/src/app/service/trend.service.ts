@@ -29,9 +29,9 @@ export class TrendService {
   }
 
   // 冠亚和值
-  getOnetwoList(size) {
+  getOnetwoList() {
     return this.httpService.getMethod( {
-      url: 'web/bjpk/queryBjpkandList/' + size,
+      url: 'web/bjpk/queryBjpkandList',
     });
   }
 

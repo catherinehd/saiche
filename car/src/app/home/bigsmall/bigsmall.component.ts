@@ -2,6 +2,8 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { TrendService } from '../../service/trend.service';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/forkJoin';
 
 @Component({
   selector: 'app-bigsmall',
@@ -20,12 +22,23 @@ export class BigsmallComponent implements OnInit, OnChanges{
   nowId: number;
   activeArr: any;
   trendList: any[];
+  detaillmsg: any;
   constructor(private router: Router,
               private trendService: TrendService,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute) {
+    this.detaillmsg = {
+      occur1: '',
+      occur2: '',
+      avemissing1: '',
+      avemissing2: '',
+      max1: '',
+      max2: '',
+      out1: '',
+      out2: '',
+    };
+  }
 
   ngOnInit() {
-    this.tableheight = document.getElementsByClassName('number-container')[0].getElementsByTagName('table')[1].clientHeight;
     this.nowId = Number(this.activatedRoute.snapshot.params.id - 1);
     // 设置title
     if (this.router.url.includes('bigsmall')) {
@@ -60,18 +73,50 @@ export class BigsmallComponent implements OnInit, OnChanges{
     if (this.title === '大小走势') {
       this.trendService.getBigsmallList(size).subscribe( res => {
         this.trendList = res.json().data.list;
-        this.line();
+        this.detaillmsg = {
+          occur1: res.json().data.firstfrequency,
+          occur2: res.json().data.secondfrequency,
+          avemissing1: res.json().data.firstaverage,
+          avemissing2: res.json().data.secondaverage,
+          max1: res.json().data.firstmaximum,
+          max2: res.json().data.secondmaximum,
+          out1: res.json().data.firsteven,
+          out2: res.json().data.secondeven,
+        };
+        setTimeout(() => {this.line(); this.tableheight = document.getElementsByClassName('number-container')[0]
+          .getElementsByTagName('table')[1].clientHeight; }, 0);
       });
     } else if (this.title === '单双走势' ) {
       this.trendService.getSingledoubleList(size).subscribe( res => {
         this.trendList = res.json().data.list;
-        this.line();
+        this.detaillmsg = {
+          occur1: res.json().data.firstfrequency,
+          occur2: res.json().data.secondfrequency,
+          avemissing1: res.json().data.firstaverage,
+          avemissing2: res.json().data.secondaverage,
+          max1: res.json().data.firstmaximum,
+          max2: res.json().data.secondmaximum,
+          out1: res.json().data.firsteven,
+          out2: res.json().data.secondeven,
+        };
+        setTimeout(() => {this.line(); this.tableheight = document.getElementsByClassName('number-container')[0]
+          .getElementsByTagName('table')[1].clientHeight; }, 0);
       });
     } else {
       this.trendService.getDragontigerList(size).subscribe( res => {
-        console.log(res.json().data.list);
         this.trendList = res.json().data.list;
-        this.line();
+        this.detaillmsg = {
+          occur1: res.json().data.firstfrequency,
+          occur2: res.json().data.secondfrequency,
+          avemissing1: res.json().data.firstaverage,
+          avemissing2: res.json().data.secondaverage,
+          max1: res.json().data.firstmaximum,
+          max2: res.json().data.secondmaximum,
+          out1: res.json().data.firsteven,
+          out2: res.json().data.secondeven,
+        };
+        setTimeout(() => {this.line(); this.tableheight = document.getElementsByClassName('number-container')[0]
+          .getElementsByTagName('table')[1].clientHeight; }, 0);
       });
     }
   }
@@ -88,6 +133,5 @@ export class BigsmallComponent implements OnInit, OnChanges{
       y1 = this.activeArr[i].parentNode.offsetTop + this.activeArr[i].offsetTop + this.activeArr[i].clientHeight;
       this.points += x1 + ',' + y1 + ' ';
     }
-    console.log(this.activeArr);
   }
 }

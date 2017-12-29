@@ -34,21 +34,21 @@ export class SettingPersonalInfoComponent implements OnInit {
     this.nickName.reset();
   }
 
-  onSave() {
-    if (!this.nickName.valid) {
-      this.showTip('请填写昵称');
-      return;
-    }
-    this.userService.updateNickName(this.nickName.value).subscribe(res => {
-      const response = res.json();
-      if (response) {
-        this.showTip(response);
-      }else {
-        this.userStoreService.refreshUser(this.nickName.value);
-        this.navigateService.popRoute();
-      }
-    });
-  }
+  // onSave() {
+  //   if (!this.nickName.valid) {
+  //     this.showTip('请填写昵称');
+  //     return;
+  //   }
+  //   this.userService.updateNickName(this.nickName.value).subscribe(res => {
+  //     const response = res.json();
+  //     if (response) {
+  //       this.showTip(response);
+  //     }else {
+  //       this.userStoreService.refreshUser(this.nickName.value);
+  //       this.navigateService.popRoute();
+  //     }
+  //   });
+  // }
 
   showTip(msg) {
     this.msg = msg;

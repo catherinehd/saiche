@@ -29,7 +29,7 @@
           <use xlink:href="assets/icon/symbol-defs.svg#icon-yanzhengma"></use>
         </svg>
       </label>
-      <input type="text" placeholder="请输入验证码" maxlength="4" formControlName="code">
+      <input type="text" placeholder="请输入验证码" maxlength="6" formControlName="code">
       <div class="btn-group">
         <button class="get-btn" *ngIf="!isCounting" [disabled]="!telValidForm.value.tel" appFastClick (onFastClick)="getCode()">获取验证码</button>
         <button class="get-btn" *ngIf="isCounting">{{count}}s</button>
@@ -66,7 +66,7 @@
       <use xlink:href="assets/icon/symbol-defs.svg#icon-yaoqingma"></use>
     </svg>
   </label>
-  <input type="text" placeholder="请输入邀请码（选填）" maxlength="4" formControlName="invitenum">
+  <input type="text" placeholder="请输入邀请码（选填）" formControlName="invitenum">
   </div>
   </div>
 
@@ -74,10 +74,10 @@
   <p class="footer-tip" *ngIf="title === '注册'" appFastClick (onFastClick)="isAgreementShow = true">注册即代表您同意<span class="agreement"> 《用户服务协议》</span></p>
   <!--<p class="footer-tip" *ngIf="title !== '注册'">如果出现问题，请联系 <a class="tel" href="tel:{{tel}}">客服电话</a></p>-->
   <div class="btn-box">
-    <button *ngIf="title === '注册'" class="form-btn" type="button" [disabled]="!telValidForm.value.tel || !telValidForm.value.code || !imgCode || !telValidForm.value.pwd" appFastClick (onFastClick)="onSubmit()">注册</button>
+    <button *ngIf="title === '注册'" class="form-btn" type="button" [disabled]="!telValidForm.value.tel || !telValidForm.value.code || !telValidForm.value.pwd" appFastClick (onFastClick)="onSubmit()">注册</button>
   </div>
   <div class="btn-box">
-    <button *ngIf="title !== '注册'" class="form-btn" type="button" [disabled]="!telValidForm.value.tel || !telValidForm.value.code || !imgCode" appFastClick (onFastClick)="onSubmit2()">重置密码</button>
+    <button *ngIf="title !== '注册'" class="form-btn" type="button" [disabled]="!telValidForm.value.tel || !telValidForm.value.code" appFastClick (onFastClick)="onSubmit2()">重置密码</button>
   </div>
 </section>
 

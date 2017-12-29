@@ -24,32 +24,36 @@ export class UserService {
   }
 
   // 注册
-  register(mobile, msgCode, loginPwd) {
-    return this.httpService.putMethod({
-      url: 'User/Register',
+  register(mobile, inviteCode, loginPwd) {
+    return this.httpService.postMethod({
+      url: 'web/user/valid/doRegister',
       data: {
-        mobile: mobile,
-        nick_name: msgCode,
-        login_pwd: loginPwd
+        userName: mobile,
+        password: loginPwd,
+        userCodes: inviteCode,
       }
     });
   }
 
   // 修改昵称
-  updateNickName(nickName) {
+  updateNickName(id, username, nickname) {
     return this.httpService.postMethod({
-      url: '/web/user/findUserByUserName/' +  nickName,
+      url: 'web/user/updateUser',
+      data: {
+        userId: id,
+        userName: username,
+        userNamenick: nickname
+    }
     });
   }
 
   // 忘记密码
-  updatePwd(mobile, nickName, loginPwd) {
-    return this.httpService.putMethod({
-      url: 'User/UpdatePwdMobile',
+  updatePwd(mobile, loginPwd) {
+    return this.httpService.postMethod({
+      url: 'web/user/updatePassword ',
       data: {
-        mobile: mobile,
-        nick_name: nickName,
-        login_pwd: loginPwd
+        userName: mobile,
+        np: loginPwd
       }
     });
   }
@@ -64,21 +68,27 @@ export class UserService {
   // 验证短信验证码
   testMsgCode(mobile, msgCode) {
     return this.httpService.getMethod({
-      url: 'ValidationCode/ValidMobile',
+      url: 'web/user/checkvalidReset/' + msgCode,
       data: {
-        uuid: mobile,
-        code: msgCode
+        uuid: mobile
       }
     });
   }
 
   // 发送短信验证码
   getMsgCode(mobile) {
-    return this.httpService.getMethod({
+    return this.httpService.postMethod({
       url: 'web/user/valid',
       data: {
-        username: mobile
+        userName: mobile
       }
+    });
+  }
+
+  // 验证邀请码
+  testInvitCode(code) {
+    return this.httpService.getMethod({
+      url: 'web/user/checkcode/' + code,
     });
   }
 

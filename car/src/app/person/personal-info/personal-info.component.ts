@@ -1,7 +1,7 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { NavigateService } from '../../service/navigate.service';
 import { DelayLeaveAnimation } from '../../shared/animations/delay-leave.animation';
-import {UserService} from '../../service/user.service';
+import { UserService } from '../../service/user.service';
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -13,6 +13,8 @@ import { FormControl, Validators } from '@angular/forms';
 export class PersonalInfoComponent implements OnInit {
   name: string;
   msg: string;
+  userId: number;
+  username: string;
   nickName = new FormControl('', [
     Validators.required
   ]);
@@ -37,13 +39,23 @@ export class PersonalInfoComponent implements OnInit {
       this.showTip('请填写昵称');
       return;
     }
-    this.userService.updateNickName(this.nickName.value).subscribe(res => {
-      const response = res.json();
-      console.log(response);
-      if (response.ok) {
-        this.showTip('修改成功');
+    if (this.nickName.value.length > 6) {
+      this.showTip('昵称最多设置6个文字，请在范围内输入');
+      return;
+    }
+    this.userService.islogin().subscribe( res => {
+      if (res.json().msg = 'OK') {
+        this.userId = res.json().data.userId;
+        this.username = res.json().data.userName;
+        this.userService.updateNickName(this.userId, this.username, this.nickName.value).subscribe(res2 => {
+          const response = res2.json();
+          if (response.ok) {
+            this.showTip('修改昵称成功');
+          }
+        });
       }
     });
+
   }
 
   showTip(msg) {

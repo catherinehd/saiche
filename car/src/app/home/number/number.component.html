@@ -1,4 +1,4 @@
-<section class="number-container">
+<section class="number-container" [appTouchLoading]="!isCompleted && !isLoading" (canLoad)="canLoad()">
   <table>
     <thead>
       <tr>
@@ -37,4 +37,7 @@
       </tr>
     </tbody>
   </table>
+
+  <!--<app-number-empty *ngIf="isCompleted && !numberList[0]"></app-number-empty>-->
+  <app-list-loading *ngIf="!isPageLoading && isLoading"></app-list-loading>
 </section>
