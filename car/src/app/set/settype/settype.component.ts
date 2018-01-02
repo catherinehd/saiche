@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigateService } from '../../service/navigate.service';
 import { ActivatedRoute } from '@angular/router';
-
+import { UserService } from '../../service/user.service';
+import { SetService } from '../../service/set.service';
 
 @Component({
   selector: 'app-settype',
@@ -15,8 +16,14 @@ export class SettypeComponent implements OnInit {
   getset: object;
   seturl: string;
   tips: any[];
+  setList: any;
+  userId: number;
+  userName: string;
+  setnumber: number;
 
   constructor(private navigateService: NavigateService,
+              private userService: UserService,
+              private setService: SetService,
               private activatedService: ActivatedRoute) {
     this.getset = {
       today: true,
@@ -68,19 +75,31 @@ export class SettypeComponent implements OnInit {
         this.seturl = 'dragontiger';
       }
     });
+    // 获取默认设置的值
+    this.userService.islogin().subscribe( res => {
+      this.setTurn(res.json().data);
+      this.userId = res.json().data.userId;
+      this.userName = res.json().data.userName;
+      if (this.seturl === 'bigsmall') { this.setnumber = res.json().data.sizeCustom; }
+      if (this.seturl === 'singledouble') { this.setnumber = res.json().data.singleCustom; }
+      if (this.seturl === 'onetwo') { this.setnumber = res.json().data.andCustom; }
+      if (this.seturl === 'dragontiger') { this.setnumber = res.json().data.loongCustom; }
+    });
     // 获取提醒设置的值
     const btnArray = document.getElementsByClassName('check-btn');
     // this.getset.today ? btnArray[0].className = 'check-btn turnOn' : btnArray[0].className = 'check-btn';
     for (let i = 0; i < btnArray.length; i++) {
-      btnArray[i].addEventListener('click', function(){
+      btnArray[i].addEventListener('click', () => {
         if (btnArray[i].className.indexOf('turnOn') > 0) {
           btnArray[i].className = 'check-btn';
           btnArray[i].querySelector('div').style.left = '0';
           // 向后台传递关闭提醒的值
+          this.saveSet(i);
         } else {
           btnArray[i].className = 'check-btn turnOn';
           btnArray[i].querySelector('div').style.left = 'auto';
           // 向后台传递打开提醒的值
+          this.saveSet(i);
         }
       });
     }
@@ -90,6 +109,196 @@ export class SettypeComponent implements OnInit {
     this.confirmshow = false;
   }
 
+  // 保存设置
+  saveSet(n) {
+    const btnArray = document.getElementsByClassName('check-btn');
+    let type = 0;
+    if (btnArray[n].className === 'check-btn turnOn') { type = 1; } else { type = 0; }
+    if (n === 0 ) {
+      switch (this.seturl) {
+        case 'bigsmall':
+          this.setService.setSizeSameday(this.userId, this.userName, type).subscribe( res => {
+          });
+          break;
+        case 'singledouble':
+          this.setService.setSingleSameday(this.userId, this.userName, type).subscribe( res => {
+          });
+          break;
+        case 'onetwo':
+          this.setService.setAndSameday(this.userId, this.userName, type).subscribe( res => {
+          });
+          break;
+        case 'dragontiger':
+          this.setService.setLoongSameday(this.userId, this.userName, type).subscribe( res => {
+          });
+          break;
+        default:
+          break;
+      }
+    } else if (n === 1) {
+      switch (this.seturl) {
+        case 'bigsmall':
+          this.setService.setSizeThisweek(this.userId, this.userName, type).subscribe( res => {
+          });
+          break;
+        case 'singledouble':
+          this.setService.setSingleThisweek(this.userId, this.userName, type).subscribe( res => {
+          });
+          break;
+        case 'onetwo':
+          this.setService.setAndThisweek(this.userId, this.userName, type).subscribe( res => {
+          });
+          break;
+        case 'dragontiger':
+          this.setService.setLoongThisweek(this.userId, this.userName, type).subscribe( res => {
+          });
+          break;
+        default:
+          break;
+      }
+    } else if ( n === 2) {
+      switch (this.seturl) {
+        case 'bigsmall':
+          this.setService.setSizeThismonth(this.userId, this.userName, type).subscribe( res => {
+          });
+          break;
+        case 'singledouble':
+          this.setService.setSingleThismonth(this.userId, this.userName, type).subscribe( res => {
+          });
+          break;
+        case 'onetwo':
+          this.setService.setAndThismonth(this.userId, this.userName, type).subscribe( res => {
+          });
+          break;
+        case 'dragontiger':
+          this.setService.setLoongThismonth(this.userId, this.userName, type).subscribe( res => {
+          });
+          break;
+        default:
+          break;
+      }
+    } else if (n === 3) {
+      switch (this.seturl) {
+        case 'bigsmall':
+          this.setService.setSizeHistory(this.userId, this.userName, type).subscribe( res => {
+          });
+          break;
+        case 'singledouble':
+          this.setService.setSingleHistory(this.userId, this.userName, type).subscribe( res => {
+          });
+          break;
+        case 'onetwo':
+          this.setService.setAndHistory(this.userId, this.userName, type).subscribe( res => {
+          });
+          break;
+        case 'dragontiger':
+          this.setService.setLoongHistory(this.userId, this.userName, type).subscribe( res => {
+          });
+          break;
+        default:
+          break;
+      }
+    }
+  }
+
+  // 设置提醒按钮
+  setTurn(data) {
+    const btnArray = document.getElementsByClassName('check-btn');
+    switch (this.seturl) {
+      case 'bigsmall':
+        if (data.sizeSameday === 1) {
+          btnArray[0].className = 'check-btn turnOn';
+        } else {
+          btnArray[0].className = 'check-btn';
+        }
+        if (data.sizeThisweek === 1) {
+          btnArray[1].className = 'check-btn turnOn';
+        } else {
+          btnArray[1].className = 'check-btn';
+        }
+        if (data.sizeThismonth === 1) {
+          btnArray[2].className = 'check-btn turnOn';
+        } else {
+          btnArray[2].className = 'check-btn';
+        }
+        if (data.sizeHistory === 1) {
+          btnArray[3].className = 'check-btn turnOn';
+        } else {
+          btnArray[3].className = 'check-btn';
+        }
+        break;
+      case 'singledouble':
+        if (data.singleSameday === 1) {
+          btnArray[0].className = 'check-btn turnOn';
+        } else {
+          btnArray[0].className = 'check-btn';
+        }
+        if (data.singleThisweek === 1) {
+          btnArray[1].className = 'check-btn turnOn';
+        } else {
+          btnArray[1].className = 'check-btn';
+        }
+        if (data.singleThismonth === 1) {
+          btnArray[2].className = 'check-btn turnOn';
+        } else {
+          btnArray[2].className = 'check-btn';
+        }
+        if (data.singleHistory === 1) {
+          btnArray[3].className = 'check-btn turnOn';
+        } else {
+          btnArray[3].className = 'check-btn';
+        }
+        break;
+      case 'onetwo':
+        if (data.andSameday === 1) {
+          btnArray[0].className = 'check-btn turnOn';
+        } else {
+          btnArray[0].className = 'check-btn';
+        }
+        if (data.andThisweek === 1) {
+          btnArray[1].className = 'check-btn turnOn';
+        } else {
+          btnArray[1].className = 'check-btn';
+        }
+        if (data.andThismonth === 1) {
+          btnArray[2].className = 'check-btn turnOn';
+        } else {
+          btnArray[2].className = 'check-btn';
+        }
+        if (data.andHistory === 1) {
+          btnArray[3].className = 'check-btn turnOn';
+        } else {
+          btnArray[3].className = 'check-btn';
+        }
+        break;
+      case 'dragontiger':
+        if (data.loongSameday === 1) {
+          btnArray[0].className = 'check-btn turnOn';
+        } else {
+          btnArray[0].className = 'check-btn';
+        }
+        if (data.loongThisweek === 1) {
+          btnArray[1].className = 'check-btn turnOn';
+        } else {
+          btnArray[1].className = 'check-btn';
+        }
+        if (data.loongThismonth === 1) {
+          btnArray[2].className = 'check-btn turnOn';
+        } else {
+          btnArray[2].className = 'check-btn';
+        }
+        if (data.loongHistory === 1) {
+          btnArray[3].className = 'check-btn turnOn';
+        } else {
+          btnArray[3].className = 'check-btn';
+        }
+        break;
+      default:
+        break;
+    }
+  }
+
+  // 设置提示消息
   showtip(type) {
     this.confirmshow = true;
     switch (type) {
@@ -268,9 +477,9 @@ export class SettypeComponent implements OnInit {
     }
   }
 
-  goPage(url) {
+  goPage(url, seturl) {
     this.navigateService.push();
-    this.navigateService.pushToRoute(url);
+    this.navigateService.pushToRoute(url, seturl);
   }
 
 }

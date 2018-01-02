@@ -26,11 +26,10 @@ export class UserService {
   // 注册
   register(mobile, inviteCode, loginPwd) {
     return this.httpService.postMethod({
-      url: 'web/user/valid/doRegister',
+      url: 'web/user/valid/doRegister/' + inviteCode,
       data: {
         userName: mobile,
         password: loginPwd,
-        userCodes: inviteCode,
       }
     });
   }
@@ -70,7 +69,7 @@ export class UserService {
     return this.httpService.getMethod({
       url: 'web/user/checkvalidReset/' + msgCode,
       data: {
-        uuid: mobile
+        userName: mobile
       }
     });
   }

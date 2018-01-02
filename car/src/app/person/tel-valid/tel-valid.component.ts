@@ -164,7 +164,7 @@ export class TelValidComponent implements OnInit {
         }
       });
     } else {
-      this.userService.testMsgCode(this.telValid.tel, this.telValidForm.value.code).subscribe(res => {
+      this.userService.testMsgCode(this.telValidForm.value.tel.replace(/\s/g, ''), this.telValidForm.value.code).subscribe(res => {
         res.json().ok ? this.goRegister() : this.showTip(res.json().msg);
       });
     }
@@ -182,7 +182,7 @@ export class TelValidComponent implements OnInit {
 
   // 验证完成后注册
   goRegister() {
-    this.userService.register(this.telValidForm.value.tel, '', this.telValidForm.value.pwd).subscribe( res => {
+    this.userService.register(this.telValidForm.value.tel.replace(/\s/g, ''), this.telValidForm.value.invitenum, this.telValidForm.value.pwd).subscribe( res => {
       this.goNextStep();
     });
   }

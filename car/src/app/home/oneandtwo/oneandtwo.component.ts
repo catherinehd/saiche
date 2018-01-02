@@ -59,7 +59,7 @@ export class OneandtwoComponent implements OnInit {
     this.points = '';
     for (let i = 0 ; i < this.activeArr.length; i++) {
       x1 = this.activeArr[i].parentNode.offsetLeft + this.activeArr[i].offsetLeft + this.activeArr[i].clientWidth / 2;
-      y1 = this.activeArr[i].parentNode.offsetTop + this.activeArr[i].offsetTop + this.activeArr[i].clientHeight;
+      y1 = this.activeArr[i].parentNode.offsetTop + this.activeArr[i].offsetTop + this.activeArr[i].clientHeight * 3 / 2;
       this.points += x1 + ',' + y1 + ' ';
     }
   }

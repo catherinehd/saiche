@@ -45,9 +45,12 @@
           <use xlink:href="assets/icon/symbol-defs.svg#icon-tishi"></use>
         </svg>
         </span>
-    <svg class="icon-xiayibu" (click)="goPage('./set-num')">
-      <use xlink:href="assets/icon/symbol-defs.svg#icon-xiayibu"></use>
-    </svg>
+        <div class="tosetnumber" (click)="goPage('./set-num', seturl)">
+          <span *ngIf="setnumber">{{setnumber}}</span>
+          <svg class="icon-xiayibu">
+            <use xlink:href="assets/icon/symbol-defs.svg#icon-xiayibu"></use>
+          </svg>
+        </div>
   </div>
 </div>
 

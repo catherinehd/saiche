@@ -10,6 +10,7 @@ import { NumberModel } from '../../model/number.model';
 export class NumberComponent implements OnInit, OnDestroy, OnChanges {
 
   numberList: any;
+  dataList: any;
   latest: string;
   latesttime: string;
   timer: any;  // 计时器
@@ -22,6 +23,7 @@ export class NumberComponent implements OnInit, OnDestroy, OnChanges {
     this.pagesize = 20;
     this.isCompleted = false;
     this.isLoading = false;
+    this.numberList = [];
   }
 
   ngOnInit() {
@@ -47,17 +49,18 @@ export class NumberComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   setNumberList(msg) {
+    for (let i = 0; i < msg.rows.length; i++) {
+      const t = msg.rows[i].bjpkOpentime;
+      msg.rows[i].bjpkOpentime = this.format(t);   // 开奖时间
+      const code = msg.rows[i].bjpkOpencode;
+      msg.rows[i].bjpkOpencode = this.setCodeArr(code);  // 开奖号码
+    }
     if (this.page === 1) {
       this.numberList = msg.rows;
     } else {
-      this.numberList.concat(msg.rows);
+      this.numberList = this.numberList.concat(msg.rows);
     }
-    for (let i = 0; i < this.numberList.length; i++) {
-      const t = this.numberList[i].bjpkOpentime;
-      this.numberList[i].bjpkOpentime = this.format(t);   // 开奖时间
-      const code = this.numberList[i].bjpkOpencode;
-      this.numberList[i].bjpkOpencode = this.setCodeArr(code);  // 开奖号码
-    }
+    this.isLoading = false;
   }
 
   // 时间戳格式化
@@ -79,15 +82,13 @@ export class NumberComponent implements OnInit, OnDestroy, OnChanges {
   // 上拉加载
   canLoad() {
     this.isLoading = true;
-    this.trendService.getNumberList( ++this.page ) .subscribe( res => {
-      console.log(res.json());
-      // if (res.json() && res.json().rows.length) {
-      //   this.isLoading = false;
-      //   this.setNumberList(res.json());
-      //   if (res.json().rows.length < this.pagesize) {
-      //     this.isCompleted = true;
-      //   }
-      // }
+    this.trendService.getNumberList( ++this.page ).subscribe( res => {
+     if(res.json().rows.length < 20) {
+       this.isCompleted = true;
+     } else {
+       this.isCompleted = false;
+     }
+     this.setNumberList(res.json());
     });
   }
 
