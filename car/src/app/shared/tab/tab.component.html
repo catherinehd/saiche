@@ -12,7 +12,7 @@
     <h4>提醒设置</h4>
   </a>
   <a class="nav" routerLink="/news" routerLinkActive="active">
-    <div *ngIf="hasnews" class="red-circle">22</div>
+    <div *ngIf="hasnews" class="red-circle">{{newsNum}}</div>
     <svg class="icon-home-inactive">
       <use xlink:href="assets/icon/symbol-defs.svg#icon-xiaoxi"></use>
     </svg>

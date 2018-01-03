@@ -12,4 +12,11 @@ export class NewsService {
       url: 'web/news/queryNewsList/' + userName + '/' + page
     });
   }
+
+  // 获取未读消息条数
+  getNewsNumber() {
+    return this.httpService.getMethod({
+      url: 'web/news/getnum'
+    });
+  }
 }
