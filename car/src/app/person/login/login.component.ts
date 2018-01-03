@@ -107,7 +107,7 @@ export class LoginComponent implements OnInit {
   loginSuccess(user) {
     this.showTip('登录成功');
     setTimeout(() => {
-      this.userStoreService.storeUser(this.loginForm.value.tel);
+      this.userStoreService.storeUser(this.loginForm.value.tel.replace(/\s/g, ''));
       this.navigateService.pushToNextRoute();
     }, 2000);
   }

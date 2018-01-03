@@ -105,7 +105,7 @@ export class TelValidComponent implements OnInit {
   // 获取短信验证码
   getMsgCode() {
     this.userService.getMsgCode(this.telValid.tel).subscribe( res => {
-      if (res.json()) {
+      if (res.json().ok) {
         this.showTip('短信验证码发送成功');
         this.counting();
       } else {
@@ -152,7 +152,7 @@ export class TelValidComponent implements OnInit {
     this.testValid();
     if (!this.telValidForm.valid) return;
     // 验证邀请码
-    if ( this.telValidForm.value.valueinvitenum ) {
+    if ( this.telValidForm.value.invitenum ) {
       this.userService.testInvitCode(this.telValidForm.value.valueinvitenum).subscribe( res => {
         if (res.json().ok) {
           this.userService.testMsgCode(this.telValid.tel, this.telValidForm.value.code).subscribe(res2 => {
@@ -182,17 +182,21 @@ export class TelValidComponent implements OnInit {
 
   // 验证完成后注册
   goRegister() {
-    this.userService.register(this.telValidForm.value.tel.replace(/\s/g, ''), this.telValidForm.value.invitenum, this.telValidForm.value.pwd).subscribe( res => {
-      this.goNextStep();
+    this.userService.register(this.telValidForm.value.tel.replace(/\s/g, ''), this.telValidForm.value.pwd).subscribe( res => {
+      if (res.json().ok) {
+        this.goNextStep();
+      } else {
+        this.showTip( res.json().msg);
+      }
     });
   }
 
   goNextStep() {
     this.navigateService.push();
     if (this.title === '注册') {
-      this.userService.login(this.telValidForm.value.tel, this.telValidForm.value.pwd).subscribe( res => {
+      this.userService.login(this.telValidForm.value.tel.replace(/\s/g, ''), this.telValidForm.value.pwd).subscribe( res => {
         setTimeout(() => {
-          this.userStoreService.storeUser(this.telValidForm.value.tel);
+          this.userStoreService.storeUser(this.telValidForm.value.tel.replace(/\s/g, ''));
           this.navigateService.pushToRoute('./home');
         }, 2000);
       });

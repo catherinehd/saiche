@@ -24,12 +24,12 @@ export class UserService {
   }
 
   // 注册
-  register(mobile, inviteCode, loginPwd) {
+  register(mobile, loginPwd) {
     return this.httpService.postMethod({
-      url: 'web/user/valid/doRegister/' + inviteCode,
+      url: 'web/user/doRegister',
       data: {
         userName: mobile,
-        password: loginPwd,
+        password: loginPwd
       }
     });
   }

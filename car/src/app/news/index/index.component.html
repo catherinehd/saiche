@@ -1,36 +1,20 @@
 <app-nav [title]="'北京赛车'" [showConfig]="{}"></app-nav>
 
-<section class="sec-home" *ngIf="hasnews">
+<section class="sec-home" *ngIf="hasnews" [appTouchLoading]="!isCompleted && !isLoading" (canLoad)="canLoad()">
   <ul class="news-list">
-    <li class="news-item">
+    <li class="news-item" *ngFor="let item of newsList">
       <div class="title-box">
-        <div class="red-circle"></div>
-        <span class="title">大小遗漏通知</span>
-        <span class="date">17/11/11</span>
+        <div class="red-circle" *ngIf="item.state"></div>
+        <span class="title">{{item.newsTheme}}</span>
+        <span class="date">{{item.updateTime}}</span>
       </div>
       <div class="news-detail">
-        【当天遗漏时提醒】冠军车号为大已经遗漏接近昨日最大值n，若需要可前去投注。另外您还有x条免费额度，邀请好友可以增加额度，快去邀请吧！
-      </div>
-    </li>
-    <li class="news-item">
-      <div class="title-box">
-        <span class="title">大小遗漏通知</span>
-        <span class="date">17/11/11</span>
-      </div>
-      <div class="news-detail">
-        【当天遗漏时提醒】冠军车号为大已经遗漏接近昨日最大值n，若需要可前去投注。另外您还有x条免费额度，邀请好友可以增加额度，快去邀请吧！
-      </div>
-    </li>
-    <li class="news-item">
-      <div class="title-box">
-        <span class="title">大小遗漏通知</span>
-        <span class="date">17/11/11</span>
-      </div>
-      <div class="news-detail">
-        【当天遗漏时提醒】冠军车号为大已经遗漏接近昨日最大值n，若需要可前去投注。另外您还有x条免费额度，邀请好友可以增加额度，快去邀请吧！
+        {{item.newsTitle}} {{item.newsInfo}}
       </div>
     </li>
   </ul>
+  <app-list-loading *ngIf="!isPageLoading && isLoading"></app-list-loading>
+  <div class="completed" *ngIf="isCompleted">没有更多了</div>
 </section>
 
 <section class="no-content" *ngIf="!hasnews">

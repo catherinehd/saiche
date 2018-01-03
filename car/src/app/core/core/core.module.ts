@@ -9,12 +9,13 @@ import { DeviceService } from '../../service/device.service';
 import { UserStoreService } from '../../service/user-store.service';
 import { TrendService } from '../../service/trend.service';
 import { SetService } from '../../service/set.service';
+import { NewsService} from '../../service/news.service';
 
 @NgModule({
   imports: [
     CommonModule, HttpModule, BrowserAnimationsModule
   ],
-  providers: [ NavigateService, HttpService, DeviceService, UserStoreService, TrendService, SetService ],
+  providers: [ NavigateService, HttpService, DeviceService, UserStoreService, TrendService, SetService, NewsService ],
   exports: [ HttpModule, BrowserAnimationsModule ]
 })
 export class CoreModule {
