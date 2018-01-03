@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigateService } from '../../service/navigate.service';
 import { Router } from '@angular/router';
+import { UserService } from '../../service/user.service';
 
 @Component({
   selector: 'app-index',
@@ -16,6 +17,7 @@ export class IndexComponent implements OnInit {
   oneandtwo: boolean;
   confirmshow: boolean;
   constructor(private navigateService: NavigateService,
+              private userService: UserService,
               private router: Router) {
     this.confirmshow = false;
 
@@ -52,4 +54,15 @@ export class IndexComponent implements OnInit {
     }
   }
 
+  // 进入提醒设置页面
+  goSetnews() {
+    this.userService.islogin().subscribe( res => {
+      if (res.json().ok) {
+        this.navigateService.push();
+        this.navigateService.pushToRoute('set');
+      } else {
+        this.confirmshow = true;
+      }
+    });
+  }
 }

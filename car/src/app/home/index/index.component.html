@@ -1,4 +1,5 @@
-<app-nav [title]="bigtitle" [showConfig]="{}"></app-nav>
+<app-nav *ngIf="bigtitle === '号码'" [title]="bigtitle" [showConfig]="{}"></app-nav>
+<app-nav *ngIf="bigtitle !== '号码'" [title]="bigtitle" [showConfig]="{isGosetnewsShow: true}" (onSet)="goSetnews()"></app-nav>
 
 <section class="sec-home">
   <div class="nav-bar">

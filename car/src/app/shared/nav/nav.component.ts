@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { NavigateService } from '../../service/navigate.service';
+import { UserService } from '../../service/user.service';
 
 @Component({
   selector: 'app-nav',
@@ -12,8 +13,10 @@ export class NavComponent implements OnInit, OnChanges {
   @Output() onSave = new EventEmitter();
   @Output() onEdit = new EventEmitter();
   @Output() onFinish = new EventEmitter();
+  @Output() onSet = new EventEmitter();
 
-  constructor(private navigateService: NavigateService) {
+  constructor(private navigateService: NavigateService,
+              private userService: UserService) {
   }
 
   ngOnInit() {
@@ -42,6 +45,10 @@ export class NavComponent implements OnInit, OnChanges {
   Finish() {
     this.onFinish.emit();
   }
+
+  Set() {
+    this.onSet.emit();
+  }
 }
 
 class ShowConfig {
@@ -51,5 +58,6 @@ class ShowConfig {
               public isFinishShow ?: boolean,
               public isCancelShow ?: boolean,
               public isRegisterShow ?: boolean,
+              public isGosetnewsShow ?: boolean,
               public isSaveShow ?: boolean) {}
 }

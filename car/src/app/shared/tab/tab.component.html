@@ -25,3 +25,5 @@
     <h4>个人中心</h4>
   </a>
 </footer>
+
+<app-modal *ngIf="confirmshow" [modal]='modal' [showconfirm]="true" (onConfirm)='onConfirm($event)'></app-modal>
