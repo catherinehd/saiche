@@ -18,6 +18,14 @@ export class IndexComponent {
   constructor(private navigateSerivce: NavigateService,
               private userService: UserService,
               private userStoreService: UserStoreService) {
+    if (localStorage.getItem('user')) {
+      this.getInfo();
+    } else {
+      this.nickName = '';
+    }
+  }
+
+  getInfo() {
     const user = this.userService.islogin().subscribe( res => {
       if (res.json().msg === 'OK') {
         this.nickName = res.json().data.userNamenick;

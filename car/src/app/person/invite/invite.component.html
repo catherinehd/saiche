@@ -1,28 +1,43 @@
 <app-nav [title]="'邀请好友'" [showConfig]="{isArrowShow: true}"></app-nav>
 
 <section class="invite-sec">
-  <div class="code">
-    <div class="tip">
-      扫一扫，接受好友邀请
+  <div class="data">
+    <div class="total">
+      <div class="title">
+        累计邀请
+      </div>
+      <div class="number">
+        {{total}}
+        <span>(人)</span>
+      </div>
     </div>
-    <img src="#" />
-    <div class="code-num">
-      邀请码： 372663
+    <div class="remain">
+      <div class="title">
+        短信剩余额度
+      </div>
+      <div class="number">
+        {{remain}}
+        <span>(条)</span>
+      </div>
     </div>
   </div>
 
-  <div class="express">
-    <div class="title">
-      邀请说明
+  <div class="url">
+    <div class="tips">
+      复制邀请链接发送给朋友
     </div>
-    <p>
-      1.邀请对方打开手机上的微信，qq或者其他二维码扫描工具扫描二维码
-    </p>
-    <p>
-      2.在页面中选择【立即下载】，下载成功后安装本应用，如若无法下载，可在应用商店或APP Store搜索“***”进行下载
-    </p>
-    <p>
-      3.打开应用，在注册时输入上方的邀请码，即可邀请成功，双方均可获赠25条短信免费额度
-    </p>
+    <div class="input-url">
+      <input type="text" value="{{shareLink}}" id="input" #input>
+    </div>
+    <button #btn (click)="copy()" data-clipboard-target="#input">
+      点击复制
+    </button>
+  </div>
+
+  <div class="code">
+    <img [attr.src]="shareLinkImg" />
+    <div class="code-exp">
+      分享您的二维码，邀请你的小伙伴一起加入~
+    </div>
   </div>
 </section>

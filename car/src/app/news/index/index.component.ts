@@ -14,6 +14,7 @@ export class IndexComponent implements OnInit {
   isLoading: boolean;
   isCompleted: boolean;
   page: number;
+  userName: string;
 
   constructor(private newsService: NewsService,
               private userService: UserService) {
@@ -22,17 +23,25 @@ export class IndexComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.newsService.getNewsList('15168224479', 1).subscribe( res => {
-      if (res.json().rows.length) {
-        this.hasnews = true;
-        this.newsList = res.json().rows;
-        for (let i = 0; i < this.newsList.length; i++) {
-          const t = this.newsList[i].updateTime;
-          this.newsList[i].updateTime = this.format(t);   // 开奖时间
+    this.userService.islogin().subscribe( res => {
+      this.userName = res.json().data.userName;
+      this.newsService.getNewsList(this.userName, 1).subscribe( res => {
+        if (res.json().rows.length) {
+          if (res.json().rows.length < 15) {
+            this.isCompleted = true;
+          } else {
+            this.isCompleted = false;
+          }
+          this.hasnews = true;
+          this.newsList = res.json().rows;
+          for (let i = 0; i < this.newsList.length; i++) {
+            const t = this.newsList[i].updateTime;
+            this.newsList[i].updateTime = this.format(t);   // 开奖时间
+          }
+        } else {
+          this.hasnews = false;
         }
-      } else {
-        this.hasnews = false;
-      }
+      });
     });
   }
 
@@ -59,7 +68,7 @@ export class IndexComponent implements OnInit {
   // 上拉加载
   canLoad() {
     this.isLoading = true;
-    this.newsService.getNewsList( '15168224479', ++this.page ).subscribe( res => {
+    this.newsService.getNewsList( this.userName, ++this.page ).subscribe( res => {
       if(res.json().rows.length < 15) {
         this.isCompleted = true;
       } else {

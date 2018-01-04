@@ -1,6 +1,8 @@
 <section class="number-container">
   <svg class="line" width="100%" [attr.height]="tableheight" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <polyline [attr.points]="points" style="stroke-width:1" [style.stroke]="color"></polyline>
+    <text *ngFor="let item of trendList" x="162" [attr.y]="item.y" [attr.fill]="item.num === 0 ? '#fff' : '#6e6e6e'" text-anchor="middle" dominant-baseline="middle" >{{item.first}}</text>
+    <text *ngFor="let item of trendList" x="303" [attr.y]="item.y" [attr.fill]="item.num === 1 ? '#fff' : '#6e6e6e'" text-anchor="middle" dominant-baseline="middle" >{{item.second}}</text>
   </svg>
   <table>
     <thead>
@@ -54,8 +56,8 @@
       </tr>
       <tr *ngFor="let item of trendList">
         <td>{{item.bjpkExpect}}</td>
-        <td *ngIf="title !== '1-5龙虎'"><span [attr.class]="item.num === 0 ? 'active' : none" [style.backgroundColor]="item.num === 0 ? color : 'transparent'">{{item.first}}</span></td>
-        <td *ngIf="title !== '1-5龙虎'"><span [attr.class]="item.num === 1 ? 'active' : none" [style.backgroundColor]="item.num === 1 ? color : 'transparent'">{{item.second}}</span></td>
+        <td *ngIf="title !== '1-5龙虎'"><span [attr.class]="item.num === 0 ? 'active' : none" [style.backgroundColor]="item.num === 0 ? color : 'transparent'"></span></td>
+        <td *ngIf="title !== '1-5龙虎'"><span [attr.class]="item.num === 1 ? 'active' : none" [style.backgroundColor]="item.num === 1 ? color : 'transparent'"></span></td>
         <td *ngIf="title === '1-5龙虎' && item.firsts"><span [attr.class]="item.num === 0 ? 'active' : none" [style.backgroundColor]="item.num === 0 ? color : 'transparent'">{{item.firsts}}</span></td>
         <td *ngIf="title === '1-5龙虎' && item.first"><span [attr.class]="item.num === 0 ? 'active' : none" [style.backgroundColor]="item.num === 0 ? color : 'transparent'">{{item.first}}</span></td>
         <td *ngIf="title === '1-5龙虎' && item.seconds"><span [attr.class]="item.num === 1 ? 'active' : none" [style.backgroundColor]="item.num === 1 ? color : 'transparent'">{{item.seconds}}</span></td>

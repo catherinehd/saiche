@@ -97,19 +97,19 @@ export class SettingPwdComponent implements OnInit {
   }
 
   register(tel, msgCode) {
-    this.userService.register(tel, msgCode, this.pwdSettingForm.value.pwd).subscribe(res => {
-      const response = res.json();
-      if (response.id < 0) {
-        this.showTip(response.nick_name);
-        if (response.nick_name === '验证码错误') setTimeout(() => this.navigateService.popRoute(), 3000);
-      } else {
-        this.showTip('注册成功', () => {
-          this.userStoreService.storeUser(response);
-          this.navigateService.clearRouteList();
-          this.navigateService.pushToRoute('/');
-        });
-      }
-    });
+    // this.userService.register(tel, msgCode, this.pwdSettingForm.value.pwd).subscribe(res => {
+    //   const response = res.json();
+    //   if (response.id < 0) {
+    //     this.showTip(response.nick_name);
+    //     if (response.nick_name === '验证码错误') setTimeout(() => this.navigateService.popRoute(), 3000);
+    //   } else {
+    //     this.showTip('注册成功', () => {
+    //       this.userStoreService.storeUser(response);
+    //       this.navigateService.clearRouteList();
+    //       this.navigateService.pushToRoute('/');
+    //     });
+    //   }
+    // });
   }
 
   // 重置密码

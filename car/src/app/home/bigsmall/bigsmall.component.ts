@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { TrendService } from '../../service/trend.service';
@@ -10,7 +10,7 @@ import 'rxjs/add/observable/forkJoin';
   templateUrl: './bigsmall.component.html',
   styleUrls: ['./bigsmall.component.styl']
 })
-export class BigsmallComponent implements OnInit, OnChanges{
+export class BigsmallComponent implements OnInit, OnChanges, OnDestroy {
 
   title: string;
   smalltitle1: string;
@@ -23,6 +23,8 @@ export class BigsmallComponent implements OnInit, OnChanges{
   activeArr: any;
   trendList: any[];
   detaillmsg: any;
+  numberHeight: number;
+  numberWidth: number;
   constructor(private router: Router,
               private trendService: TrendService,
               private activatedRoute: ActivatedRoute) {
@@ -66,6 +68,10 @@ export class BigsmallComponent implements OnInit, OnChanges{
   }
 
   ngOnChanges() {
+  }
+
+  ngOnDestroy() {
+    // 跳转时删除line
   }
 
   getData(size) {
@@ -115,8 +121,9 @@ export class BigsmallComponent implements OnInit, OnChanges{
           out1: res.json().data.firsteven,
           out2: res.json().data.secondeven,
         };
-        setTimeout(() => {this.line(); this.tableheight = document.getElementsByClassName('number-container')[0]
-          .getElementsByTagName('table')[1].clientHeight; }, 0);
+        setTimeout(() => {this.tableheight = document.getElementsByClassName('number-container')[0]
+          .getElementsByTagName('table')[1].clientHeight;
+          this.line(); }, 0);
       });
     }
   }
@@ -130,8 +137,11 @@ export class BigsmallComponent implements OnInit, OnChanges{
     this.points = '';
     for (let i = 0 ; i < this.activeArr.length; i++) {
       x1 = this.activeArr[i].parentNode.offsetLeft + this.activeArr[i].offsetLeft + this.activeArr[i].clientWidth / 2;
-      y1 = this.activeArr[i].parentNode.offsetTop + this.activeArr[i].offsetTop + this.activeArr[i].clientHeight / 2;
+      y1 = this.activeArr[i].parentNode.offsetTop + this.activeArr[i].offsetTop + this.activeArr[i].clientHeight / 2 + 1;
       this.points += x1 + ',' + y1 + ' ';
+      this.trendList[i].x = x1;
+      this.trendList[i].y = y1;
+      console.log(this.trendList[0].y);
     }
   }
 }

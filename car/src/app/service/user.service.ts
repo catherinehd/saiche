@@ -51,16 +51,23 @@ export class UserService {
     return this.httpService.postMethod({
       url: 'web/user/updatePassword ',
       data: {
-        userName: mobile,
+        username: mobile,
         np: loginPwd
       }
+    });
+  }
+
+  // 验证手机号是否有效
+  testPhonenumber(username) {
+    return this.httpService.getMethod({
+      url: 'web/user/checkusername/' + username,
     });
   }
 
   // 验证手机号是否已经注册
   testHasRegister(username) {
     return this.httpService.getMethod({
-      url: 'web/user/checkusername/' + username,
+      url: 'web/user/checkusernamepass/' + username,
     });
   }
 

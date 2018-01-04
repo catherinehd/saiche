@@ -5,39 +5,75 @@
   height 100%
   background $theme-blue-color
   text-align center
+  &>div
+    background $theme-white-color
+    width 33rem
+    border-radius .5rem
+    margin 0 auto 1.5rem
+    text-align center
+  .data
+    padding 2.5rem
+    display flex
+    justify-content space-between
+    text-align center
+    .total
+    .remain
+      flex-grow 1
+      .title
+        font-size $font-normal-size
+        color $font-main-color
+        margin-bottom 1rem
+      .number
+        color $theme-red-color
+        font-size 2rem
+        span
+          font-size 1.2rem
+          color $font-right-color
+          margin-left .5rem
+    .total
+      border-right $default-border
+  .url
+    margin-bottom 0
+    height 15.3rem
+    border-bottom dotted 1px #2c65a8
+    .tips
+      font-size 1.3rem
+      color #6e6e6e
+      border-bottom $default-border
+      height 4.2rem
+      line-height 4.2rem
+    .input-url
+      margin 2rem 0
+      input
+        width 100%
+        text-align center
+        color $theme-blue-color
+        font-size $font-normal-size
+        &::-webkit-input-placeholder
+          color $theme-blue-color
+        &:-moz-placeholder
+          color $theme-blue-color
+        &::-moz-placeholder
+          color $theme-blue-color
+        &:-ms-input-placeholder
+          color $theme-blue-color
+    button
+      border 1px solid $theme-blue-color
+      font-size $font-normal-size
+      color $theme-blue-color
+      border-radius .5rem
+      width 7rem
+      height 3rem
+      line-height 1
   .code
     background $theme-white-color
-    border-radius .5rem
-    width 33rem
     height @width
-    margin 0 auto 1.5rem
-    .tip
-      font-size $font-normal-size
-      color $font-main-color
-      padding-top 4rem
-      margin-bottom 1.3rem
     img
-      width 18.3rem
+      margin-top 6.8rem
+      width 18rem
       height @width
-    .code-num
-      font-size $font-bigger-size
-      color $theme-blue-color
-      margin-top 2.9rem
-  .express
-    background $theme-white-color
-    border-radius .5rem
-    width 33rem
-    height 26.8rem
-    margin 0 auto
-    .title
-      font-size $font-bigger-size
-      color $font-main-color
-      padding-top 1.7rem
-      margin-bottom 2.4rem
-    p
-      margin-bottom 1.1rem
-      padding 0 2.2rem
-      letter-spacing 0.7px
+    .code-exp
       font-size $font-normal-size
-      color #6e6e6e
-      text-align left
+      color $font-main-color
+      margin-top 1.5rem
+      padding-bottom 3.9rem

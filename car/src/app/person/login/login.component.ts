@@ -82,7 +82,7 @@ export class LoginComponent implements OnInit {
     if (this.telControl.valid) {
       this.userService.testHasRegister(this.getTelValue()).subscribe(res => {
         const response = res.json();
-        if (!response) {
+        if (!response.ok) {
           this.showTip('该手机号码未注册');
         }
       });
