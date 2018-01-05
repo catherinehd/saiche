@@ -35,6 +35,17 @@ export class IndexComponent {
   }
 
   goPage(page) {
+    if (localStorage.getItem('user')) {
+      this.navigateSerivce.push();
+      this.navigateSerivce.pushToRoute(page);
+    } else {
+      this.navigateSerivce.push();
+      this.navigateSerivce.storeNextRoute(page);
+      this.navigateSerivce.pushToRoute('./login');
+    }
+  }
+
+  go(page) {
     this.navigateSerivce.push();
     this.navigateSerivce.pushToRoute(page);
   }

@@ -23,8 +23,8 @@ export class BigsmallComponent implements OnInit, OnChanges, OnDestroy {
   activeArr: any;
   trendList: any[];
   detaillmsg: any;
-  numberHeight: number;
-  numberWidth: number;
+  d1: number; // 获奖为第一列时候的x坐标
+  d2: number; // 获奖为第二列时候的x坐标
   constructor(private router: Router,
               private trendService: TrendService,
               private activatedRoute: ActivatedRoute) {
@@ -79,69 +79,57 @@ export class BigsmallComponent implements OnInit, OnChanges, OnDestroy {
     if (this.title === '大小走势') {
       this.trendService.getBigsmallList(size).subscribe( res => {
         this.trendList = res.json().data.list;
-        this.detaillmsg = {
-          occur1: res.json().data.firstfrequency,
-          occur2: res.json().data.secondfrequency,
-          avemissing1: res.json().data.firstaverage,
-          avemissing2: res.json().data.secondaverage,
-          max1: res.json().data.firstmaximum,
-          max2: res.json().data.secondmaximum,
-          out1: res.json().data.firsteven,
-          out2: res.json().data.secondeven,
-        };
+        this.setDetailMsg(res);
         setTimeout(() => {this.line(); this.tableheight = document.getElementsByClassName('number-container')[0]
-          .getElementsByTagName('table')[1].clientHeight; }, 0);
+          .getElementsByTagName('table')[0].clientHeight; }, 0);
       });
     } else if (this.title === '单双走势' ) {
       this.trendService.getSingledoubleList(size).subscribe( res => {
         this.trendList = res.json().data.list;
-        this.detaillmsg = {
-          occur1: res.json().data.firstfrequency,
-          occur2: res.json().data.secondfrequency,
-          avemissing1: res.json().data.firstaverage,
-          avemissing2: res.json().data.secondaverage,
-          max1: res.json().data.firstmaximum,
-          max2: res.json().data.secondmaximum,
-          out1: res.json().data.firsteven,
-          out2: res.json().data.secondeven,
-        };
+        this.setDetailMsg(res);
         setTimeout(() => {this.line(); this.tableheight = document.getElementsByClassName('number-container')[0]
-          .getElementsByTagName('table')[1].clientHeight; }, 0);
+          .getElementsByTagName('table')[0].clientHeight; }, 0);
       });
     } else {
       this.trendService.getDragontigerList(size).subscribe( res => {
         this.trendList = res.json().data.list;
-        this.detaillmsg = {
-          occur1: res.json().data.firstfrequency,
-          occur2: res.json().data.secondfrequency,
-          avemissing1: res.json().data.firstaverage,
-          avemissing2: res.json().data.secondaverage,
-          max1: res.json().data.firstmaximum,
-          max2: res.json().data.secondmaximum,
-          out1: res.json().data.firsteven,
-          out2: res.json().data.secondeven,
-        };
+        this.setDetailMsg(res);
         setTimeout(() => {this.tableheight = document.getElementsByClassName('number-container')[0]
-          .getElementsByTagName('table')[1].clientHeight;
+          .getElementsByTagName('table')[0].clientHeight;
           this.line(); }, 0);
       });
     }
   }
 
+  setDetailMsg(res) {
+    this.detaillmsg = {
+      occur1: res.json().data.firstfrequency,
+      occur2: res.json().data.secondfrequency,
+      avemissing1: res.json().data.firstaverage,
+      avemissing2: res.json().data.secondaverage,
+      max1: res.json().data.firstmaximum,
+      max2: res.json().data.secondmaximum,
+      out1: res.json().data.firsteven,
+      out2: res.json().data.secondeven,
+    };
+  }
+
   line() {
     // 连线
-    this.activeArr = document.getElementsByClassName('number-container')[0].getElementsByTagName('table')[1]
+    this.activeArr = document.getElementsByClassName('number-container')[0].getElementsByTagName('table')[0]
       .getElementsByClassName('active');
     let x1 = 0;
     let y1 = 0;
+    const containerWidth = document.getElementsByClassName('number-container')[0]
+      .getElementsByTagName('table')[0].clientWidth;
     this.points = '';
     for (let i = 0 ; i < this.activeArr.length; i++) {
       x1 = this.activeArr[i].parentNode.offsetLeft + this.activeArr[i].offsetLeft + this.activeArr[i].clientWidth / 2;
-      y1 = this.activeArr[i].parentNode.offsetTop + this.activeArr[i].offsetTop + this.activeArr[i].clientHeight / 2 + 1;
+      y1 = this.activeArr[i].parentNode.offsetTop + this.activeArr[i].offsetTop + this.activeArr[i].clientHeight / 2;
       this.points += x1 + ',' + y1 + ' ';
       this.trendList[i].x = x1;
       this.trendList[i].y = y1;
-      console.log(this.trendList[0].y);
+      if (x1 < containerWidth / 2) {this.d1 = x1 + 1; } else {this.d2 = x1 + 1; }
     }
   }
 }

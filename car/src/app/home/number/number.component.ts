@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, OnChanges } from '@angular/core';
 import { TrendService } from '../../service/trend.service';
 import { NumberModel } from '../../model/number.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-number',
@@ -16,9 +17,11 @@ export class NumberComponent implements OnInit, OnDestroy, OnChanges {
   timer: any;  // 计时器
   isCompleted: boolean;
   isLoading: boolean;
+  agent: number;  // 邀请人ID
   page: number;  // 搜索的页数
   pagesize: number; // 每页的数量
-  constructor(private trendService: TrendService) {
+  constructor(private trendService: TrendService,
+              private activatedRoute: ActivatedRoute) {
     this.page = 1;
     this.pagesize = 20;
     this.isCompleted = false;
@@ -27,6 +30,11 @@ export class NumberComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnInit() {
+    if (this.activatedRoute.snapshot.queryParams.agent) {
+      this.agent = this.activatedRoute.snapshot.queryParams.agent;
+    } else {
+      this.agent = null;
+    }
     this.getNumber();
   }
 
@@ -37,7 +45,7 @@ export class NumberComponent implements OnInit, OnDestroy, OnChanges {
   ngOnChanges() {}
 
   getNumber() {
-    this.trendService.getNumberList(1).subscribe( (res) => {
+    this.trendService.getNumberList(1, this.agent).subscribe( (res) => {
       this.setNumberList(res.json());
       this.latest = res.json().bjpkExpect;
       this.latesttime = this.format(res.json().bjpkOpentime);
@@ -82,7 +90,7 @@ export class NumberComponent implements OnInit, OnDestroy, OnChanges {
   // 上拉加载
   canLoad() {
     this.isLoading = true;
-    this.trendService.getNumberList( ++this.page ).subscribe( res => {
+    this.trendService.getNumberList( ++this.page, this.agent ).subscribe( res => {
      if(res.json().rows.length < 20) {
        this.isCompleted = true;
      } else {

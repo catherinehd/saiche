@@ -18,6 +18,7 @@ export class TabComponent implements OnInit, OnDestroy {
   modal: object;
   newsNum: number;
   timer: any;
+  goUrl: string;
 
   constructor(private navigateService: NavigateService,
               private newsService: NewsService,
@@ -56,24 +57,37 @@ export class TabComponent implements OnInit, OnDestroy {
     });
   }
 
-  godefaultstar() {
-    this.godefault.emit();
+  goSetnews() {
+    if (localStorage.getItem('user')) {
+      this.navigateService.push();
+      this.navigateService.pushToRoute('set');
+    } else {
+      this.modal = {
+        isConfirmModalShow: true,
+        confirmMsg: '提醒设置模块需登录才能使用，是否前去登录'
+      }
+      this.confirmshow = true;
+      this.goUrl = 'set';
+    }
   }
 
-  goSetnews() {
-    this.userService.islogin().subscribe( res => {
-      if (res.json().ok) {
-        this.navigateService.push();
-        this.navigateService.pushToRoute('set');
-      } else {
-        this.confirmshow = true;
+  goGetnews() {
+    if (localStorage.getItem('user')) {
+      this.navigateService.push();
+      this.navigateService.pushToRoute('news');
+    } else {
+      this.modal = {
+        isConfirmModalShow: true,
+        confirmMsg: '消息模块需登录才能使用，是否前去登录'
       }
-    });
+      this.confirmshow = true;
+      this.goUrl = 'news';
+    }
   }
 
   onConfirm(e) {
     if (e === 1) {
-      this.navigateService.push();
+      this.navigateService.storeNextRoute(this.goUrl);
       this.navigateService.pushToRoute('./login');
     } else {
       this.confirmshow = false;

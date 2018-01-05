@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { TrendService } from '../../service/trend.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-showtime',
@@ -10,6 +11,7 @@ export class ShowtimeComponent implements OnInit, OnDestroy {
 
   time: number;
   timer: any;
+  agent: number;
   timenum: number;
   minutes: number;  // 分钟
   seconds: number; // 秒数
@@ -17,10 +19,16 @@ export class ShowtimeComponent implements OnInit, OnDestroy {
   seconds2: number; // 秒数十位数
   @Output() onRefresh = new EventEmitter();
 
-  constructor(private trendService: TrendService) { }
+  constructor(private trendService: TrendService,
+              private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.trendService.getNumberList(1).subscribe( (res) => {
+    if (this.activatedRoute.snapshot.queryParams.agent) {
+      this.agent = this.activatedRoute.snapshot.queryParams.agent;
+    } else {
+      this.agent = null;
+    }
+    this.trendService.getNumberList(1, this.agent).subscribe( (res) => {
       this.time = res.json().time ;
       // 获取开奖剩余时间秒数
       this.timeformat(this.time);

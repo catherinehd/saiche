@@ -34,8 +34,8 @@
           <!--</svg>-->
         <!--</button>-->
         <button class="eye-btn" *ngIf="!isOpenEyesShow && loginForm.value.pwd" appFastClick (onFastClick)="isOpenEyesShow = true">
-          <svg class="icon-open-eyes">
-            <use xlink:href="assets/icon/symbol-defs.svg#iconyincang"></use>
+          <svg class="icon-open-eyes" style="fill: #2c65a8;">
+            <use xlink:href="assets/icon/symbol-defs.svg#icon-yincang"></use>
           </svg>
         </button>
         <button class="eye-btn" *ngIf="isOpenEyesShow && loginForm.value.pwd" appFastClick (onFastClick)="isOpenEyesShow = false">

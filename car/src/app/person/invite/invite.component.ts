@@ -17,6 +17,7 @@ export class InviteComponent implements OnInit, AfterViewInit {
   total: number;
   remain: number;
   copyobj: any;
+  msg: string;
   @HostBinding('@slideUpAnimation') slideUpAnimation;
   @HostBinding('class.invitPage') invitPage = true;
   @ViewChild('btn') btnElementRef;
@@ -26,7 +27,6 @@ export class InviteComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.userService.islogin().subscribe( res => {
-      console.log(res.json());
       this.shareLink = 'http://www.baidu..com？agent=' + res.json().data.userId;
       this.shareLinkImg = res.json().data.userCode;
       this.total = res.json().data.userPlease;
@@ -40,14 +40,19 @@ export class InviteComponent implements OnInit, AfterViewInit {
 
   copy() {
     this.copyobj.on('success', e => {
-      alert('复制成功');
+      this.showTip('复制成功');
       this.inputElementRef.nativeElement.blur();
       e.clearSelection();
       this.copyobj.destroy();
     });
     this.copyobj.on('error', e => {
-      alert('自动复制失败，请手动选择链接分享。');
+     this.showTip('自动复制失败，请手动选择链接分享。');
       e.clearSelection();
     });
+  }
+
+  showTip(msg) {
+    this.msg = msg;
+    setTimeout(() => this.msg = '', 2000);
   }
 }

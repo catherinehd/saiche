@@ -93,7 +93,6 @@ export class TelValidComponent implements OnInit {
     if (!this.telControl.valid) return;
     this.userService.testHasRegister(this.telValid.tel).subscribe(res => {
       const response = res.json();
-      console.log(response);
       if (this.title !== '注册') {
         response.ok ? this.getMsgCode() : this.showTip('该手机号码未注册');
       } else {

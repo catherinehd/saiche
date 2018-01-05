@@ -28,7 +28,7 @@ export class SettelComponent implements OnInit {
   validatorMsg = {
     tel: {
       required: '请填写手机号码',
-      pattern: '请填写有效的手机号码'
+      pattern: '手机号格式错误'
     },
     num: {
       required: '请设置期数',
@@ -49,7 +49,7 @@ export class SettelComponent implements OnInit {
 
   ngOnInit() {
     this.title = this.router.url.includes('tel') ? '修改手机号' : '自定义设置';
-    this.labelfor = this.router.url.includes('tel') ? '手机号' : '设置期数';
+    this.labelfor = this.router.url.includes('tel') ? '手机号:' : '设置期数:';
     this.localurl = this.activatedRoute.snapshot.params.url;
     this.buildform();
     this.userService.islogin().subscribe( res => {

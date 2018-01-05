@@ -22,10 +22,8 @@ export class SettingPwdComponent implements OnInit {
   pwdSetting: PwdSetting = new PwdSetting('', '');
   msg: string;
   isAgreementShow: boolean;
-  isEyesOpen = {
-    pwd: true,
-    pwdAgain: true
-  };
+  isOpenEyesShow = false;
+  isOpenEyesShowAgain = false;
   validatorMsg = {
     pwd: {
       required: '请填写密码',

@@ -1,7 +1,11 @@
-<svg class="line" width="100%" [attr.height]="tableheight" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <polyline [attr.points]="points" style="stroke-width:1" [style.stroke]="color"></polyline>
-</svg>
 <section class="number-container">
+  <svg class="line" width="100%" [attr.height]="tableheight" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <polyline [attr.points]="points" style="stroke-width:1" [style.stroke]="color"></polyline>
+    <g *ngFor="let item of trendList">
+      <circle [attr.cx]="item.x" [attr.cy]="item.y" r="1rem" fill="#379ade" text-anchor="middle" dominant-baseline="middle" />
+      <text [attr.x]="item.x" [attr.y]="item.ytext" fill="#fff" text-anchor="middle" dominant-baseline="middle" >{{item.num}}</text>
+    </g>
+  </svg>
   <table>
     <tbody>
     <tr class="top">
@@ -27,43 +31,43 @@
     <tr *ngFor="let item of trendList">
       <td>{{item.bjpkExpect}}</td>
       <td>
-        <span [attr.class]="item.num === 2 ? 'active' : none" *ngIf="item.num === 2">2</span>
-        <span [attr.class]="item.num === 3 ? 'active' : none" *ngIf="item.num === 3">3</span>
+        <span [attr.class]="item.num === 2 ? 'active' : none" *ngIf="item.num === 2"></span>
+        <span [attr.class]="item.num === 3 ? 'active' : none" *ngIf="item.num === 3"></span>
       </td>
       <td>
-        <span [attr.class]="item.num === 4 ? 'active' : none" *ngIf="item.num === 4">4</span>
-        <span [attr.class]="item.num === 5 ? 'active' : none" *ngIf="item.num === 5">5</span>
+        <span [attr.class]="item.num === 4 ? 'active' : none" *ngIf="item.num === 4"></span>
+        <span [attr.class]="item.num === 5 ? 'active' : none" *ngIf="item.num === 5"></span>
       </td>
       <td>
-        <span [attr.class]="item.num === 6 ? 'active' : none" *ngIf="item.num === 6">6</span>
-        <span [attr.class]="item.num === 7 ? 'active' : none" *ngIf="item.num === 7">7</span>
+        <span [attr.class]="item.num === 6 ? 'active' : none" *ngIf="item.num === 6"></span>
+        <span [attr.class]="item.num === 7 ? 'active' : none" *ngIf="item.num === 7"></span>
       </td>
       <td>
-        <span [attr.class]="item.num === 8 ? 'active' : none" *ngIf="item.num === 8">8</span>
-        <span [attr.class]="item.num === 9 ? 'active' : none" *ngIf="item.num === 9">9</span>
+        <span [attr.class]="item.num === 8 ? 'active' : none" *ngIf="item.num === 8"></span>
+        <span [attr.class]="item.num === 9 ? 'active' : none" *ngIf="item.num === 9"></span>
       </td>
       <td>
-        <span [attr.class]="item.num === 10 ? 'active' : none" *ngIf="item.num === 10">10</span>
-        <span [attr.class]="item.num === 11 ? 'active' : none" *ngIf="item.num === 11">11</span>
+        <span [attr.class]="item.num === 10 ? 'active' : none" *ngIf="item.num === 10"></span>
+        <span [attr.class]="item.num === 11 ? 'active' : none" *ngIf="item.num === 11"></span>
       </td>
       <td>
-        <span [attr.class]="item.num === 12 ? 'active' : none" *ngIf="item.num === 12">12</span>
-        <span [attr.class]="item.num === 13 ? 'active' : none" *ngIf="item.num === 13">13</span>
+        <span [attr.class]="item.num === 12 ? 'active' : none" *ngIf="item.num === 12"></span>
+        <span [attr.class]="item.num === 13 ? 'active' : none" *ngIf="item.num === 13"></span>
       </td>
       <td>
-        <span [attr.class]="item.num === 14 ? 'active' : none" *ngIf="item.num === 14">14</span>
-        <span [attr.class]="item.num === 15 ? 'active' : none" *ngIf="item.num === 15">15</span>
+        <span [attr.class]="item.num === 14 ? 'active' : none" *ngIf="item.num === 14"></span>
+        <span [attr.class]="item.num === 15 ? 'active' : none" *ngIf="item.num === 15"></span>
       </td>
       <td>
-        <span [attr.class]="item.num === 16 ? 'active' : none" *ngIf="item.num === 16">16</span>
-        <span [attr.class]="item.num === 17 ? 'active' : none" *ngIf="item.num === 17">17</span>
+        <span [attr.class]="item.num === 16 ? 'active' : none" *ngIf="item.num === 16"></span>
+        <span [attr.class]="item.num === 17 ? 'active' : none" *ngIf="item.num === 17"></span>
       </td>
       <td>
-        <span [attr.class]="item.num === 18 ? 'active' : none" *ngIf="item.num === 18">18</span>
-        <span [attr.class]="item.num === 19 ? 'active' : none" *ngIf="item.num === 19">19</span>
+        <span [attr.class]="item.num === 18 ? 'active' : none" *ngIf="item.num === 18"></span>
+        <span [attr.class]="item.num === 19 ? 'active' : none" *ngIf="item.num === 19"></span>
       </td>
       <td>
-        <span [attr.class]="item.num === 20 ? 'active' : none" *ngIf="item.num === 20">20</span>
+        <span [attr.class]="item.num === 20 ? 'active' : none" *ngIf="item.num === 20"></span>
       </td>
     </tr>
     <!--<tr class="occur">-->

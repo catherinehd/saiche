@@ -1,45 +1,86 @@
 <section class="number-container">
   <svg class="line" width="100%" [attr.height]="tableheight" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <polyline [attr.points]="points" style="stroke-width:1" [style.stroke]="color"></polyline>
-    <text *ngFor="let item of trendList" x="162" [attr.y]="item.y" [attr.fill]="item.num === 0 ? '#fff' : '#6e6e6e'" text-anchor="middle" dominant-baseline="middle" >{{item.first}}</text>
-    <text *ngFor="let item of trendList" x="303" [attr.y]="item.y" [attr.fill]="item.num === 1 ? '#fff' : '#6e6e6e'" text-anchor="middle" dominant-baseline="middle" >{{item.second}}</text>
+    <g *ngFor="let item of trendList"><text *ngIf="title !== '1-5龙虎'" [attr.x]="d1" [attr.y]="item.y" [attr.fill]="item.num === 0 ? '#fff' : '#6e6e6e'" text-anchor="middle" dominant-baseline="mathematical" >{{item.first}}</text></g>
+    <g *ngFor="let item of trendList"><text *ngIf="title !== '1-5龙虎'" [attr.x]="d2" [attr.y]="item.y" [attr.fill]="item.num === 1 ? '#fff' : '#6e6e6e'" text-anchor="middle" dominant-baseline="mathematical" >{{item.second}}</text></g>
+
+    <g *ngFor="let item of trendList"><text *ngIf="title === '1-5龙虎' && item.firsts" [attr.x]="d1" [attr.y]="item.y" [attr.fill]="item.num === 0 ? '#fff' : '#6e6e6e'" text-anchor="middle" dominant-baseline="mathematical" >{{item.firsts}}</text></g>
+    <g *ngFor="let item of trendList"><text *ngIf="title === '1-5龙虎' && item.first" [attr.x]="d1" [attr.y]="item.y" [attr.fill]="item.num === 0 ? '#fff' : '#6e6e6e'" text-anchor="middle" dominant-baseline="mathematical" >{{item.first}}</text></g>
+    <g *ngFor="let item of trendList"><text *ngIf="title === '1-5龙虎' && item.seconds" [attr.x]="d2" [attr.y]="item.y" [attr.fill]="item.num === 1 ? '#fff' : '#6e6e6e'" text-anchor="middle" dominant-baseline="mathematical" >{{item.seconds}}</text></g>
+    <g *ngFor="let item of trendList"><text *ngIf="title === '1-5龙虎' && item.second" [attr.x]="d2" [attr.y]="item.y" [attr.fill]="item.num === 1 ? '#fff' : '#6e6e6e'" text-anchor="middle" dominant-baseline="mathematical" >{{item.second}}</text></g>
   </svg>
-  <table>
-    <thead>
-      <tr>
-        <th>
-          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/1" (click)="getData('0')">冠军</a>
-        </th>
-        <th>
-          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/2" (click)="getData('1')">亚军</a>
-        </th>
-        <th>
-          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/3" (click)="getData('2')">第三名</a>
-        </th>
-        <th>
-          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/4" (click)="getData('3')">第四名</a>
-        </th>
-        <th>
-          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/5" (click)="getData('4')">第五名</a>
-        </th>
-        <th>
-          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/6" (click)="getData('5')">第六名</a>
-        </th>
-        <th>
-          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/7" (click)="getData('6')">第七名</a>
-        </th>
-        <th>
-          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/8" (click)="getData('7')">第八名</a>
-        </th>
-        <th>
-          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/9" (click)="getData('8')">第九名</a>
-        </th>
-        <th>
-          <a  routerLinkActive="active" routerLink="/home/{{seturl}}/10" (click)="getData('9')">第十名</a>
-        </th>
-      </tr>
-    </thead>
-  </table>
+  <!--<table>-->
+    <!--<thead>-->
+      <!--<tr>-->
+        <!--<th>-->
+          <!--<a  routerLinkActive="active" routerLink="/home/{{seturl}}/1" (click)="getData('0')">冠军</a>-->
+        <!--</th>-->
+        <!--<th>-->
+          <!--<a  routerLinkActive="active" routerLink="/home/{{seturl}}/2" (click)="getData('1')">亚军</a>-->
+        <!--</th>-->
+        <!--<th>-->
+          <!--<a  routerLinkActive="active" routerLink="/home/{{seturl}}/3" (click)="getData('2')">第三名</a>-->
+        <!--</th>-->
+        <!--<th>-->
+          <!--<a  routerLinkActive="active" routerLink="/home/{{seturl}}/4" (click)="getData('3')">第四名</a>-->
+        <!--</th>-->
+        <!--<th>-->
+          <!--<a  routerLinkActive="active" routerLink="/home/{{seturl}}/5" (click)="getData('4')">第五名</a>-->
+        <!--</th>-->
+        <!--<th>-->
+          <!--<a  routerLinkActive="active" routerLink="/home/{{seturl}}/6" (click)="getData('5')">第六名</a>-->
+        <!--</th>-->
+        <!--<th *ngIf="title !== '1-5龙虎'">-->
+          <!--<a  routerLinkActive="active" routerLink="/home/{{seturl}}/7" (click)="getData('6')">第七名</a>-->
+        <!--</th>-->
+        <!--<th *ngIf="title !== '1-5龙虎'">-->
+          <!--<a  routerLinkActive="active" routerLink="/home/{{seturl}}/8" (click)="getData('7')">第八名</a>-->
+        <!--</th>-->
+        <!--<th *ngIf="title !== '1-5龙虎'">-->
+          <!--<a  routerLinkActive="active" routerLink="/home/{{seturl}}/9" (click)="getData('8')">第九名</a>-->
+        <!--</th>-->
+        <!--<th *ngIf="title !== '1-5龙虎'">-->
+          <!--<a  routerLinkActive="active" routerLink="/home/{{seturl}}/10" (click)="getData('9')">第十名</a>-->
+        <!--</th>-->
+      <!--</tr>-->
+    <!--</thead>-->
+  <!--</table>-->
+
+  <div class="number-bar">
+    <ul>
+      <li>
+        <a  routerLinkActive="active" routerLink="/home/{{seturl}}/1" (click)="getData('0')">冠军</a>
+      </li>
+      <li>
+        <a  routerLinkActive="active" routerLink="/home/{{seturl}}/2" (click)="getData('1')">亚军</a>
+      </li>
+      <li>
+        <a  routerLinkActive="active" routerLink="/home/{{seturl}}/3" (click)="getData('2')">第三名</a>
+      </li>
+      <li>
+        <a  routerLinkActive="active" routerLink="/home/{{seturl}}/4" (click)="getData('3')">第四名</a>
+      </li>
+      <li>
+        <a  routerLinkActive="active" routerLink="/home/{{seturl}}/5" (click)="getData('4')">第五名</a>
+      </li>
+      <li *ngIf="title !== '1-5龙虎'">
+        <a  routerLinkActive="active" routerLink="/home/{{seturl}}/6" (click)="getData('5')">第六名</a>
+      </li>
+      <li *ngIf="title !== '1-5龙虎'">
+        <a  routerLinkActive="active" routerLink="/home/{{seturl}}/7" (click)="getData('6')">第七名</a>
+      </li>
+      <li *ngIf="title !== '1-5龙虎'">
+        <a  routerLinkActive="active" routerLink="/home/{{seturl}}/8" (click)="getData('7')">第八名</a>
+      </li>
+      <li *ngIf="title !== '1-5龙虎'">
+        <a  routerLinkActive="active" routerLink="/home/{{seturl}}/9" (click)="getData('8')">第九名</a>
+      </li>
+      <li *ngIf="title !== '1-5龙虎'">
+        <a  routerLinkActive="active" routerLink="/home/{{seturl}}/10" (click)="getData('9')">第十名</a>
+      </li>
+    </ul>
+  </div>
+
   <table class="data-list">
     <tbody>
       <tr class="top">
@@ -58,10 +99,10 @@
         <td>{{item.bjpkExpect}}</td>
         <td *ngIf="title !== '1-5龙虎'"><span [attr.class]="item.num === 0 ? 'active' : none" [style.backgroundColor]="item.num === 0 ? color : 'transparent'"></span></td>
         <td *ngIf="title !== '1-5龙虎'"><span [attr.class]="item.num === 1 ? 'active' : none" [style.backgroundColor]="item.num === 1 ? color : 'transparent'"></span></td>
-        <td *ngIf="title === '1-5龙虎' && item.firsts"><span [attr.class]="item.num === 0 ? 'active' : none" [style.backgroundColor]="item.num === 0 ? color : 'transparent'">{{item.firsts}}</span></td>
-        <td *ngIf="title === '1-5龙虎' && item.first"><span [attr.class]="item.num === 0 ? 'active' : none" [style.backgroundColor]="item.num === 0 ? color : 'transparent'">{{item.first}}</span></td>
-        <td *ngIf="title === '1-5龙虎' && item.seconds"><span [attr.class]="item.num === 1 ? 'active' : none" [style.backgroundColor]="item.num === 1 ? color : 'transparent'">{{item.seconds}}</span></td>
-        <td *ngIf="title === '1-5龙虎' && item.second"><span [attr.class]="item.num === 1 ? 'active' : none" [style.backgroundColor]="item.num === 1 ? color : 'transparent'">{{item.second}}</span></td>
+        <td *ngIf="title === '1-5龙虎' && item.firsts"><span [attr.class]="item.num === 0 ? 'active' : none" [style.backgroundColor]="item.num === 0 ? color : 'transparent'"></span></td>
+        <td *ngIf="title === '1-5龙虎' && item.first"><span [attr.class]="item.num === 0 ? 'active' : none" [style.backgroundColor]="item.num === 0 ? color : 'transparent'"></span></td>
+        <td *ngIf="title === '1-5龙虎' && item.seconds"><span [attr.class]="item.num === 1 ? 'active' : none" [style.backgroundColor]="item.num === 1 ? color : 'transparent'"></span></td>
+        <td *ngIf="title === '1-5龙虎' && item.second"><span [attr.class]="item.num === 1 ? 'active' : none" [style.backgroundColor]="item.num === 1 ? color : 'transparent'"></span></td>
       </tr>
       <tr class="occur">
         <td>出现次数</td>

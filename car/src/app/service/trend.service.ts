@@ -8,9 +8,12 @@ export class TrendService {
   constructor(private httpService: HttpService) { }
 
   // 获取号码列表
-  getNumberList(page) {
+  getNumberList(page, username) {
     return this.httpService.getMethod( {
-      url: 'web/bjpk/queryBjpkList/' + page
+      url: 'web/bjpk/queryBjpkList/' + page,
+      data: {
+        userName: username
+      }
     });
   }
 

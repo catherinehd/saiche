@@ -5,13 +5,13 @@
     </svg>
     <h4>走势图</h4>
   </a>
-  <a class="nav" routerLink="/set" routerLinkActive="active">
+  <a class="nav" routerLink="/set" routerLinkActive="active" (click)="goSetnews()">
     <svg class="icon-home-inactive">
       <use xlink:href="assets/icon/symbol-defs.svg#icon-tixong"></use>
     </svg>
     <h4>提醒设置</h4>
   </a>
-  <a class="nav" routerLink="/news" routerLinkActive="active">
+  <a class="nav" routerLink="/news" routerLinkActive="active" (click)="goGetnews()">
     <div *ngIf="hasnews" class="red-circle">{{newsNum}}</div>
     <svg class="icon-home-inactive">
       <use xlink:href="assets/icon/symbol-defs.svg#icon-xiaoxi"></use>
