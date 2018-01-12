@@ -24,17 +24,17 @@ export class UserStoreService {
     this.user = new UserModel(user);
     // localStorage.setItem('token', user.access_token);
     // localStorage.setItem('user', JSON.stringify(this.user));
-    localStorage.setItem('user', user);
+    localStorage.setItem('bjscuser', user);
   }
 
   logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
+    // localStorage.removeItem('token');
+    localStorage.removeItem('bjscuser');
     this.user = null;
   }
 
   refreshUser(nickName) {
     this.user.nickName = nickName;
-    localStorage.setItem('user', JSON.stringify(this.user));
+    localStorage.setItem('bjscuser', JSON.stringify(this.user));
   }
 }

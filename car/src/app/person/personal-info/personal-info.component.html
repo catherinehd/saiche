@@ -5,7 +5,7 @@
     <div class="detail">
       <h4>昵称:</h4>
       <input type="text" [placeholder]="name" [formControl]="nickName" autofocus>
-      <svg class="icon-close" appFastClick (onFastClick)="clear()" *ngIf="nickName.value">
+      <svg class="icon-close"  (click)="clear()" *ngIf="nickName.value">
         <use xlink:href="assets/icon/symbol-defs.svg#icon-shanchu"></use>
       </svg>
     </div>
@@ -13,3 +13,4 @@
 </section>
 
 <app-fly-msg [msg]="msg"></app-fly-msg>
+

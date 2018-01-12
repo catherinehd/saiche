@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, RequestOptions, RequestMethod, Request, Headers } from '@angular/http';
 import { ApiList } from '../config/apiList';
-import {send} from "q";
 
 @Injectable()
 export class HttpService {
@@ -16,7 +15,7 @@ export class HttpService {
   getMethod(options: any) {
     const url = options.fullUrl || this.baseUrl + options.url;
     const headers = new Headers({
-      'Authorization': 'Bearer' + window.localStorage.getItem('token'),
+      // 'Authorization': 'Bearer' + window.localStorage.getItem('token'),
       'Content-Type': 'application/x-www-form-urlencoded'
     });
     let searchString = '';
@@ -28,6 +27,7 @@ export class HttpService {
       body: '',
       method: RequestMethod.Get,
       headers: headers,
+      withCredentials : true,
       search: searchString.slice(0, -1)
     });
     return this.http.request(new Request(requestOptions));
@@ -36,7 +36,7 @@ export class HttpService {
   postMethod(options: any) {
     const url = options.fullUrl || this.baseUrl + options.url;
     const headers = new Headers({
-      'Authorization': 'Bearer' + window.localStorage.getItem('token'),
+      // 'Authorization': 'Bearer' + window.localStorage.getItem('token'),
       'Content-Type': 'application/x-www-form-urlencoded'
     });
     let sendData = '';
@@ -45,7 +45,8 @@ export class HttpService {
     }
     const requestOptions = new RequestOptions({
       method: RequestMethod.Post,
-      headers: headers
+      headers: headers,
+      withCredentials : true
     });
     return this.http.post(url, sendData.slice(0, -1), requestOptions);
   }
@@ -53,7 +54,7 @@ export class HttpService {
   putMethod(options: any) {
     const url = options.fullUrl || this.baseUrl + options.url;
     const headers = new Headers({
-      'Authorization': 'Bearer' + window.localStorage.getItem('token'),
+      // 'Authorization': 'Bearer' + window.localStorage.getItem('token'),
       'Content-Type': 'application/x-wwww-form-encoded'
     });
     let sendData = '';
@@ -62,7 +63,8 @@ export class HttpService {
     }
     const requestOptions = new RequestOptions({
       method: RequestMethod.Put,
-      headers: headers
+      headers: headers,
+      withCredentials : true
     });
     return this.http.put(url, sendData.slice(0, -1), requestOptions);
   }

@@ -4,5 +4,5 @@
   <span>手机号码</span>
   <span>{{telnumber}}</span>
 </div>
-<button class="setting-btn" appFastClick (onFastClick)="modal.isConfirmModalShow = true">退出登录</button>
+<button class="setting-btn"  (click)="modal.isConfirmModalShow = true">退出登录</button>
 <app-modal [modal]="modal" [showconfirm]="true" (onConfirm)="confirm($event)"></app-modal>

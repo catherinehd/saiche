@@ -2,7 +2,7 @@
   <svg class="line" width="100%" [attr.height]="tableheight" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <polyline [attr.points]="points" style="stroke-width:1" [style.stroke]="color"></polyline>
     <g *ngFor="let item of trendList">
-      <circle [attr.cx]="item.x" [attr.cy]="item.y" r="1rem" fill="#379ade" text-anchor="middle" dominant-baseline="middle" />
+      <circle [attr.cx]="item.x" [attr.cy]="item.y" r="10px" fill="#379ade" text-anchor="middle" dominant-baseline="middle" />
       <text [attr.x]="item.x" [attr.y]="item.ytext" fill="#fff" text-anchor="middle" dominant-baseline="middle" >{{item.num}}</text>
     </g>
   </svg>

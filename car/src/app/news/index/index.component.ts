@@ -23,17 +23,19 @@ export class IndexComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.isLoading = true;
     this.userService.islogin().subscribe( res => {
       this.userName = res.json().data.userName;
-      this.newsService.getNewsList(this.userName, 1).subscribe( res => {
-        if (res.json().rows.length) {
-          if (res.json().rows.length < 15) {
+      this.newsService.getNewsList(this.userName, 1).subscribe( res2 => {
+        if (res2.json().rows.length) {
+          this.isLoading = false;
+          if (res2.json().rows.length < 15) {
             this.isCompleted = true;
           } else {
             this.isCompleted = false;
           }
           this.hasnews = true;
-          this.newsList = res.json().rows;
+          this.newsList = res2.json().rows;
           for (let i = 0; i < this.newsList.length; i++) {
             const t = this.newsList[i].updateTime;
             this.newsList[i].updateTime = this.format(t);   // 开奖时间

@@ -5,7 +5,7 @@ export const DeviceConfig = {
 };
 
 export const ServiceInfo = {
-  appName: 'car',
+  appName: '彩票吧',
   tel: '1234567',
   telFormat: '400-123-1234',
   wechat: '',

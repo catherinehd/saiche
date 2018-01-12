@@ -13,7 +13,7 @@
       </label>
       <input type="tel" placeholder="请输入手机号" formControlName="tel" [appTelFormat]="telControl" maxlength="13" (change)="testIfRegisted()">
       <div class="btn-group" *ngIf="loginForm.value.tel">
-        <button class="close-btn" appFastClick (onFastClick)="clear('tel')">
+        <button class="close-btn"  (click)="clear('tel')">
           <svg class="icon-close">
             <use xlink:href="assets/icon/symbol-defs.svg#icon-shanchu"></use>
           </svg>
@@ -28,17 +28,17 @@
       </label>
       <input [type]="!isOpenEyesShow ? 'text': 'password'" placeholder="请输入密码" formControlName="pwd">
       <div class="btn-group">
-        <!--<button class="close-btn" appFastClick (onFastClick)="clear('pwd')" *ngIf="loginForm.value.pwd">-->
+        <!--<button class="close-btn"  (click)="clear('pwd')" *ngIf="loginForm.value.pwd">-->
           <!--<svg class="icon-close">-->
             <!--<use xlink:href="assets/icon/symbol-defs.svg#icon-shanchu"></use>-->
           <!--</svg>-->
         <!--</button>-->
-        <button class="eye-btn" *ngIf="!isOpenEyesShow && loginForm.value.pwd" appFastClick (onFastClick)="isOpenEyesShow = true">
+        <button class="eye-btn" *ngIf="!isOpenEyesShow && loginForm.value.pwd"  (click)="isOpenEyesShow = true">
           <svg class="icon-open-eyes" style="fill: #2c65a8;">
             <use xlink:href="assets/icon/symbol-defs.svg#icon-yincang"></use>
           </svg>
         </button>
-        <button class="eye-btn" *ngIf="isOpenEyesShow && loginForm.value.pwd" appFastClick (onFastClick)="isOpenEyesShow = false">
+        <button class="eye-btn" *ngIf="isOpenEyesShow && loginForm.value.pwd"  (click)="isOpenEyesShow = false">
           <svg class="icon-close-eyes">
             <use xlink:href="assets/icon/symbol-defs.svg#icon-yincang"></use>
           </svg>
@@ -46,9 +46,9 @@
       </div>
     </div>
   </div>
-  <button class="form-tip" type="button" appFastClick (onFastClick)="pushToForgetPwd()">忘记密码？</button>
+  <button class="form-tip" type="button"  (click)="pushToForgetPwd()">忘记密码？</button>
   <div class="btn-box">
-    <button class="form-btn" [disabled]="!loginForm.value.tel || !loginForm.value.pwd" type="button" appFastClick (onFastClick)="onSubmit()">登录</button>
+    <button class="form-btn" [disabled]="!loginForm.value.tel || !loginForm.value.pwd" type="button"  (click)="onSubmit()">登录</button>
   </div>
 </section>
 

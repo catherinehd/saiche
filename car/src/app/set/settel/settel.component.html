@@ -12,13 +12,17 @@
       <input *ngIf="title === '修改手机号'" type="tel" id="tel" maxlength="13" placeholder={{oldnumber}} (keyup)="testphonenum()" formControlName="tel" [appTelFormat]="telControl">
       <input *ngIf="title !== '修改手机号'" type="number" id="num" maxlength="3" placeholder={{oldsetnumber}} formControlName="num" (keyup)="testsetnum()">
       <div class="btn-group" *ngIf="setnumber || telnumber">
-        <button class="close-btn" appFastClick (onFastClick)="clear()">
+        <button class="close-btn"  (click)="clear()">
           <svg class="icon-close">
             <use xlink:href="assets/icon/symbol-defs.svg#icon-shanchu"></use>
           </svg>
         </button>
       </div>
     </div>
+  </div>
+
+  <div class="tips">
+    说明：当设置期数为0时，即遗漏值达到设置提醒关闭
   </div>
 </section>
 

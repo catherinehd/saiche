@@ -100,7 +100,7 @@ export class LoginComponent implements OnInit {
     this.isLoading = true;
     const tel = this.getTelValue();
     this.userService.login(tel, this.loginForm.value.pwd).subscribe(res => {
-      res.json() === null ? this.showTip('账号与密码不匹配，请重新输入') : this.loginSuccess(res.json());
+      res.json().ok ? this.loginSuccess(res.json()) : this.showTip('账号与密码不匹配，请重新输入');
     });
   }
 
@@ -110,15 +110,6 @@ export class LoginComponent implements OnInit {
       this.userStoreService.storeUser(this.loginForm.value.tel.replace(/\s/g, ''));
       this.navigateService.pushToNextRoute();
     }, 2000);
-  }
-
-  gofalsepage(res) {
-    // if (res.json() === true) {
-    //   this.navigateService.falsePushToNextRoute();
-    // } else {
-    //   this.navigateService.pushToNextRoute();
-    // }
-    this.navigateService.pushToNextRoute();
   }
 
   showTip(msg) {

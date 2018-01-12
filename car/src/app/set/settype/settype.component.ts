@@ -20,6 +20,8 @@ export class SettypeComponent implements OnInit {
   userId: number;
   userName: string;
   setnumber: number;
+  hasmsgnum: number; // 剩余短信条数
+  msg: string; // 提示
 
   constructor(private navigateService: NavigateService,
               private userService: UserService,
@@ -79,12 +81,43 @@ export class SettypeComponent implements OnInit {
     this.userService.islogin().subscribe( res => {
       this.setTurn(res.json().data);
       this.userId = res.json().data.userId;
+      this.hasmsgnum = res.json().data.userQuota;
+      // 当免费额度为0时，开关均为关，并提示无法进行提醒。
+      if (this.hasmsgnum === 0) {
+        this.nofree();
+      } else {
+        this.hasfreemsg();
+      }
       this.userName = res.json().data.userName;
       if (this.seturl === 'bigsmall') { this.setnumber = res.json().data.sizeCustom; }
       if (this.seturl === 'singledouble') { this.setnumber = res.json().data.singleCustom; }
       if (this.seturl === 'onetwo') { this.setnumber = res.json().data.andCustom; }
       if (this.seturl === 'dragontiger') { this.setnumber = res.json().data.loongCustom; }
     });
+  }
+
+  onConfirm(stage) {
+    this.confirmshow = false;
+  }
+
+  // 免费提醒为0时的设置
+  nofree() {
+    const btnArray = document.getElementsByClassName('check-btn');
+    for (let i = 0; i < btnArray.length; i++) {
+      btnArray[i].className = 'check-btn';
+      btnArray[i].addEventListener('click', () => {
+        this.showMsg('当前免费短信额度已使用完，无法进行消息提醒。');
+      });
+    }
+  }
+
+  showMsg(msg) {
+    this.msg = msg;
+    setTimeout(() => this.msg = '', 2000);
+  }
+
+  // 有免费提醒额度
+  hasfreemsg() {
     // 获取提醒设置的值
     const btnArray = document.getElementsByClassName('check-btn');
     // this.getset.today ? btnArray[0].className = 'check-btn turnOn' : btnArray[0].className = 'check-btn';
@@ -103,10 +136,6 @@ export class SettypeComponent implements OnInit {
         }
       });
     }
-  }
-
-  onConfirm(stage) {
-    this.confirmshow = false;
   }
 
   // 保存设置

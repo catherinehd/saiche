@@ -7,7 +7,7 @@
       <p>{{modal.confirmMsg}}</p>
     </div>
     <div class="btn-group">
-      <button appFastClick (onFastClick)="confirm(1)">知道了</button>
+      <button  (click)="confirm(1)">知道了</button>
     </div>
   </div>
   <div class="modal-container" *ngIf="showconfirm">
@@ -18,8 +18,8 @@
       <p>{{modal.confirmMsg}}</p>
     </div>
     <div class="btn-group">
-      <button appFastClick (onFastClick)="confirm(0)">取消</button>
-      <button appFastClick (onFastClick)="confirm(1)">确定</button>
+      <button  (click)="confirm(0)">取消</button>
+      <button  (click)="confirm(1)">确定</button>
     </div>
   </div>
 </section>

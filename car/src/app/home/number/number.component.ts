@@ -74,9 +74,15 @@ export class NumberComponent implements OnInit, OnDestroy, OnChanges {
   // 时间戳格式化
   format(t) {
     const unixTimestamp = new Date(t);
-    let commonTime = unixTimestamp.getMinutes() + ': ' + ' ' + unixTimestamp.getSeconds();
+    let commonTime = unixTimestamp.getHours() + ': ' + ' ' + unixTimestamp.getMinutes();
+    if (unixTimestamp.getHours().toString().length === 1) {
+       commonTime = '0' + unixTimestamp.getHours() + ': ' + ' ' + unixTimestamp.getMinutes();
+    }
     if (unixTimestamp.getMinutes().toString().length === 1) {
-       commonTime = '0' + unixTimestamp.getMinutes() + ': ' + ' ' + unixTimestamp.getSeconds();
+      commonTime = unixTimestamp.getHours() + ': ' + ' ' + '0' + unixTimestamp.getMinutes();
+    }
+    if (unixTimestamp.getHours().toString().length === 1 && unixTimestamp.getMinutes().toString().length === 1) {
+      commonTime = '0' + unixTimestamp.getHours() + ': ' + ' ' + '0' + unixTimestamp.getMinutes();
     }
     return commonTime;
   }

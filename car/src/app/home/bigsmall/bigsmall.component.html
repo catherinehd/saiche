@@ -9,42 +9,6 @@
     <g *ngFor="let item of trendList"><text *ngIf="title === '1-5龙虎' && item.seconds" [attr.x]="d2" [attr.y]="item.y" [attr.fill]="item.num === 1 ? '#fff' : '#6e6e6e'" text-anchor="middle" dominant-baseline="mathematical" >{{item.seconds}}</text></g>
     <g *ngFor="let item of trendList"><text *ngIf="title === '1-5龙虎' && item.second" [attr.x]="d2" [attr.y]="item.y" [attr.fill]="item.num === 1 ? '#fff' : '#6e6e6e'" text-anchor="middle" dominant-baseline="mathematical" >{{item.second}}</text></g>
   </svg>
-  <!--<table>-->
-    <!--<thead>-->
-      <!--<tr>-->
-        <!--<th>-->
-          <!--<a  routerLinkActive="active" routerLink="/home/{{seturl}}/1" (click)="getData('0')">冠军</a>-->
-        <!--</th>-->
-        <!--<th>-->
-          <!--<a  routerLinkActive="active" routerLink="/home/{{seturl}}/2" (click)="getData('1')">亚军</a>-->
-        <!--</th>-->
-        <!--<th>-->
-          <!--<a  routerLinkActive="active" routerLink="/home/{{seturl}}/3" (click)="getData('2')">第三名</a>-->
-        <!--</th>-->
-        <!--<th>-->
-          <!--<a  routerLinkActive="active" routerLink="/home/{{seturl}}/4" (click)="getData('3')">第四名</a>-->
-        <!--</th>-->
-        <!--<th>-->
-          <!--<a  routerLinkActive="active" routerLink="/home/{{seturl}}/5" (click)="getData('4')">第五名</a>-->
-        <!--</th>-->
-        <!--<th>-->
-          <!--<a  routerLinkActive="active" routerLink="/home/{{seturl}}/6" (click)="getData('5')">第六名</a>-->
-        <!--</th>-->
-        <!--<th *ngIf="title !== '1-5龙虎'">-->
-          <!--<a  routerLinkActive="active" routerLink="/home/{{seturl}}/7" (click)="getData('6')">第七名</a>-->
-        <!--</th>-->
-        <!--<th *ngIf="title !== '1-5龙虎'">-->
-          <!--<a  routerLinkActive="active" routerLink="/home/{{seturl}}/8" (click)="getData('7')">第八名</a>-->
-        <!--</th>-->
-        <!--<th *ngIf="title !== '1-5龙虎'">-->
-          <!--<a  routerLinkActive="active" routerLink="/home/{{seturl}}/9" (click)="getData('8')">第九名</a>-->
-        <!--</th>-->
-        <!--<th *ngIf="title !== '1-5龙虎'">-->
-          <!--<a  routerLinkActive="active" routerLink="/home/{{seturl}}/10" (click)="getData('9')">第十名</a>-->
-        <!--</th>-->
-      <!--</tr>-->
-    <!--</thead>-->
-  <!--</table>-->
 
   <div class="number-bar">
     <ul>

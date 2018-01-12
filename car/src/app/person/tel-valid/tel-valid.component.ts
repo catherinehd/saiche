@@ -23,6 +23,7 @@ export class TelValidComponent implements OnInit {
   count: number;
   isAgreementShow: boolean;
   tel: string;
+  inlogin = false;  // 是否在注册进行状态，当第一次点击注册并没有完成注册时，为注册状态，true
   isEyesOpen = false;
   validatorMsg = {
     tel: {
@@ -91,14 +92,17 @@ export class TelValidComponent implements OnInit {
   getCode() {
     this.testTel();
     if (!this.telControl.valid) return;
-    this.userService.testHasRegister(this.telValid.tel).subscribe(res => {
-      const response = res.json();
-      if (this.title !== '注册') {
-        response.ok ? this.getMsgCode() : this.showTip('该手机号码未注册');
-      } else {
-        response.ok ? this.getMsgCode() : this.showTip('该手机号已被占用');
-      }
-    });
+    if (this.title !== '注册') {
+      this.userService.testHasRegister(this.telValid.tel).subscribe( res => {
+        const response1 = res.json();
+        response1.ok ? this.getMsgCode() : this.showTip(response1.msg);
+      });
+    } else {
+      this.userService.testPhonenumber(this.telValid.tel).subscribe( res => {
+        const response2 = res.json();
+        response2.ok ? this.getMsgCode() : this.showTip(response2.msg);
+      });
+    }
   }
 
   // 获取短信验证码
@@ -150,6 +154,7 @@ export class TelValidComponent implements OnInit {
     if (!this.telValidForm.value.tel || !this.telValidForm.value.code || !this.telValidForm.value.pwd) return;
     this.testValid();
     if (!this.telValidForm.valid) return;
+    this.inlogin = true;
     // 验证邀请码
     if ( this.telValidForm.value.invitenum ) {
       this.userService.testInvitCode(this.telValidForm.value.valueinvitenum).subscribe( res => {
@@ -186,6 +191,7 @@ export class TelValidComponent implements OnInit {
         this.goNextStep();
       } else {
         this.showTip( res.json().msg);
+        this.inlogin = false;
       }
     });
   }
@@ -207,6 +213,11 @@ export class TelValidComponent implements OnInit {
   showTip(msg) {
     this.msg = msg;
     setTimeout(() => this.msg = '', 3000);
+  }
+
+  goPage(url) {
+    this.navigateService.push();
+    this.navigateService.pushToRoute(url);
   }
 }
 

@@ -1,23 +1,23 @@
 <header class="nav" appDevicePadding>
-  <button class="left-btn" *ngIf="showConfig.isCloseShow" appFastClick (onFastClick)="goBack()">关闭</button>
-  <button class="left-btn" *ngIf="showConfig.isCancelShow" appFastClick (onFastClick)="goBack()">Cancel</button>
-  <button class="left-btn" *ngIf="showConfig.isArrowShow" appFastClick (onFastClick)="goBack()">
+  <button class="left-btn" *ngIf="showConfig.isCloseShow"  (click)="goBack()">关闭</button>
+  <button class="left-btn" *ngIf="showConfig.isCancelShow"  (click)="goBack()">Cancel</button>
+  <button class="left-btn" *ngIf="showConfig.isArrowShow"  (click)="goBack()">
     <svg class="icon-left-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 98.2 179.2"><defs><style>.cls-1{stroke-linecap:round;stroke-linejoin:round;stroke-width:14px;}</style></defs><title>fanhui</title><polyline class="cls-1" points="91.2 7 7 92.2 91.2 172.2"/></svg>
   </button>
   <h1 class="title">{{title}}</h1>
-  <button class="right-btn" *ngIf="showConfig.isEditShow" appFastClick (onFastClick)="Edit()">
+  <button class="right-btn" *ngIf="showConfig.isEditShow"  (click)="Edit()">
     <svg class="icon-save" >
       <use xlink:href="assets/icon/symbol-defs.svg#icon-bianji"></use>
     </svg>
   </button>
-  <button class="right-btn" *ngIf="showConfig.isFinishShow" appFastClick (onFastClick)="Finish()">
+  <button class="right-btn" *ngIf="showConfig.isFinishShow"  (click)="Finish()">
     <span>Finish</span>
   </button>
-  <button class="right-btn" *ngIf="showConfig.isSaveShow" appFastClick (onFastClick)="save()">保存
+  <button class="right-btn" *ngIf="showConfig.isSaveShow"  (click)="save()">保存
   </button>
-  <button class="right-btn" *ngIf="showConfig.isRegisterShow" appFastClick (onFastClick)="pushToRegister()">注册
+  <button class="right-btn" *ngIf="showConfig.isRegisterShow"  (click)="pushToRegister()">注册
   </button>
-  <button class="right-btn" *ngIf="showConfig.isGosetnewsShow" appFastClick (onFastClick)="Set()">提醒设置
+  <button class="right-btn" *ngIf="showConfig.isGosetnewsShow"  (click)="Set()">提醒设置
   </button>
 </header>
 <div class="nav-bg" appDevicePadding></div>

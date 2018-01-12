@@ -50,7 +50,9 @@ export class PersonalInfoComponent implements OnInit {
         this.userService.updateNickName(this.userId, this.username, this.nickName.value).subscribe(res2 => {
           const response = res2.json();
           if (response.ok) {
-            this.showTip('修改昵称成功');
+            this.showTip('修改昵称成功', () => {
+              this.navigateService.popRoute();
+            });
           }
         });
       }
@@ -58,8 +60,11 @@ export class PersonalInfoComponent implements OnInit {
 
   }
 
-  showTip(msg) {
+  showTip(msg, callback ?: any) {
     this.msg = msg;
-    setTimeout(() => this.msg = '', 3000);
+    setTimeout(() => {
+      this.msg = '';
+      if (callback) callback();
+    }, 3000);
   }
 }

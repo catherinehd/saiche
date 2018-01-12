@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 import { CoreModule } from './core/core/core.module';
 import { HomeModule } from './home/home.module';
@@ -18,7 +19,7 @@ import { PersonModule } from './person/person.module';
   imports: [
     BrowserModule, CoreModule, HomeModule, BrowserAnimationsModule, AppRoutingModule, NewsModule, SetModule, PersonModule
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

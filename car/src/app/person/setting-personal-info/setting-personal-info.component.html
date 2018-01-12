@@ -2,7 +2,7 @@
 
 <section class="setting-sec">
   <input type="text" [placeholder]="name" [formControl]="nickName" autofocus>
-  <svg class="icon-close" appFastClick (onFastClick)="clear()" *ngIf="nickName.value">
+  <svg class="icon-close"  (click)="clear()" *ngIf="nickName.value">
     <use xlink:href="assets/icon/symbol-defs.svg#icon-close"></use>
   </svg>
 </section>

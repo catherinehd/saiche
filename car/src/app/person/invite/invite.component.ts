@@ -27,7 +27,7 @@ export class InviteComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.userService.islogin().subscribe( res => {
-      this.shareLink = 'http://www.baidu..com？agent=' + res.json().data.userId;
+      this.shareLink = window.location.origin + '/#/?agent=' + res.json().data.userId;
       this.shareLinkImg = res.json().data.userCode;
       this.total = res.json().data.userPlease;
       this.remain = res.json().data.userQuota;

@@ -51,7 +51,7 @@ export class ShowtimeComponent implements OnInit, OnDestroy {
       --time;
       if (time < 0) {
         this.refresh();
-        time = 300;
+        time = 302;
       }
       this.timeformat(time);
     }, 1000);

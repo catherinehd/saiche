@@ -1,4 +1,4 @@
-import { Component, HostBinding } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { NavigateService } from '../../service/navigate.service';
 import { UserStoreService } from '../../service/user-store.service';
 import { UserService } from '../../service/user.service';
@@ -10,7 +10,7 @@ import { DelayLeaveAnimation } from '../../shared/animations/delay-leave.animati
   styleUrls: ['./index.component.styl'],
   animations: [DelayLeaveAnimation]
 })
-export class IndexComponent {
+export class IndexComponent implements OnInit{
   nickName: string;
   telnum: string;
   @HostBinding('@delayLeaveAnimation') delayLeaveAnimation = true;
@@ -18,24 +18,37 @@ export class IndexComponent {
   constructor(private navigateSerivce: NavigateService,
               private userService: UserService,
               private userStoreService: UserStoreService) {
-    if (localStorage.getItem('user')) {
-      this.getInfo();
-    } else {
-      this.nickName = '';
-    }
+    // if (localStorage.getItem('bjscuser')) {
+    //   this.getInfo();
+    // } else {
+    //   this.nickName = '';
+    // }
   }
 
-  getInfo() {
-    const user = this.userService.islogin().subscribe( res => {
+  ngOnInit() {
+    this.userService.islogin().subscribe( res => {
       if (res.json().msg === 'OK') {
         this.nickName = res.json().data.userNamenick;
         this.telnum = res.json().data.userName;
+        localStorage.setItem('bjscuser', res.json().data.userName);
+      } else {
+        localStorage.removeItem('bjscuser');
+        this.nickName = '';
       }
     });
   }
 
+  // getInfo() {
+  //   const user = this.userService.islogin().subscribe( res => {
+  //     if (res.json().msg === 'OK') {
+  //       this.nickName = res.json().data.userNamenick;
+  //       this.telnum = res.json().data.userName;
+  //     }
+  //   });
+  // }
+
   goPage(page) {
-    if (localStorage.getItem('user')) {
+    if (localStorage.getItem('bjscuser')) {
       this.navigateSerivce.push();
       this.navigateSerivce.pushToRoute(page);
     } else {

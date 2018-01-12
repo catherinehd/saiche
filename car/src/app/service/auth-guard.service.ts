@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   }
 
   checkLogin(url) {
-    if (!localStorage.getItem('user')) {
+    if (!localStorage.getItem('bjscuser')) {
       // this.navigateService.storeNextRoute(url);
       // this.navigateService.pushToRoute('/login');
       return false;

@@ -88,7 +88,7 @@ export class SettelComponent implements OnInit {
   }
 
   testsetnum() {
-    if (this.telform.value.num) {
+    if (this.telform.value.num || this.telform.value.num === 0) {
       this.setnumber = true;
     } else {
       this.setnumber = false;
@@ -120,7 +120,7 @@ export class SettelComponent implements OnInit {
     if (!this.telform.valid) return;
     if (this.title === '修改手机号') {
       if (!this.telnumber) {this.showTip('请填写手机号码'); return; }
-      this.setService.setTelnum(this.userId, this.userName, this.telform.value.tel).subscribe( res => {
+      this.setService.setTelnum(this.userId, this.userName, this.telform.value.tel.replace(/\s/g, '')).subscribe( res => {
         res.ok ? this.showSuccess() : this.save = false;
       });
     } else {

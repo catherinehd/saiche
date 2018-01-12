@@ -57,14 +57,14 @@ export class UserService {
     });
   }
 
-  // 验证手机号是否有效
+  // 验证手机号是否有效 注册
   testPhonenumber(username) {
     return this.httpService.getMethod({
       url: 'web/user/checkusername/' + username,
     });
   }
 
-  // 验证手机号是否已经注册
+  // 验证手机号是否已经注册 忘记密码
   testHasRegister(username) {
     return this.httpService.getMethod({
       url: 'web/user/checkusernamepass/' + username,

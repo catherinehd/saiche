@@ -38,7 +38,7 @@ export class SettingComponent implements OnInit {
   logout() {
      this.userService.logout().subscribe(res => {
        this.navigateService.clearRouteList();
-       localStorage.removeItem('user');
+       localStorage.removeItem('bjscuser');
        this.navigateService.pushToRoute('./home');
      });
   }

@@ -16,7 +16,7 @@
       </label>
       <input type="tel" placeholder="请输入手机号" maxlength="13" [appTelFormat]="telControl" formControlName="tel">
       <div class="btn-group" *ngIf="telValidForm.value.tel">
-        <button class="close-btn" appFastClick (onFastClick)="clear('tel')">
+        <button class="close-btn"  (click)="clear('tel')">
           <svg class="icon-close">
             <use xlink:href="assets/icon/symbol-defs.svg#icon-shanchu"></use>
           </svg>
@@ -31,7 +31,7 @@
       </label>
       <input type="text" placeholder="请输入验证码" maxlength="6" formControlName="code">
       <div class="btn-group">
-        <button class="get-btn" *ngIf="!isCounting" [disabled]="!telValidForm.value.tel" appFastClick (onFastClick)="getCode()">获取验证码</button>
+        <button class="get-btn" *ngIf="!isCounting" [disabled]="!telValidForm.value.tel"  (click)="getCode()">获取验证码</button>
         <button class="get-btn" *ngIf="isCounting">{{count}}s</button>
       </div>
     </div>
@@ -43,17 +43,17 @@
     </label>
       <input [type]="!isEyesOpen ? 'password' : 'text'" placeholder="请输入密码（由6-15位数字字母组成）" formControlName="pwd" maxlength="15">
       <div class="btn-group">
-        <button *ngIf="telValidForm.value.pwd" class="close-btn" appFastClick (onFastClick)="clear('pwd')">
+        <button *ngIf="telValidForm.value.pwd" class="close-btn"  (click)="clear('pwd')">
           <svg class="icon-close">
             <use xlink:href="assets/icon/symbol-defs.svg#icon-shanchu"></use>
           </svg>
         </button>
-        <button class="eye-btn" *ngIf="!isEyesOpen && telValidForm.value.pwd" appFastClick (onFastClick)="isEyesOpen = true">
+        <button class="eye-btn" *ngIf="!isEyesOpen && telValidForm.value.pwd"  (click)="isEyesOpen = true">
           <svg class="icon-open-eyes" style="fill:#cecece;">
             <use xlink:href="assets/icon/symbol-defs.svg#icon-yincang"></use>
           </svg>
         </button>
-        <button class="eye-btn" *ngIf="isEyesOpen && telValidForm.value.pwd" appFastClick (onFastClick)="isEyesOpen = false">
+        <button class="eye-btn" *ngIf="isEyesOpen && telValidForm.value.pwd"  (click)="isEyesOpen = false">
           <svg class="icon-close-eyes" style="fill:#2c65a8;">
             <use xlink:href="assets/icon/symbol-defs.svg#icon-yincang"></use>
           </svg>
@@ -71,13 +71,14 @@
   </div>
 
 
-  <p class="footer-tip" *ngIf="title === '注册'" appFastClick (onFastClick)="isAgreementShow = true">注册即代表您同意<span class="agreement"> 《用户服务协议》</span></p>
+  <p class="footer-tip" *ngIf="title === '注册'"  (click)="goPage('./agreement')">注册即代表您同意<span class="agreement"> 《用户服务协议》</span></p>
   <!--<p class="footer-tip" *ngIf="title !== '注册'">如果出现问题，请联系 <a class="tel" href="tel:{{tel}}">客服电话</a></p>-->
   <div class="btn-box">
-    <button *ngIf="title === '注册'" class="form-btn" type="button" [disabled]="!telValidForm.value.tel || !telValidForm.value.code || !telValidForm.value.pwd" appFastClick (onFastClick)="onSubmit()">注册</button>
+    <button *ngIf="title === '注册' && !inlogin" class="form-btn" type="button" [disabled]="!telValidForm.value.tel || !telValidForm.value.code || !telValidForm.value.pwd"  (click)="onSubmit()">注册</button>
+    <button *ngIf="title === '注册' && inlogin" class="form-btn" type="button" >注册中</button>
   </div>
   <div class="btn-box">
-    <button *ngIf="title !== '注册'" class="form-btn" type="button" [disabled]="!telValidForm.value.tel || !telValidForm.value.code" appFastClick (onFastClick)="onSubmit2()">重置密码</button>
+    <button *ngIf="title !== '注册'" class="form-btn" type="button" [disabled]="!telValidForm.value.tel || !telValidForm.value.code"  (click)="onSubmit2()">重置密码</button>
   </div>
 </section>
 
@@ -85,4 +86,4 @@
 
 <!--<app-img-valid *ngIf="isImgValidShow" (onClose)="closeImgValid($event)" [mobile]="telValid.tel" [type]="title === '注册' ? 'Register' : 'ForgetPwd'"></app-img-valid>-->
 <app-fly-msg [msg]="msg"></app-fly-msg>
-<app-agreement *ngIf="isAgreementShow" (onClose)="isAgreementShow = false"></app-agreement>
+<!--<app-agreement *ngIf="isAgreementShow" (onClose)="isAgreementShow = false"></app-agreement>-->
