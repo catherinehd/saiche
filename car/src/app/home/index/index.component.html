@@ -1,7 +1,7 @@
 <app-nav *ngIf="bigtitle === '号码'" [title]="bigtitle" [showConfig]="{}"></app-nav>
 <app-nav *ngIf="bigtitle !== '号码'" [title]="bigtitle" [showConfig]="{isGosetnewsShow: true}" (onSet)="goSetnews()"></app-nav>
 
-<section class="sec-home">
+<section class="sec-home" style="height:100%;" *ngIf="number">
   <div class="nav-bar">
     <a routerLink="/home/number" routerLinkActive="active">号码</a>
     <a routerLink="/home/bigsmall" routerLinkActive="active">大小走势</a>
@@ -9,8 +9,17 @@
     <a routerLink="/home/onetwo" routerLinkActive="active">冠亚和值</a>
     <a routerLink="/home/dragontiger" routerLinkActive="active">1-5龙虎</a>
   </div>
-
   <app-number *ngIf="number"></app-number>
+</section>
+
+<section class="sec-home" *ngIf="!number">
+  <div class="nav-bar">
+    <a routerLink="/home/number" routerLinkActive="active">号码</a>
+    <a routerLink="/home/bigsmall" routerLinkActive="active">大小走势</a>
+    <a routerLink="/home/singledouble" routerLinkActive="active">单双走势</a>
+    <a routerLink="/home/onetwo" routerLinkActive="active">冠亚和值</a>
+    <a routerLink="/home/dragontiger" routerLinkActive="active">1-5龙虎</a>
+  </div>
   <app-bigsmall *ngIf="bigsmall"></app-bigsmall>
   <app-oneandtwo *ngIf="oneandtwo"></app-oneandtwo>
 </section>
